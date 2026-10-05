@@ -574,18 +574,18 @@ if __name__ == "__main__":
     import uvicorn
     host = os.environ.get("HOST", "127.0.0.1")
     port = int(os.environ.get("PORT", "8123"))
-    print(f"Starting server at http://{host}:{port}")
+    print(f"reader3 запущен: http://localhost:{port}")
     if host in ("0.0.0.0", "::"):
         # Show the address to open on a phone or tablet in the same network
         import socket
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
                 sock.connect(("10.255.255.255", 1))
-                print(f"On your phone or tablet: http://{sock.getsockname()[0]}:{port}")
+                print(f"Откройте на планшете или телефоне (та же Wi-Fi-сеть): http://{sock.getsockname()[0]}:{port}")
         except OSError:
             pass
     if not PASSWORD:
-        print("Password protection is off. Set READER3_PASSWORD before exposing the reader to the internet.")
+        print("Пароль не задан: читалка доступна всем в вашей домашней сети. Для доступа из интернета задайте READER3_PASSWORD.")
     # Trust X-Forwarded-Proto from the tunnel so the session cookie is marked Secure over HTTPS
     uvicorn.run(app, host=host, port=port, proxy_headers=True,
                 forwarded_allow_ips=os.environ.get("FORWARDED_ALLOW_IPS", "127.0.0.1"))
