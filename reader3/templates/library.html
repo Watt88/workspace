@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fbfaf7">
+  <title>Библиотека · reader3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/library.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <script src="/static/js/common.js"></script>
+</head>
+<body>
+  <header class="lib-header">
+    <div class="lib-header-inner">
+      <a class="brand" href="/"><span class="brand-mark"><i data-icon="book"></i></span>reader3</a>
+      <div class="input-wrap lib-search">
+        <i data-icon="search" class="sm"></i>
+        <input id="search" class="input" type="search" placeholder="Поиск книг" autocomplete="off" aria-label="Поиск книг">
+      </div>
+      <select id="sort" class="input" aria-label="Сортировка">
+          <option value="recent">Недавние</option>
+          <option value="added">Добавленные</option>
+          <option value="title">По названию</option>
+          <option value="author">По автору</option>
+          <option value="progress">По прогрессу</option>
+      </select>
+      <div class="lib-actions">
+        <button id="theme-btn" class="icon-btn" aria-haspopup="menu" title="Тема оформления"><i data-icon="sun"></i></button>
+        <button id="add-btn" class="btn primary"><i data-icon="plus" class="sm"></i><span>Добавить книгу</span></button>
+        <input id="file-input" type="file" accept=".epub,application/epub+zip" multiple hidden>
+      </div>
+    </div>
+  </header>
+
+  <main class="lib-main">
+    <section id="continue" hidden></section>
+
+    <section id="shelf-section" hidden>
+      <div class="shelf-head">
+        <h2>Все книги <span id="count" class="count"></span></h2>
+      </div>
+      <div id="grid" class="grid"></div>
+      <p id="no-results" class="no-results" hidden>Ничего не найдено.</p>
+    </section>
+
+    <section id="empty" class="empty" hidden>
+      <div class="empty-art"><i data-icon="book"></i></div>
+      <h1>Ваша библиотека пока пуста</h1>
+      <p>Перетащите сюда EPUB-файлы или выберите их на компьютере. Бесплатные книги можно найти на
+        <a href="https://www.gutenberg.org/" target="_blank" rel="noopener">Project Gutenberg</a> и
+        <a href="https://standardebooks.org/" target="_blank" rel="noopener">Standard Ebooks</a>.</p>
+      <button class="btn primary" id="empty-add"><i data-icon="upload" class="sm"></i>Выбрать файлы</button>
+    </section>
+
+    <div id="loading" class="loading"><div class="spinner"></div></div>
+  </main>
+
+  <div id="drop-overlay" class="drop-overlay" hidden>
+    <div class="drop-box"><i data-icon="upload"></i><p>Отпустите, чтобы добавить книги</p></div>
+  </div>
+
+  <div id="card-menu" class="menu" role="menu" hidden>
+    <button class="menu-item" data-act="open"><i data-icon="book" class="sm"></i>Читать</button>
+    <button class="menu-item" data-act="reset"><i data-icon="reset" class="sm"></i>Начать заново</button>
+    <div class="menu-sep"></div>
+    <button class="menu-item danger" data-act="delete"><i data-icon="trash" class="sm"></i>Удалить из библиотеки</button>
+  </div>
+
+  <div id="theme-menu" class="menu" role="menu" hidden>
+    <button class="menu-item" data-theme-opt="auto">Как в системе</button>
+    <button class="menu-item" data-theme-opt="light">Светлая</button>
+    <button class="menu-item" data-theme-opt="sepia">Сепия</button>
+    <button class="menu-item" data-theme-opt="dark">Тёмная</button>
+    <button class="menu-item" data-theme-opt="black">Чёрная (OLED)</button>
+  </div>
+
+  <script src="/static/js/library.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+[project]
+name = "reader3"
+version = "0.2.0"
+description = "Self-hosted EPUB reader for reading books together with LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=1.11.0",
+    "beautifulsoup4>=4.14.2",
+    "ebooklib>=0.20",
+    "fastapi>=0.121.2",
+    "jinja2>=3.1.6",
+    "python-multipart>=0.0.32",
+    "uvicorn>=0.38.0",
+]

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fbfaf7">
+  <title>{{ book.metadata.title }} · reader3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap">
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/reader.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <script src="/static/js/common.js"></script>
+</head>
+<body class="reader" data-book-id="{{ book_id }}">
+  <div id="book-progress" class="book-progress" aria-hidden="true"><div></div></div>
+
+  <header id="topbar" class="topbar">
+    <div class="tb-left">
+      <a href="/" class="icon-btn" title="Библиотека" aria-label="Библиотека"><i data-icon="back"></i></a>
+      <button id="toc-btn" class="icon-btn" title="Содержание (T)" aria-label="Содержание"><i data-icon="toc"></i></button>
+    </div>
+    <div class="tb-title">
+      <div class="tb-book">{{ book.metadata.title }}</div>
+      <div id="tb-chapter" class="tb-chapter"></div>
+    </div>
+    <div class="tb-right">
+      <button id="search-btn" class="icon-btn" title="Поиск по книге (/)" aria-label="Поиск"><i data-icon="search"></i></button>
+      <button id="bookmark-btn" class="icon-btn" title="Закладка (B)" aria-label="Закладка" aria-pressed="false"><i data-icon="bookmark"></i></button>
+      <button id="settings-btn" class="icon-btn" title="Оформление (S)" aria-label="Оформление" aria-haspopup="dialog"><i data-icon="type"></i></button>
+      <button id="ai-btn" class="icon-btn" title="Обсудить с ИИ (A)" aria-label="ИИ-компаньон"><i data-icon="sparkles"></i></button>
+      <button id="more-btn" class="icon-btn" title="Ещё" aria-label="Ещё" aria-haspopup="menu"><i data-icon="more"></i></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Left panel: contents / search / notes -->
+    <aside id="sidebar" class="panel panel-left" aria-label="Навигация">
+      <div class="panel-head">
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" data-tab="toc">Содержание</button>
+          <button class="tab" role="tab" data-tab="search">Поиск</button>
+          <button class="tab" role="tab" data-tab="notes">Заметки <span id="notes-count" class="badge" hidden></span></button>
+        </div>
+        <button class="icon-btn panel-close" data-close="sidebar" aria-label="Закрыть"><i data-icon="x"></i></button>
+      </div>
+
+      <div class="tab-panel scroll-thin" data-panel="toc">
+        <div class="book-card-mini">
+          <div id="mini-cover" class="mini-cover"></div>
+          <div>
+            <div class="mini-title">{{ book.metadata.title }}</div>
+            <div class="mini-author">{{ book.metadata.authors | join(', ') }}</div>
+            <div id="mini-progress" class="mini-progress"></div>
+          </div>
+        </div>
+        <nav id="toc" class="toc"></nav>
+      </div>
+
+      <div class="tab-panel" data-panel="search" hidden>
+        <div class="search-box">
+          <div class="input-wrap">
+            <i data-icon="search" class="sm"></i>
+            <input id="search-input" class="input" type="search" placeholder="Слово или фраза" autocomplete="off" aria-label="Поиск по книге">
+          </div>
+          <div id="search-summary" class="search-summary"></div>
+        </div>
+        <div id="search-results" class="search-results scroll-thin"></div>
+      </div>
+
+      <div class="tab-panel scroll-thin" data-panel="notes" hidden>
+        <div id="notes-list" class="notes-list"></div>
+      </div>
+    </aside>
+
+    <!-- Reading area -->
+    <main id="scroller" class="scroller" tabindex="-1">
+      <div class="page">
+        <div id="chapter-eyebrow" class="chapter-eyebrow"></div>
+        <article id="content" class="book-content" lang="{{ book.metadata.language }}"></article>
+        <nav id="chapter-end" class="chapter-end" aria-label="Навигация по главам"></nav>
+      </div>
+    </main>
+
+    <!-- Right panel: AI companion -->
+    <aside id="ai-panel" class="panel panel-right" aria-label="ИИ-компаньон">
+      <div class="panel-head">
+        <div class="ai-title"><i data-icon="sparkles" class="sm"></i>Обсуждение</div>
+        <button id="ai-clear" class="icon-btn" title="Новый разговор" aria-label="Очистить разговор"><i data-icon="reset" class="sm"></i></button>
+        <button class="icon-btn" data-close="ai-panel" aria-label="Закрыть"><i data-icon="x"></i></button>
+      </div>
+      <div id="ai-body" class="ai-body scroll-thin"></div>
+      <div id="ai-composer" class="ai-composer">
+        <div id="ai-quote" class="ai-quote" hidden></div>
+        <div class="composer-box">
+          <textarea id="ai-input" rows="1" placeholder="Спросите о прочитанном…" aria-label="Сообщение"></textarea>
+          <button id="ai-send" class="icon-btn send-btn" aria-label="Отправить"><i data-icon="send"></i></button>
+        </div>
+        <div id="ai-context" class="ai-context"></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer id="statusbar" class="statusbar">
+    <span id="st-chapter"></span>
+    <span id="st-progress"></span>
+  </footer>
+
+  <div id="backdrop" class="backdrop" hidden></div>
+
+  <!-- Selection toolbar -->
+  <div id="sel-toolbar" class="sel-toolbar" hidden role="toolbar" aria-label="Действия с выделением">
+    <div class="swatches">
+      <button class="swatch" data-color="yellow" aria-label="Жёлтый маркер"></button>
+      <button class="swatch" data-color="green" aria-label="Зелёный маркер"></button>
+      <button class="swatch" data-color="blue" aria-label="Синий маркер"></button>
+      <button class="swatch" data-color="pink" aria-label="Розовый маркер"></button>
+    </div>
+    <span class="sel-sep"></span>
+    <button class="sel-btn" data-act="note" title="Заметка"><i data-icon="note" class="sm"></i><span>Заметка</span></button>
+    <button class="sel-btn" data-act="copy" title="Копировать"><i data-icon="copy" class="sm"></i></button>
+    <button class="sel-btn" data-act="ask" title="Спросить ИИ"><i data-icon="sparkles" class="sm"></i><span>Спросить</span></button>
+    <button class="sel-btn" data-act="delete" title="Убрать выделение" hidden><i data-icon="trash" class="sm"></i></button>
+  </div>
+
+  <!-- Settings -->
+  <div id="settings" class="menu settings" role="dialog" aria-label="Оформление" hidden>
+    <div class="set-row">
+      <div class="set-label">Тема</div>
+      <div class="theme-swatches">
+        <button data-theme-opt="light" class="theme-sw" style="--sw:#fbfaf7;--sw-t:#1f1d1a" title="Светлая">Aa</button>
+        <button data-theme-opt="sepia" class="theme-sw" style="--sw:#f5edda;--sw-t:#3b2f20" title="Сепия">Aa</button>
+        <button data-theme-opt="dark" class="theme-sw" style="--sw:#17171a;--sw-t:#e8e5df" title="Тёмная">Aa</button>
+        <button data-theme-opt="black" class="theme-sw" style="--sw:#000;--sw-t:#e8e5df" title="Чёрная">Aa</button>
+        <button data-theme-opt="auto" class="theme-sw auto" title="Как в системе">Авто</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <div class="set-label">Шрифт</div>
+      <div class="segmented">
+        <button data-font="serif" style="font-family:var(--font-serif)">Literata</button>
+        <button data-font="classic" style="font-family:var(--font-classic)">PT Serif</button>
+        <button data-font="sans" style="font-family:var(--font-sans)">Inter</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <div class="set-label">Размер</div>
+      <div class="stepper">
+        <button data-step="fontSize" data-delta="-1" aria-label="Меньше">A−</button>
+        <span id="font-size-val"></span>
+        <button data-step="fontSize" data-delta="1" aria-label="Больше">A+</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <div class="set-label">Интервал</div>
+      <input id="leading" type="range" min="1.3" max="2.2" step="0.05" aria-label="Межстрочный интервал">
+    </div>
+    <div class="set-row">
+      <div class="set-label">Ширина</div>
+      <div class="segmented">
+        <button data-width="narrow">Узкая</button>
+        <button data-width="medium">Средняя</button>
+        <button data-width="wide">Широкая</button>
+      </div>
+    </div>
+    <div class="set-row">
+      <div class="set-label">Выравнивание</div>
+      <div class="segmented">
+        <button data-justify="false">По левому</button>
+        <button data-justify="true">По ширине</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- More menu -->
+  <div id="more-menu" class="menu" role="menu" hidden>
+    <button class="menu-item mobile-only" data-act="search"><i data-icon="search" class="sm"></i>Поиск по книге</button>
+    <button class="menu-item mobile-only" data-act="bookmark"><i data-icon="bookmark" class="sm"></i>Закладка</button>
+    <button class="menu-item" data-act="info"><i data-icon="info" class="sm"></i>О книге</button>
+    <button class="menu-item" data-act="copy-chapter"><i data-icon="copy" class="sm"></i>Копировать главу для LLM</button>
+    <button class="menu-item" data-act="fullscreen"><i data-icon="expand" class="sm"></i>Полноэкранный режим<span class="hint">F</span></button>
+    <div class="menu-sep"></div>
+    <button class="menu-item" data-act="shortcuts"><i data-icon="keyboard" class="sm"></i>Горячие клавиши<span class="hint">?</span></button>
+  </div>
+
+  <!-- Note editor -->
+  <dialog id="note-dialog" class="modal">
+    <form method="dialog">
+      <div class="modal-head"><h2>Заметка</h2></div>
+      <div class="modal-body">
+        <blockquote id="note-quote" class="note-quote"></blockquote>
+        <textarea id="note-text" class="input note-text" rows="5" placeholder="Ваши мысли об этом фрагменте…"></textarea>
+      </div>
+      <div class="modal-foot">
+        <button class="btn ghost" value="cancel">Отмена</button>
+        <button class="btn primary" value="save">Сохранить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Book info -->
+  <dialog id="info-dialog" class="modal">
+    <div class="modal-head"><h2>О книге</h2><button class="icon-btn" data-dialog-close aria-label="Закрыть"><i data-icon="x"></i></button></div>
+    <div class="modal-body" id="info-body"></div>
+    <div class="modal-foot"></div>
+  </dialog>
+
+  <!-- Shortcuts -->
+  <dialog id="keys-dialog" class="modal">
+    <div class="modal-head"><h2>Горячие клавиши</h2><button class="icon-btn" data-dialog-close aria-label="Закрыть"><i data-icon="x"></i></button></div>
+    <div class="modal-body">
+      <table class="keys">
+        <tr><td><kbd>→</kbd> <kbd>Пробел</kbd></td><td>Следующий экран (в конце — следующая глава)</td></tr>
+        <tr><td><kbd>←</kbd></td><td>Предыдущий экран</td></tr>
+        <tr><td><kbd>]</kbd> <kbd>[</kbd></td><td>Следующая / предыдущая глава</td></tr>
+        <tr><td><kbd>T</kbd></td><td>Содержание</td></tr>
+        <tr><td><kbd>/</kbd></td><td>Поиск по книге</td></tr>
+        <tr><td><kbd>N</kbd></td><td>Закладки и заметки</td></tr>
+        <tr><td><kbd>B</kbd></td><td>Поставить / снять закладку</td></tr>
+        <tr><td><kbd>A</kbd></td><td>Обсуждение с ИИ</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Оформление</td></tr>
+        <tr><td><kbd>+</kbd> <kbd>−</kbd></td><td>Размер шрифта</td></tr>
+        <tr><td><kbd>D</kbd></td><td>Светлая / тёмная тема</td></tr>
+        <tr><td><kbd>F</kbd></td><td>Полноэкранный режим</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Закрыть панели</td></tr>
+      </table>
+    </div>
+    <div class="modal-foot"></div>
+  </dialog>
+
+  <script src="/static/js/reader.js"></script>
+</body>
+</html>
