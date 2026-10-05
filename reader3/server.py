@@ -1,6 +1,11 @@
 import os
 import re
+import hmac
 import json
+import time
+import asyncio
+import hashlib
+import secrets
 import shutil
 import pickle
 import tempfile
@@ -9,8 +14,10 @@ from datetime import datetime
 from typing import Optional, List
 
 import anthropic
-from fastapi import FastAPI, Request, HTTPException, UploadFile, File
-from fastapi.responses import HTMLResponse, FileResponse, StreamingResponse, RedirectResponse, JSONResponse
+from urllib.parse import quote
+
+from fastapi import FastAPI, Request, HTTPException, UploadFile, File, Form
+from fastapi.responses import HTMLResponse, FileResponse, StreamingResponse, RedirectResponse, JSONResponse, PlainTextResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
@@ -29,6 +36,125 @@ BOOK_DIRS = [LIBRARY_DIR, "."]
 
 AI_MODEL = os.environ.get("READER3_MODEL", "claude-opus-5-5")
 AI_EFFORT = os.environ.get("READER3_EFFORT", "low")
+
+
+# --- Password protection (required before exposing the reader to the internet) ---
+
+PASSWORD = os.environ.get("READER3_PASSWORD", "")
+SESSION_DAYS = 180
+COOKIE = "reader3_session"
+PUBLIC_PATHS = ("/login", "/static/", "/manifest.webmanifest", "/favicon.ico")
+
+
+def _load_secret() -> bytes:
+    """Random signing key kept next to the library, so sessions survive restarts."""
+    env = os.environ.get("READER3_SECRET")
+    if env:
+        return env.encode()
+    path = os.path.join(LIBRARY_DIR, ".session_secret")
+    try:
+        with open(path, "rb") as f:
+            return f.read()
+    except FileNotFoundError:
+        os.makedirs(LIBRARY_DIR, exist_ok=True)
+        key = secrets.token_bytes(32)
+        with open(path, "wb") as f:
+            f.write(key)
+        os.chmod(path, 0o600)
+        return key
+
+
+SECRET = _load_secret() if PASSWORD else b""
+
+
+def _sign(expires: int) -> str:
+    # The password hash is part of the signature: changing the password logs everyone out
+    msg = f"{expires}:{hashlib.sha256(PASSWORD.encode()).hexdigest()}".encode()
+    return hmac.new(SECRET, msg, hashlib.sha256).hexdigest()
+
+
+def make_session() -> str:
+    expires = int(time.time()) + SESSION_DAYS * 86400
+    return f"{expires}.{_sign(expires)}"
+
+
+def valid_session(token: Optional[str]) -> bool:
+    try:
+        expires, sig = (token or "").split(".", 1)
+        return int(expires) > time.time() and hmac.compare_digest(sig, _sign(int(expires)))
+    except ValueError:
+        return False
+
+
+def is_proxied(request: Request) -> bool:
+    """Requests that came through Cloudflare Tunnel or another reverse proxy."""
+    return any(h in request.headers for h in ("cf-connecting-ip", "x-forwarded-for", "forwarded"))
+
+
+@app.middleware("http")
+async def require_login(request: Request, call_next):
+    path = request.url.path
+    if not PASSWORD:
+        # Never serve an unprotected library to the internet
+        if is_proxied(request) and os.environ.get("READER3_ALLOW_PUBLIC") != "1":
+            return PlainTextResponse(
+                "reader3: доступ из интернета без пароля запрещён. "
+                "Задайте переменную окружения READER3_PASSWORD и перезапустите сервер.", status_code=403)
+        return await call_next(request)
+    if path.startswith(PUBLIC_PATHS) or valid_session(request.cookies.get(COOKIE)):
+        return await call_next(request)
+    if path.startswith("/api/"):
+        return JSONResponse({"detail": "Требуется вход"}, status_code=401)
+    target = path + (f"?{request.url.query}" if request.url.query else "")
+    return RedirectResponse(f"/login?next={quote(target)}", status_code=303)
+
+
+_failed_logins = {}  # ip -> [timestamps]
+
+
+def _client_ip(request: Request) -> str:
+    return request.headers.get("cf-connecting-ip") or (request.client.host if request.client else "?")
+
+
+def _safe_next(target: str) -> str:
+    return target if target.startswith("/") and not target.startswith("//") else "/"
+
+
+@app.get("/login", response_class=HTMLResponse)
+async def login_page(request: Request, next: str = "/"):
+    if not PASSWORD or valid_session(request.cookies.get(COOKIE)):
+        return RedirectResponse(_safe_next(next), status_code=303)
+    return templates.TemplateResponse(request, "login.html", {"next": _safe_next(next), "error": None})
+
+
+@app.post("/login", response_class=HTMLResponse)
+async def login(request: Request, password: str = Form(""), next: str = Form("/")):
+    if not PASSWORD:
+        return RedirectResponse("/", status_code=303)
+    ip = _client_ip(request)
+    now = time.time()
+    recent = [t for t in _failed_logins.get(ip, []) if now - t < 600]
+    if len(recent) >= 10:
+        return templates.TemplateResponse(request, "login.html", {
+            "next": _safe_next(next), "error": "Слишком много попыток. Попробуйте через несколько минут."}, status_code=429)
+    if not hmac.compare_digest(password.encode(), PASSWORD.encode()):
+        recent.append(now)
+        _failed_logins[ip] = recent
+        await asyncio.sleep(1)  # slows down password guessing
+        return templates.TemplateResponse(request, "login.html", {
+            "next": _safe_next(next), "error": "Неверный пароль"}, status_code=401)
+    _failed_logins.pop(ip, None)
+    response = RedirectResponse(_safe_next(next), status_code=303)
+    response.set_cookie(COOKIE, make_session(), max_age=SESSION_DAYS * 86400, httponly=True,
+                        samesite="lax", secure=request.url.scheme == "https")
+    return response
+
+
+@app.post("/logout")
+async def logout():
+    response = RedirectResponse("/login", status_code=303)
+    response.delete_cookie(COOKIE)
+    return response
 
 _state_lock = threading.Lock()
 _book_cache = {}
@@ -178,7 +304,7 @@ def book_summary(book_id: str, book: Book) -> dict:
 
 @app.get("/", response_class=HTMLResponse)
 async def library_view(request: Request):
-    return templates.TemplateResponse(request, "library.html", {})
+    return templates.TemplateResponse(request, "library.html", {"auth": bool(PASSWORD)})
 
 
 @app.get("/read/{book_id}", response_class=HTMLResponse)
@@ -458,4 +584,8 @@ if __name__ == "__main__":
                 print(f"On your phone or tablet: http://{sock.getsockname()[0]}:{port}")
         except OSError:
             pass
-    uvicorn.run(app, host=host, port=port)
+    if not PASSWORD:
+        print("Password protection is off. Set READER3_PASSWORD before exposing the reader to the internet.")
+    # Trust X-Forwarded-Proto from the tunnel so the session cookie is marked Secure over HTTPS
+    uvicorn.run(app, host=host, port=port, proxy_headers=True,
+                forwarded_allow_ips=os.environ.get("FORWARDED_ALLOW_IPS", "127.0.0.1"))

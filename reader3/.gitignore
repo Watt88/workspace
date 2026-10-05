@@ -13,3 +13,6 @@ wheels/
 library/
 *_data/
 *.epub
+
+# Secrets
+.env

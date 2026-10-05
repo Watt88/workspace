@@ -35,7 +35,7 @@
           <option value="progress">По прогрессу</option>
       </select>
       <div class="lib-actions">
-        <button id="theme-btn" class="icon-btn" aria-haspopup="menu" title="Тема оформления"><i data-icon="sun"></i></button>
+        <button id="theme-btn" class="icon-btn" aria-haspopup="menu" title="Тема и выход"><i data-icon="sun"></i></button>
         <button id="add-btn" class="btn primary"><i data-icon="plus" class="sm"></i><span>Добавить книгу</span></button>
         <input id="file-input" type="file" accept=".epub,application/epub+zip" multiple hidden>
       </div>
@@ -82,6 +82,10 @@
     <button class="menu-item" data-theme-opt="sepia">Сепия</button>
     <button class="menu-item" data-theme-opt="dark">Тёмная</button>
     <button class="menu-item" data-theme-opt="black">Чёрная (OLED)</button>
+    {% if auth %}
+    <div class="menu-sep"></div>
+    <form method="post" action="/logout"><button class="menu-item" type="submit">Выйти</button></form>
+    {% endif %}
   </div>
 
   <script src="/static/js/library.js"></script>

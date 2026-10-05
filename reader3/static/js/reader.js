@@ -1187,6 +1187,7 @@ async function sendMessage(text) {
       body: JSON.stringify({ chapter: R.chapter, messages: apiMessages() }),
       signal: R.stream.signal,
     });
+    if (res.status === 401) { location.href = '/login?next=' + encodeURIComponent(location.pathname + location.hash); return; }
     if (!res.ok) throw new Error((await res.json().catch(() => ({}))).detail || res.statusText);
     const reader = res.body.getReader();
     const decoder = new TextDecoder();

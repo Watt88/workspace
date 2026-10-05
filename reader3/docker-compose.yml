@@ -1,0 +1,24 @@
+# reader3 + Cloudflare Tunnel: the reader is reachable at your domain over HTTPS,
+# without opening ports on your router. Settings live in .env (see .env.example).
+services:
+  reader3:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Requests arrive from the cloudflared container: trust its X-Forwarded-Proto
+      FORWARDED_ALLOW_IPS: "*"
+    volumes:
+      - ./library:/data
+    ports:
+      # Also available on this computer at http://localhost:8123 (not from other devices)
+      - "127.0.0.1:8123:8123"
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN}
+    depends_on:
+      - reader3

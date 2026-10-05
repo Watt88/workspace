@@ -58,6 +58,11 @@ async function api(path, options = {}) {
     delete opts.json;
   }
   const res = await fetch(path, opts);
+  if (res.status === 401) {
+    // The session expired: go to the login page and come back afterwards
+    location.href = '/login?next=' + encodeURIComponent(location.pathname + location.hash);
+    throw new Error('Требуется вход');
+  }
   if (!res.ok) {
     let detail = res.statusText;
     try { detail = (await res.json()).detail || detail; } catch (_) { /* not json */ }
