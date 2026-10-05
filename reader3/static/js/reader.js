@@ -25,7 +25,8 @@ const content = $('#content');
 const topbar = $('#topbar');
 const toolbar = $('#sel-toolbar');
 const docked = window.matchMedia('(min-width: 1101px)');
-const touchUi = window.matchMedia('(hover: none)');
+const touchUi = window.matchMedia('(hover: none) and (pointer: coarse)');
+const phone = window.matchMedia('(max-width: 720px)');
 
 // ---------- Small utilities ----------
 
@@ -115,9 +116,86 @@ function patchState(patch, { keepalive = false } = {}) {
   }).catch(() => { /* offline: will be retried on the next save */ });
 }
 
+// ---------- Reading geometry: vertical scroll or horizontal pages ----------
+
+const columns = $('#columns');
+const isPaged = () => document.body.classList.contains('paged');
+
+function wantPaged() {
+  const mode = R.settings.mode;
+  return mode === 'paged' || (mode === 'auto' && touchUi.matches);
+}
+
+// Size of one "screen": a page width in paged mode, the viewport height otherwise
+function viewSize() { return isPaged() ? scroller.clientWidth : scroller.clientHeight; }
+function scrollPos() { return isPaged() ? scroller.scrollLeft : scroller.scrollTop; }
+
+function pageCount() {
+  if (!isPaged()) return 1;
+  return Math.max(1, Math.ceil(scroller.scrollWidth / scroller.clientWidth - 0.02));
+}
+
+function currentPage() { return isPaged() ? Math.round(scroller.scrollLeft / scroller.clientWidth) : 0; }
+
+function scrollMax() {
+  return isPaged() ? (pageCount() - 1) * scroller.clientWidth : scroller.scrollHeight - scroller.clientHeight;
+}
+
+function setScrollPos(v, smooth = false) {
+  if (isPaged()) {
+    const page = Math.max(0, Math.min(pageCount() - 1, Math.round(v / scroller.clientWidth)));
+    scroller.scrollTo({ left: page * scroller.clientWidth, top: 0, behavior: smooth ? 'smooth' : 'instant' });
+  } else {
+    scroller.scrollTo({ top: v, behavior: smooth ? 'smooth' : 'instant' });
+  }
+}
+
+// Bring an element inside the chapter into view (page containing it, or centered)
+function reveal(el, block = 'center') {
+  if (!el) return;
+  if (isPaged()) {
+    const x = el.getClientRects()[0]?.left ?? el.getBoundingClientRect().left;
+    const offset = x - scroller.getBoundingClientRect().left + scroller.scrollLeft;
+    setScrollPos(Math.floor(offset / scroller.clientWidth) * scroller.clientWidth);
+  } else {
+    el.scrollIntoView({ block });
+  }
+}
+
+// Lay the chapter out in columns, one column per screen-wide page
+function layoutPages() {
+  const paged = wantPaged();
+  document.body.classList.toggle('paged', paged);
+  if (!paged) {
+    columns.style.cssText = '';
+    return;
+  }
+  const W = scroller.clientWidth;
+  const pad = W < 600 ? 22 : 48;
+  const readWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--read-width')) || 700;
+  const colW = Math.min(readWidth, W - 2 * pad);
+  const gap = W - colW;
+  Object.assign(columns.style, {
+    width: colW + 'px', columnWidth: colW + 'px', columnGap: gap + 'px', marginLeft: gap / 2 + 'px',
+  });
+  columns.style.setProperty('--col-h', columns.clientHeight + 'px');
+}
+
+function relayout() {
+  const ratio = chapterRatio();
+  layoutPages();
+  setScrollPos(ratio * scrollMax());
+  onScrollUpdate();
+}
+
+window.addEventListener('resize', debounce(relayout, 150));
+document.fonts?.ready.then(() => { if (R.chapter >= 0) relayout(); });
+// Late-loading images change the number of pages: stay on the same page
+content.addEventListener('load', debounce(() => { if (isPaged()) setScrollPos(scrollPos()); onScrollUpdate(); }, 100), true);
+
 function chapterRatio() {
-  const max = scroller.scrollHeight - scroller.clientHeight;
-  return max > 0 ? Math.min(1, Math.max(0, scroller.scrollTop / max)) : 1;
+  const max = scrollMax();
+  return max > 0 ? Math.min(1, Math.max(0, scrollPos() / max)) : 1;
 }
 
 function bookProgress() {
@@ -179,6 +257,7 @@ async function goTo(i, { position = 0, anchor = null, toEnd = false, history: hi
     updateAiContext();
     document.title = `${chapterInfo(i).title} · ${R.book.title}`;
     $('#tb-chapter').textContent = chapterInfo(i).title;
+    layoutPages();
     if (i + 1 < n) loadChapter(i + 1).catch(() => {});
   }
 
@@ -187,18 +266,18 @@ async function goTo(i, { position = 0, anchor = null, toEnd = false, history: hi
   else if (hist === 'replace') history.replaceState({ ch: i }, '', url);
 
   const target = anchor && (content.querySelector(`[id="${CSS.escape(anchor)}"]`) || content.querySelector(`[name="${CSS.escape(anchor)}"]`));
+  quietScrollUntil = Date.now() + 400;
   if (target) {
-    target.scrollIntoView({ block: 'start' });
+    reveal(target, 'start');
     target.classList.add('target-flash');
     setTimeout(() => target.classList.remove('target-flash'), 1700);
   } else if (toEnd) {
-    scroller.scrollTop = scroller.scrollHeight;
+    setScrollPos(scrollMax());
   } else {
-    scroller.scrollTop = position * (scroller.scrollHeight - scroller.clientHeight);
+    setScrollPos(position * scrollMax());
   }
   if (!isTyping()) scroller.focus({ preventScroll: true });
-  quietScrollUntil = Date.now() + 400;
-  showTopbar();
+  if (!isPaged()) showChrome();
   onScrollUpdate();
   saveProgress();
   if (after) after();
@@ -207,13 +286,17 @@ async function goTo(i, { position = 0, anchor = null, toEnd = false, history: hi
 function nextChapter() { if (R.chapter < R.book.spine.length - 1) goTo(R.chapter + 1); }
 function prevChapter() { if (R.chapter > 0) goTo(R.chapter - 1); }
 
+const atChapterEnd = () => scrollPos() >= scrollMax() - 4;
+
 function pageDown() {
-  if (scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 4) nextChapter();
+  if (atChapterEnd()) { nextChapter(); return; }
+  if (isPaged()) setScrollPos((currentPage() + 1) * scroller.clientWidth, true);
   else scroller.scrollBy({ top: scroller.clientHeight * 0.88, behavior: 'smooth' });
 }
 
 function pageUp() {
-  if (scroller.scrollTop <= 2 && R.chapter > 0) goTo(R.chapter - 1, { toEnd: true });
+  if (scrollPos() <= 2) { if (R.chapter > 0) goTo(R.chapter - 1, { toEnd: true }); return; }
+  if (isPaged()) setScrollPos((currentPage() - 1) * scroller.clientWidth, true);
   else scroller.scrollBy({ top: -scroller.clientHeight * 0.88, behavior: 'smooth' });
 }
 
@@ -240,11 +323,6 @@ content.addEventListener('click', e => {
     return;
   }
   const mark = e.target.closest('mark.hl');
-  if (!mark && touchUi.matches && window.getSelection().isCollapsed && !e.target.closest('a, button')) {
-    // Tap on the text toggles the top bar, as in e-reader apps
-    topbar.classList.toggle('hidden');
-    return;
-  }
   if (mark && window.getSelection().isCollapsed) {
     R.activeHl = mark.dataset.id;
     R.selection = null;
@@ -278,7 +356,7 @@ $('#chapter-end').addEventListener('click', e => {
 
 // ---------- Scroll: progress, status bar, auto-hiding top bar ----------
 
-let lastScrollTop = 0;
+let lastScrollPos = 0;
 let quietScrollUntil = 0; // programmatic scrolls (restore, navigation) must not hide the top bar
 
 function onScrollUpdate() {
@@ -286,41 +364,138 @@ function onScrollUpdate() {
   const p = bookProgress();
   const ratio = chapterRatio();
   const wordsLeft = Math.round(chapterInfo(R.chapter).words * (1 - ratio));
+  const pct = Math.round(p * 100);
+  const endOfChapter = ratio > 0.98 || wordsLeft < 20;
   $('#book-progress > div').style.width = (p * 100).toFixed(2) + '%';
-  $('#st-chapter').textContent = `Раздел ${R.chapter + 1} из ${R.book.spine.length}`;
-  $('#st-progress').textContent = `${Math.round(p * 100)}% книги · ` +
-    (ratio > 0.98 || wordsLeft < 20 ? 'конец главы' : `${readingTime(wordsLeft)} до конца главы`);
+  if (isPaged()) {
+    const pages = pageCount(), page = Math.min(currentPage() + 1, pages);
+    $('#st-chapter').textContent = phone.matches ? `${page} / ${pages}` : `Страница ${page} из ${pages} · раздел ${R.chapter + 1} из ${R.book.spine.length}`;
+  } else {
+    $('#st-chapter').textContent = phone.matches ? `${R.chapter + 1} / ${R.book.spine.length}` : `Раздел ${R.chapter + 1} из ${R.book.spine.length}`;
+  }
+  $('#st-progress').textContent = phone.matches
+    ? `${pct}% · ${endOfChapter ? 'конец главы' : readingTime(wordsLeft)}`
+    : `${pct}% книги · ` + (endOfChapter ? 'конец главы' : `${readingTime(wordsLeft)} до конца главы`);
+  if (!scrubbing) {
+    $('#scrub').value = Math.round(p * 1000);
+    $('#bb-info').textContent = pct + '%';
+  }
   const left = Math.round((1 - p) * R.totalWords);
   $('#mini-progress').innerHTML = `<div class="progress-track"><div style="width:${(p * 100).toFixed(1)}%"></div></div>
     ${Math.round(p * 100)}% · осталось ~${readingTime(left)}`;
   updateBookmarkButton();
 }
 
-function showTopbar(instant = false) {
-  if (instant && topbar.classList.contains('hidden')) {
-    // Menus are positioned from the top bar buttons, so it must be in place right away
+// "Chrome" = the top bar and, on phones, the bottom bar. Hidden while reading, like in e-reader apps.
+function showChrome(instant = false) {
+  const body = document.body;
+  if (instant && body.classList.contains('chrome-hidden')) {
+    // Menus are positioned from the bar buttons, so the bars must be in place right away
     topbar.style.transition = 'none';
-    topbar.classList.remove('hidden');
+    body.classList.remove('chrome-hidden');
     void topbar.offsetWidth;
     topbar.style.transition = '';
   }
-  topbar.classList.remove('hidden');
+  body.classList.remove('chrome-hidden');
+}
+const showTopbar = showChrome;
+
+function hideChrome() {
+  const busy = $$('.panel.open').length > 0 || !$('#settings').hidden || !$('#more-menu').hidden || scrubbing;
+  if (!busy) document.body.classList.add('chrome-hidden');
+}
+
+function toggleChrome() {
+  if (document.body.classList.contains('chrome-hidden')) showChrome();
+  else hideChrome();
 }
 
 scroller.addEventListener('scroll', () => {
-  const st = scroller.scrollTop;
-  const delta = st - lastScrollTop;
-  lastScrollTop = st;
-  const panelsOpen = $$('.panel.open').length > 0;
-  if (Date.now() < quietScrollUntil) { /* keep the bar */ }
-  else if (delta > 6 && st > 140 && !panelsOpen && $('#settings').hidden && $('#more-menu').hidden) topbar.classList.add('hidden');
-  else if (delta < -6) showTopbar();
+  const pos = scrollPos();
+  const delta = pos - lastScrollPos;
+  lastScrollPos = pos;
+  if (Date.now() < quietScrollUntil) { /* programmatic: keep the bars as they are */ }
+  else if (isPaged()) { if (Math.abs(delta) > 4) hideChrome(); }
+  else if (delta > 6 && pos > 140) hideChrome();
+  else if (delta < -6 && !touchUi.matches) showChrome();
   if (!toolbar.hidden) hideToolbar();
   onScrollUpdate();
   saveProgress();
 }, { passive: true });
 
-document.addEventListener('mousemove', e => { if (e.clientY < 70) showTopbar(); }, { passive: true });
+document.addEventListener('mousemove', e => { if (e.clientY < 70 && !touchUi.matches) showChrome(); }, { passive: true });
+
+// ---------- Touch: tap zones, swipes, mouse wheel in paged mode ----------
+
+let lastSwipeAt = 0;
+let scrubbing = false;
+
+// Tap on the left/right edge turns the page, tap in the middle shows or hides the controls
+scroller.addEventListener('click', e => {
+  if (e.target.closest('a, button, mark.hl, input, textarea, .chapter-end') || !window.getSelection().isCollapsed) return;
+  if (Date.now() - lastSwipeAt < 400 || (!isPaged() && !touchUi.matches)) return;
+  const rect = scroller.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width;
+  if (x < 0.25) { pageUp(); hideChrome(); }
+  else if (x > 0.75) { pageDown(); hideChrome(); }
+  else toggleChrome();
+});
+
+let touch = null;
+scroller.addEventListener('touchstart', e => {
+  if (!isPaged() || e.touches.length !== 1) { touch = null; return; }
+  const t = e.touches[0];
+  touch = { x: t.clientX, y: t.clientY, time: Date.now(), left: scroller.scrollLeft, dragging: false };
+}, { passive: true });
+
+scroller.addEventListener('touchmove', e => {
+  if (!touch || e.touches.length !== 1 || !window.getSelection().isCollapsed) return;
+  const t = e.touches[0];
+  const dx = t.clientX - touch.x, dy = t.clientY - touch.y;
+  if (!touch.dragging && Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.2) touch.dragging = true;
+  if (touch.dragging) {
+    // The page follows the finger; resistance past the chapter edges
+    let left = touch.left - dx;
+    const max = scrollMax();
+    if (left < 0) left = left / 3;
+    if (left > max) left = max + (left - max) / 3;
+    scroller.scrollLeft = Math.max(0, Math.min(left, max));
+    if (!toolbar.hidden) hideToolbar();
+  }
+}, { passive: true });
+
+scroller.addEventListener('touchend', e => {
+  if (!touch) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - touch.x;
+  const fast = Math.abs(dx) / Math.max(1, Date.now() - touch.time) > 0.35;
+  const swiped = touch.dragging && (Math.abs(dx) > scroller.clientWidth * 0.18 || (fast && Math.abs(dx) > 30));
+  const startPage = Math.round(touch.left / scroller.clientWidth);
+  if (touch.dragging) lastSwipeAt = Date.now();
+  touch = null;
+  if (!swiped) { if (Math.abs(dx) > 2) setScrollPos(startPage * scroller.clientWidth, true); return; }
+  hideChrome();
+  if (dx < 0) {
+    if (startPage >= pageCount() - 1) nextChapter();
+    else setScrollPos((startPage + 1) * scroller.clientWidth, true);
+  } else {
+    if (startPage <= 0) { if (R.chapter > 0) goTo(R.chapter - 1, { toEnd: true }); else setScrollPos(0, true); }
+    else setScrollPos((startPage - 1) * scroller.clientWidth, true);
+  }
+});
+
+let wheelAcc = 0, wheelLock = 0;
+scroller.addEventListener('wheel', e => {
+  if (!isPaged() || e.ctrlKey) return;
+  e.preventDefault();
+  if (Date.now() < wheelLock) return;
+  wheelAcc += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+  if (Math.abs(wheelAcc) > 40) {
+    wheelAcc > 0 ? pageDown() : pageUp();
+    wheelAcc = 0;
+    wheelLock = Date.now() + 350;
+  }
+}, { passive: false });
 
 // ---------- Panels ----------
 
@@ -340,10 +515,13 @@ function setPanel(id, open) {
   if (open && !docked.matches) $$('.panel.open').forEach(p => p.id !== id && p.classList.remove('open'));
   $('#' + id).classList.toggle('open', open);
   syncPanels();
-  showTopbar();
+  showChrome();
+  $$('.bb-btn[data-bb="toc"], .bb-btn[data-bb="search"]').forEach(b => b.classList.toggle('active', $('#sidebar').classList.contains('open') && $('.tab[aria-selected="true"]')?.dataset.tab === b.dataset.bb));
+  $('.bb-btn[data-bb="ai"]').classList.toggle('active', $('#ai-panel').classList.contains('open'));
   // Docked panels change the text width: keep the reading position
   if (docked.matches) requestAnimationFrame(() => setTimeout(() => {
-    scroller.scrollTop = ratio * (scroller.scrollHeight - scroller.clientHeight);
+    layoutPages();
+    setScrollPos(ratio * scrollMax());
   }, 320));
 }
 
@@ -471,7 +649,7 @@ function highlightSearch(q, occurrence) {
     });
     if (matches.length - 1 - idx === occurrence) { marks.forEach(x => x.classList.add('current')); current = marks[0]; }
   });
-  (current || $('mark.search-hit', content))?.scrollIntoView({ block: 'center' });
+  reveal(current || $('mark.search-hit', content));
 }
 
 // ---------- Highlights & notes ----------
@@ -556,9 +734,10 @@ function showToolbar(rect, highlight) {
   $('[data-act="note"] span', toolbar).textContent = highlight?.note ? 'Изменить' : 'Заметка';
   toolbar.hidden = false;
   const w = toolbar.offsetWidth, h = toolbar.offsetHeight;
-  const minTop = topbar.getBoundingClientRect().bottom + 6;
-  let top = rect.top - h - 10;
+  const minTop = Math.max(8, topbar.getBoundingClientRect().bottom + 6);
+  let top = touchUi.matches ? rect.bottom + 14 : rect.top - h - 10;
   if (top < minTop) top = rect.bottom + 10;
+  if (top + h > window.innerHeight - 8) top = rect.top - h - 14;
   top = Math.max(minTop, top);
   const left = Math.max(8, Math.min((rect.left + rect.right) / 2 - w / 2, window.innerWidth - w - 8));
   toolbar.style.left = left + 'px';
@@ -627,18 +806,19 @@ toolbar.addEventListener('click', e => {
 // ---------- Bookmarks ----------
 
 function visibleSnippet() {
-  const top = topbar.getBoundingClientRect().bottom + 8;
+  const view = scroller.getBoundingClientRect();
+  const top = isPaged() ? view.top : topbar.getBoundingClientRect().bottom + 8;
+  const onScreen = r => r.bottom > top && r.top < view.bottom && r.right > view.left && r.left < view.right;
   for (const el of content.querySelectorAll('p, h1, h2, h3, h4, li, blockquote, div')) {
     if (el.children.length && el.tagName === 'DIV') continue;
-    const r = el.getBoundingClientRect();
-    if (r.bottom > top && el.textContent.trim()) return el.textContent.trim().replace(/\s+/g, ' ').slice(0, 160);
+    if ([...el.getClientRects()].some(onScreen) && el.textContent.trim()) return el.textContent.trim().replace(/\s+/g, ' ').slice(0, 160);
   }
   return chapterInfo(R.chapter).title;
 }
 
 function bookmarkHere() {
-  const max = scroller.scrollHeight - scroller.clientHeight;
-  const tolerance = max > 0 ? (scroller.clientHeight * 0.5) / max : 1;
+  const max = scrollMax();
+  const tolerance = max > 0 ? (viewSize() * 0.5) / max : 1;
   const ratio = chapterRatio();
   return R.state.bookmarks.find(b => b.chapter === R.chapter && Math.abs(b.position - ratio) <= tolerance);
 }
@@ -648,6 +828,9 @@ function updateBookmarkButton() {
   const btn = $('#bookmark-btn');
   btn.setAttribute('aria-pressed', String(on));
   btn.innerHTML = icon('bookmark', on ? 'filled' : '');
+  const bb = $('#bb-bookmark');
+  bb.classList.toggle('active', on);
+  $('svg', bb).classList.toggle('filled', on);
 }
 
 function toggleBookmark() {
@@ -716,7 +899,7 @@ $('#notes-list').addEventListener('click', e => {
   if (hl) {
     goTo(hl.chapter, { after: () => {
       const m = $(`mark.hl[data-id="${hl.id}"]`, content);
-      if (m) { m.scrollIntoView({ block: 'center' }); m.classList.add('target-flash'); setTimeout(() => m.classList.remove('target-flash'), 1700); }
+      if (m) { reveal(m); m.classList.add('target-flash'); setTimeout(() => m.classList.remove('target-flash'), 1700); }
     } });
     afterPanelNavigation();
   }
@@ -747,8 +930,10 @@ function syncSettingsUI() {
   $$('[data-font]').forEach(b => b.classList.toggle('active', b.dataset.font === s.font));
   $$('[data-width]').forEach(b => b.classList.toggle('active', b.dataset.width === s.width));
   $$('[data-justify]').forEach(b => b.classList.toggle('active', b.dataset.justify === String(s.justify)));
+  $$('[data-mode]').forEach(b => b.classList.toggle('active', b.dataset.mode === s.mode));
   $('#font-size-val').textContent = s.fontSize + ' px';
   $('#leading').value = s.lineHeight;
+  $('#keep-awake').checked = !!s.keepAwake;
 }
 
 function updateSettings(patch) {
@@ -758,7 +943,10 @@ function updateSettings(patch) {
   applySettings(R.settings);
   syncSettingsUI();
   // Keep the same place in the text after reflow
-  scroller.scrollTop = ratio * (scroller.scrollHeight - scroller.clientHeight);
+  layoutPages();
+  setScrollPos(ratio * scrollMax());
+  onScrollUpdate();
+  if ('keepAwake' in patch) updateWakeLock();
 }
 
 $('#settings').addEventListener('click', e => {
@@ -768,21 +956,39 @@ $('#settings').addEventListener('click', e => {
   if (t.dataset.font) updateSettings({ font: t.dataset.font });
   if (t.dataset.width) updateSettings({ width: t.dataset.width });
   if (t.dataset.justify) updateSettings({ justify: t.dataset.justify === 'true' });
+  if (t.dataset.mode) updateSettings({ mode: t.dataset.mode });
   if (t.dataset.step) changeFontSize(+t.dataset.delta);
 });
 $('#leading').addEventListener('input', e => updateSettings({ lineHeight: +e.target.value }));
+$('#keep-awake').addEventListener('change', e => updateSettings({ keepAwake: e.target.checked }));
+if (!('wakeLock' in navigator)) $('#awake-row').hidden = true;
+
+// Keep the screen on while reading (Screen Wake Lock API)
+let wakeLock = null;
+async function updateWakeLock() {
+  const want = R.settings.keepAwake && document.visibilityState === 'visible' && 'wakeLock' in navigator;
+  if (want && !wakeLock) {
+    try { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); }
+    catch (_) { wakeLock = null; }
+  } else if (!want && wakeLock) {
+    wakeLock.release().catch(() => {});
+    wakeLock = null;
+  }
+}
+document.addEventListener('visibilitychange', updateWakeLock);
 
 function changeFontSize(delta) {
   updateSettings({ fontSize: Math.max(14, Math.min(30, R.settings.fontSize + delta)) });
 }
 
-$('#settings-btn').addEventListener('click', e => {
+function openSettings(anchor) {
   const menu = $('#settings');
   if (!menu.hidden) { closeMenus(); return; }
   syncSettingsUI();
-  showTopbar(true);
-  openMenu(menu, e.currentTarget);
-});
+  showChrome(true);
+  openMenu(menu, anchor);
+}
+$('#settings-btn').addEventListener('click', e => openSettings(e.currentTarget));
 
 // ---------- More menu, dialogs ----------
 
@@ -1056,16 +1262,93 @@ document.addEventListener('keydown', e => {
     t: () => openSidebar('toc'), n: () => openSidebar('notes'), '/': () => openSidebar('search'),
     b: toggleBookmark, a: () => $('#ai-btn').click(), s: () => $('#settings-btn').click(),
     f: toggleFullscreen, '?': () => $('#keys-dialog').showModal(),
+    m: () => updateSettings({ mode: isPaged() ? 'scroll' : 'paged' }),
     '+': () => changeFontSize(1), '=': () => changeFontSize(1), '-': () => changeFontSize(-1),
     d: () => updateSettings({ theme: ['dark', 'black'].includes(resolvedTheme(R.settings.theme)) ? 'light' : 'dark' }),
   };
   const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
-  // Space scrolls natively; at the very end of a chapter it moves on
-  if (e.key === ' ' && !e.shiftKey && scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 4) {
-    e.preventDefault(); nextChapter(); return;
+  // Space scrolls natively; at the very end of a chapter (or in paged mode) we handle it
+  if (e.key === ' ' && (isPaged() || (!e.shiftKey && atChapterEnd()))) {
+    e.preventDefault(); e.shiftKey ? pageUp() : pageDown(); return;
   }
-  const fn = actions[key] || actions[{ 'е': 't', 'т': 'n', 'и': 'b', 'ф': 'a', 'ы': 's', 'а': 'f', 'в': 'd' }[key]];
+  if (isPaged() && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) { e.preventDefault(); e.key === 'ArrowDown' ? pageDown() : pageUp(); return; }
+  const fn = actions[key] || actions[{ 'е': 't', 'т': 'n', 'и': 'b', 'ф': 'a', 'ы': 's', 'а': 'f', 'в': 'd', 'ь': 'm' }[key]];
   if (fn) { e.preventDefault(); fn(); }
+});
+
+// ---------- Bottom bar (phones) ----------
+
+$('#bottombar').addEventListener('click', e => {
+  const b = e.target.closest('[data-bb]');
+  if (!b) return;
+  const act = b.dataset.bb;
+  if (act === 'toc') openSidebar('toc');
+  if (act === 'search') openSidebar('search');
+  if (act === 'settings') openSettings(b);
+  if (act === 'bookmark') toggleBookmark();
+  if (act === 'ai') { togglePanel('ai-panel'); if ($('#ai-panel').classList.contains('open')) focusComposer(); }
+});
+
+// Book scrubber: drag to preview a place in the book, release to jump there
+function progressToPlace(p) {
+  const target = p * R.totalWords;
+  let ch = R.cumWords.findIndex((w, i) => target < w + R.book.spine[i].words);
+  if (ch < 0) ch = R.book.spine.length - 1;
+  const words = R.book.spine[ch].words || 1;
+  return { chapter: ch, position: Math.min(1, Math.max(0, (target - R.cumWords[ch]) / words)) };
+}
+
+const scrub = $('#scrub');
+scrub.addEventListener('input', () => {
+  scrubbing = true;
+  const p = scrub.value / 1000;
+  const place = progressToPlace(p);
+  const label = $('#scrub-label');
+  label.hidden = false;
+  label.textContent = `${chapterInfo(place.chapter).title} · ${Math.round(p * 100)}%`;
+  $('#bb-info').textContent = Math.round(p * 100) + '%';
+});
+scrub.addEventListener('change', () => {
+  const place = progressToPlace(scrub.value / 1000);
+  $('#scrub-label').hidden = true;
+  scrubbing = false;
+  goTo(place.chapter, { position: place.position });
+});
+
+// ---------- Mobile viewport: on-screen keyboard, swipe-to-close panels ----------
+
+// Panels follow the visual viewport so the AI composer stays above the keyboard
+if (window.visualViewport) {
+  const syncViewport = () => document.documentElement.style.setProperty('--vvh', window.visualViewport.height + 'px');
+  window.visualViewport.addEventListener('resize', syncViewport);
+  syncViewport();
+}
+
+$$('.panel').forEach(panel => {
+  const dir = panel.classList.contains('panel-left') ? -1 : 1; // direction that closes the panel
+  let start = null;
+  panel.addEventListener('touchstart', e => {
+    if (docked.matches || e.touches.length !== 1 || e.target.closest('textarea, input')) { start = null; return; }
+    start = { x: e.touches[0].clientX, y: e.touches[0].clientY, dragging: false };
+  }, { passive: true });
+  panel.addEventListener('touchmove', e => {
+    if (!start) return;
+    const dx = e.touches[0].clientX - start.x, dy = e.touches[0].clientY - start.y;
+    if (!start.dragging && Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy) * 1.5 && Math.sign(dx) === dir) start.dragging = true;
+    if (start.dragging) {
+      panel.classList.add('dragging');
+      panel.style.transform = `translateX(${dir * Math.max(0, dx * dir)}px)`;
+    }
+  }, { passive: true });
+  panel.addEventListener('touchend', e => {
+    if (!start) return;
+    const dx = e.changedTouches[0].clientX - start.x;
+    const wasDragging = start.dragging;
+    start = null;
+    panel.classList.remove('dragging');
+    panel.style.transform = '';
+    if (wasDragging && dx * dir > Math.min(100, panel.offsetWidth * 0.25)) setPanel(panel.id, false);
+  });
 });
 
 // ---------- Init ----------
@@ -1111,7 +1394,8 @@ async function init() {
   }
   // Images load lazily and change the chapter height: re-apply the saved position once they are in
   const restore = R.chapter === state.chapter ? state.position : null;
-  if (restore) setTimeout(() => { if (R.chapter === state.chapter && Math.abs(chapterRatio() - restore) > 0.01 && scroller.scrollTop < 5) scroller.scrollTop = restore * (scroller.scrollHeight - scroller.clientHeight); }, 400);
+  if (restore) setTimeout(() => { if (R.chapter === state.chapter && Math.abs(chapterRatio() - restore) > 0.01 && scrollPos() < 5) setScrollPos(restore * scrollMax()); }, 400);
+  updateWakeLock();
 }
 
 init();

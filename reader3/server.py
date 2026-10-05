@@ -10,7 +10,7 @@ from typing import Optional, List
 
 import anthropic
 from fastapi import FastAPI, Request, HTTPException, UploadFile, File
-from fastapi.responses import HTMLResponse, FileResponse, StreamingResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, FileResponse, StreamingResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
@@ -203,6 +203,27 @@ async def serve_image(book_id: str, image_name: str):
     if not os.path.exists(img_path):
         raise HTTPException(status_code=404, detail="Image not found")
     return FileResponse(img_path, headers={"Cache-Control": "public, max-age=86400"})
+
+
+@app.get("/manifest.webmanifest")
+async def manifest():
+    """Lets phones and tablets install the reader as a full-screen app."""
+    return JSONResponse({
+        "name": "reader3",
+        "short_name": "reader3",
+        "description": "EPUB reader for reading books together with LLMs",
+        "start_url": "/",
+        "scope": "/",
+        "display": "standalone",
+        "background_color": "#fbfaf7",
+        "theme_color": "#fbfaf7",
+        "icons": [
+            {"src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+            {"src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+            {"src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+            {"src": "/static/favicon.svg", "sizes": "any", "type": "image/svg+xml"},
+        ],
+    }, media_type="application/manifest+json")
 
 
 # --- API: library ---
@@ -428,4 +449,13 @@ if __name__ == "__main__":
     host = os.environ.get("HOST", "127.0.0.1")
     port = int(os.environ.get("PORT", "8123"))
     print(f"Starting server at http://{host}:{port}")
+    if host in ("0.0.0.0", "::"):
+        # Show the address to open on a phone or tablet in the same network
+        import socket
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+                sock.connect(("10.255.255.255", 1))
+                print(f"On your phone or tablet: http://{sock.getsockname()[0]}:{port}")
+        except OSError:
+            pass
     uvicorn.run(app, host=host, port=port)

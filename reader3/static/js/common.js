@@ -81,6 +81,7 @@ const storage = {
 
 const DEFAULT_SETTINGS = {
   theme: 'auto', font: 'serif', fontSize: 19, lineHeight: 1.7, width: 'medium', justify: false,
+  mode: 'auto', keepAwake: false,
 };
 const WIDTHS = { narrow: '600px', medium: '700px', wide: '860px' };
 const FONTS = { serif: 'var(--font-serif)', classic: 'var(--font-classic)', sans: 'var(--font-sans)' };

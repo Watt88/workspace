@@ -2,8 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
   <meta name="theme-color" content="#fbfaf7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="reader3">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/static/icons/icon-180.png">
   <title>{{ book.metadata.title }} · reader3</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,9 +83,11 @@
     <!-- Reading area -->
     <main id="scroller" class="scroller" tabindex="-1">
       <div class="page">
-        <div id="chapter-eyebrow" class="chapter-eyebrow"></div>
-        <article id="content" class="book-content" lang="{{ book.metadata.language }}"></article>
-        <nav id="chapter-end" class="chapter-end" aria-label="Навигация по главам"></nav>
+        <div id="columns" class="columns">
+          <div id="chapter-eyebrow" class="chapter-eyebrow"></div>
+          <article id="content" class="book-content" lang="{{ book.metadata.language }}"></article>
+          <nav id="chapter-end" class="chapter-end" aria-label="Навигация по главам"></nav>
+        </div>
       </div>
     </main>
 
@@ -101,6 +109,22 @@
       </div>
     </aside>
   </div>
+
+  <!-- Bottom bar (phones): thumb-reachable controls and a book scrubber -->
+  <nav id="bottombar" class="bottombar" aria-label="Панель чтения">
+    <div class="bb-scrub">
+      <div id="scrub-label" class="scrub-label" hidden></div>
+      <input id="scrub" type="range" min="0" max="1000" step="1" aria-label="Положение в книге">
+      <div id="bb-info" class="bb-info"></div>
+    </div>
+    <div class="bb-actions">
+      <button class="bb-btn" data-bb="toc"><i data-icon="toc"></i><span>Содержание</span></button>
+      <button class="bb-btn" data-bb="search"><i data-icon="search"></i><span>Поиск</span></button>
+      <button class="bb-btn" data-bb="settings" aria-haspopup="dialog"><i data-icon="type"></i><span>Вид</span></button>
+      <button class="bb-btn" data-bb="bookmark" id="bb-bookmark"><i data-icon="bookmark"></i><span>Закладка</span></button>
+      <button class="bb-btn" data-bb="ai"><i data-icon="sparkles"></i><span>ИИ</span></button>
+    </div>
+  </nav>
 
   <footer id="statusbar" class="statusbar">
     <span id="st-chapter"></span>
@@ -126,6 +150,15 @@
 
   <!-- Settings -->
   <div id="settings" class="menu settings" role="dialog" aria-label="Оформление" hidden>
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <div class="set-row">
+      <div class="set-label">Режим</div>
+      <div class="segmented">
+        <button data-mode="auto">Авто</button>
+        <button data-mode="scroll">Лента</button>
+        <button data-mode="paged">Страницы</button>
+      </div>
+    </div>
     <div class="set-row">
       <div class="set-label">Тема</div>
       <div class="theme-swatches">
@@ -171,6 +204,10 @@
         <button data-justify="true">По ширине</button>
       </div>
     </div>
+    <label class="set-row set-switch" id="awake-row">
+      <span class="set-label">Не гасить экран при чтении</span>
+      <input type="checkbox" id="keep-awake" class="switch">
+    </label>
   </div>
 
   <!-- More menu -->
@@ -211,8 +248,9 @@
     <div class="modal-head"><h2>Горячие клавиши</h2><button class="icon-btn" data-dialog-close aria-label="Закрыть"><i data-icon="x"></i></button></div>
     <div class="modal-body">
       <table class="keys">
-        <tr><td><kbd>→</kbd> <kbd>Пробел</kbd></td><td>Следующий экран (в конце — следующая глава)</td></tr>
-        <tr><td><kbd>←</kbd></td><td>Предыдущий экран</td></tr>
+        <tr><td><kbd>→</kbd> <kbd>Пробел</kbd></td><td>Следующая страница или экран (в конце — следующая глава)</td></tr>
+        <tr><td><kbd>←</kbd></td><td>Предыдущая страница или экран</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Лента / страницы</td></tr>
         <tr><td><kbd>]</kbd> <kbd>[</kbd></td><td>Следующая / предыдущая глава</td></tr>
         <tr><td><kbd>T</kbd></td><td>Содержание</td></tr>
         <tr><td><kbd>/</kbd></td><td>Поиск по книге</td></tr>
