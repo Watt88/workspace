@@ -35,9 +35,10 @@
           <option value="progress">По прогрессу</option>
       </select>
       <div class="lib-actions">
+        <a href="/notebook" class="btn" title="Блокнот: разговор по книгам"><i data-icon="sparkles" class="sm"></i><span>Блокнот</span></a>
         <button id="theme-btn" class="icon-btn" aria-haspopup="menu" title="Тема и выход"><i data-icon="sun"></i></button>
         <button id="add-btn" class="btn primary"><i data-icon="plus" class="sm"></i><span>Добавить книгу</span></button>
-        <input id="file-input" type="file" accept=".epub,application/epub+zip" multiple hidden>
+        <input id="file-input" type="file" accept=".epub,.pdf,.djvu,.djv,application/epub+zip,application/pdf,image/vnd.djvu" multiple hidden>
       </div>
     </div>
   </header>
@@ -66,7 +67,7 @@
   </main>
 
   <div id="drop-overlay" class="drop-overlay" hidden>
-    <div class="drop-box"><i data-icon="upload"></i><p>Отпустите, чтобы добавить книги</p></div>
+    <div class="drop-box"><i data-icon="upload"></i><p>Отпустите, чтобы добавить книги (EPUB, PDF или DjVu)</p></div>
   </div>
 
   <div id="card-menu" class="menu" role="menu" hidden>

@@ -1,0 +1,73 @@
+/* PDF viewer: pages as printed, on top of the reader's panels / topbar / AI chat styles */
+
+body.pdf { --bar-h: 52px; }
+
+.pdf-stage {
+  display: block;
+  padding: calc(var(--topbar-h) + var(--safe-top) + 8px) calc(8px + var(--safe-right)) calc(var(--bar-h) + var(--safe-bottom) + 12px) calc(8px + var(--safe-left));
+  overflow: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-x pan-y pinch-zoom;
+  background: var(--surface-2);
+}
+.pdf-pages { display: flex; justify-content: center; align-items: flex-start; gap: 6px; min-width: min-content; margin: 0 auto; }
+.pdf-pages img {
+  display: block; height: auto; background: #fff; border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .18), 0 6px 22px rgba(0, 0, 0, .12);
+  user-select: none; -webkit-user-drag: none;
+}
+.pdf-pages img.loading { opacity: .35; }
+.pdf-pages .gone { visibility: hidden; }
+
+.pdf-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; height: calc(var(--bar-h) + var(--safe-bottom));
+  padding: 0 calc(10px + var(--safe-right)) var(--safe-bottom) calc(10px + var(--safe-left));
+  display: flex; align-items: center; gap: 4px;
+  background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: saturate(1.4) blur(14px);
+  border-top: 1px solid var(--border); transition: transform .3s var(--ease), left .3s var(--ease), right .3s var(--ease);
+}
+body.sidebar-docked .pdf-bar { left: var(--sidebar-w); }
+body.ai-docked .pdf-bar { right: var(--ai-w); }
+.chrome-hidden .pdf-bar { transform: translateY(100%); }
+.pdf-bar #scrub { flex: 1; min-width: 60px; accent-color: var(--accent); }
+.page-jump { display: flex; align-items: center; gap: 4px; font-size: 13px; color: var(--muted); white-space: nowrap; }
+.page-jump input {
+  width: 56px; height: 32px; text-align: center; font: inherit; color: var(--text);
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm, 8px);
+}
+.bar-sep { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+.pdf-bar .glyph { font-size: 22px; line-height: 1; }
+.pdf-bar .icon-btn.active { color: var(--accent); }
+
+.thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 10px; padding: 12px 14px calc(24px + var(--safe-bottom)); }
+.thumb { all: unset; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); }
+.thumb img { width: 100%; height: auto; background: #fff; border-radius: 2px; box-shadow: 0 1px 3px rgba(0, 0, 0, .2); aspect-ratio: 1 / 1.3; object-fit: cover; }
+.thumb.current { color: var(--accent); font-weight: 600; }
+.thumb.current img { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.text-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px 4px; }
+.text-status { flex: 1; font-size: 12px; color: var(--muted); }
+.page-text { padding: 8px 14px calc(24px + var(--safe-bottom)); font-size: 14.5px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; user-select: text; }
+.page-text .pt-num { display: block; margin: 14px 0 4px; font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.page-text .pt-num:first-child { margin-top: 0; }
+
+.toc-empty { padding: 20px 16px; color: var(--muted); font-size: 14px; }
+.ai-window { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+.ai-window select { font: inherit; font-size: 11.5px; color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 2px 4px; }
+
+/* the EPUB reader moves these to its bottom bar on phones; the PDF viewer has no such bar, so keep them up here */
+@media (max-width: 720px) {
+  body.pdf #toc-btn, body.pdf #search-btn, body.pdf #ai-btn { display: inline-flex; }
+  body.pdf .icon-btn { width: 40px; height: 40px; }
+  body.pdf .tb-title { padding-left: 2px; }
+}
+
+@media (max-width: 700px) {
+  .pdf-bar { gap: 2px; padding-left: calc(6px + var(--safe-left)); padding-right: calc(6px + var(--safe-right)); }
+  .pdf-bar #zoom-out, .pdf-bar #zoom-in { display: none; }
+  .page-jump input { width: 48px; }
+  #spread-btn { display: none; }
+}
+
+.ai-vision { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 12.5px; color: var(--muted); cursor: pointer; }
+.ai-vision input { accent-color: var(--accent); }

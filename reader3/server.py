@@ -2,8 +2,10 @@ import os
 import re
 import hmac
 import json
+import base64
 import time
 import asyncio
+import gc
 import hashlib
 import secrets
 import shutil
@@ -22,6 +24,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
+import pdf_support as pdfs
+import rag
 from reader3 import Book, BookMetadata, ChapterContent, TOCEntry, LIBRARY_DIR, import_epub, slugify
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -36,14 +40,60 @@ BOOK_DIRS = [LIBRARY_DIR, "."]
 
 AI_MODEL = os.environ.get("READER3_MODEL", "claude-opus-5-5")
 AI_EFFORT = os.environ.get("READER3_EFFORT", "low")
+# "api" calls the Claude API with ANTHROPIC_API_KEY; "claude-code" runs the local `claude` CLI
+# headless, so answers come from the Claude subscription it is logged into
+AI_BACKEND = os.environ.get("READER3_BACKEND", "api")
 
 
 # --- Password protection (required before exposing the reader to the internet) ---
 
 PASSWORD = os.environ.get("READER3_PASSWORD", "")
+# Without READER3_PASSWORD the password is chosen in the browser on first visit; only its hash is kept
+PASSWORD_FILE = os.path.join(LIBRARY_DIR, ".password")
 SESSION_DAYS = 180
 COOKIE = "reader3_session"
-PUBLIC_PATHS = ("/login", "/static/", "/manifest.webmanifest", "/favicon.ico")
+PUBLIC_PATHS = ("/login", "/setup", "/static/", "/manifest.webmanifest", "/favicon.ico",
+                "/internal/nb/")     # called by the local MCP tool server; the handler checks localhost + a secret token
+
+
+def _hash_password(password: str, salt: bytes) -> str:
+    return hashlib.scrypt(password.encode(), salt=salt, n=2**14, r=8, p=1).hex()
+
+
+def _load_password_record() -> str:
+    try:
+        with open(PASSWORD_FILE, encoding="utf-8") as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        return ""
+
+
+_password_record = _load_password_record()  # "scrypt$<salt hex>$<hash hex>"
+
+
+def password_set() -> bool:
+    return bool(PASSWORD or _password_record)
+
+
+def check_password(password: str) -> bool:
+    if PASSWORD:
+        return hmac.compare_digest(password.encode(), PASSWORD.encode())
+    try:
+        _, salt, expected = _password_record.split("$")
+        return hmac.compare_digest(_hash_password(password, bytes.fromhex(salt)), expected)
+    except ValueError:
+        return False
+
+
+def save_password(password: str):
+    global _password_record
+    salt = secrets.token_bytes(16)
+    record = f"scrypt${salt.hex()}${_hash_password(password, salt)}"
+    os.makedirs(LIBRARY_DIR, exist_ok=True)
+    with open(PASSWORD_FILE, "w", encoding="utf-8") as f:
+        f.write(record)
+    os.chmod(PASSWORD_FILE, 0o600)
+    _password_record = record
 
 
 def _load_secret() -> bytes:
@@ -64,12 +114,12 @@ def _load_secret() -> bytes:
         return key
 
 
-SECRET = _load_secret() if PASSWORD else b""
+SECRET = _load_secret()
 
 
 def _sign(expires: int) -> str:
     # The password hash is part of the signature: changing the password logs everyone out
-    msg = f"{expires}:{hashlib.sha256(PASSWORD.encode()).hexdigest()}".encode()
+    msg = f"{expires}:{hashlib.sha256((PASSWORD or _password_record).encode()).hexdigest()}".encode()
     return hmac.new(SECRET, msg, hashlib.sha256).hexdigest()
 
 
@@ -94,13 +144,17 @@ def is_proxied(request: Request) -> bool:
 @app.middleware("http")
 async def require_login(request: Request, call_next):
     path = request.url.path
-    if not PASSWORD:
-        # Never serve an unprotected library to the internet
+    if not password_set():
+        # Never serve an unprotected library to the internet, and don't let it choose the password
         if is_proxied(request) and os.environ.get("READER3_ALLOW_PUBLIC") != "1":
             return PlainTextResponse(
                 "reader3: доступ из интернета без пароля запрещён. "
-                "Задайте переменную окружения READER3_PASSWORD и перезапустите сервер.", status_code=403)
-        return await call_next(request)
+                "Задайте пароль, открыв читалку в домашней сети, и обновите страницу.", status_code=403)
+        if path.startswith(PUBLIC_PATHS):
+            return await call_next(request)
+        if path.startswith("/api/"):
+            return JSONResponse({"detail": "Сначала задайте пароль"}, status_code=401)
+        return RedirectResponse("/setup", status_code=303)
     if path.startswith(PUBLIC_PATHS) or valid_session(request.cookies.get(COOKIE)):
         return await call_next(request)
     if path.startswith("/api/"):
@@ -120,34 +174,63 @@ def _safe_next(target: str) -> str:
     return target if target.startswith("/") and not target.startswith("//") else "/"
 
 
+def _logged_in(request: Request, next: str) -> RedirectResponse:
+    response = RedirectResponse(_safe_next(next), status_code=303)
+    response.set_cookie(COOKIE, make_session(), max_age=SESSION_DAYS * 86400, httponly=True,
+                        samesite="lax", secure=request.url.scheme == "https")
+    return response
+
+
+@app.get("/setup", response_class=HTMLResponse)
+async def setup_page(request: Request):
+    if password_set():
+        return RedirectResponse("/login", status_code=303)
+    return templates.TemplateResponse(request, "login.html", {"next": "/", "error": None, "setup": True})
+
+
+@app.post("/setup", response_class=HTMLResponse)
+async def setup(request: Request, password: str = Form(""), password2: str = Form("")):
+    if password_set() or is_proxied(request):
+        return RedirectResponse("/login", status_code=303)
+    error = None
+    if len(password) < 4:
+        error = "Пароль должен быть не короче 4 символов"
+    elif password != password2:
+        error = "Пароли не совпадают"
+    if error:
+        return templates.TemplateResponse(request, "login.html", {"next": "/", "error": error, "setup": True},
+                                          status_code=400)
+    save_password(password)
+    return _logged_in(request, "/")
+
+
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request, next: str = "/"):
-    if not PASSWORD or valid_session(request.cookies.get(COOKIE)):
+    if not password_set():
+        return RedirectResponse("/setup", status_code=303)
+    if valid_session(request.cookies.get(COOKIE)):
         return RedirectResponse(_safe_next(next), status_code=303)
     return templates.TemplateResponse(request, "login.html", {"next": _safe_next(next), "error": None})
 
 
 @app.post("/login", response_class=HTMLResponse)
 async def login(request: Request, password: str = Form(""), next: str = Form("/")):
-    if not PASSWORD:
-        return RedirectResponse("/", status_code=303)
+    if not password_set():
+        return RedirectResponse("/setup", status_code=303)
     ip = _client_ip(request)
     now = time.time()
     recent = [t for t in _failed_logins.get(ip, []) if now - t < 600]
     if len(recent) >= 10:
         return templates.TemplateResponse(request, "login.html", {
             "next": _safe_next(next), "error": "Слишком много попыток. Попробуйте через несколько минут."}, status_code=429)
-    if not hmac.compare_digest(password.encode(), PASSWORD.encode()):
+    if not check_password(password):
         recent.append(now)
         _failed_logins[ip] = recent
         await asyncio.sleep(1)  # slows down password guessing
         return templates.TemplateResponse(request, "login.html", {
             "next": _safe_next(next), "error": "Неверный пароль"}, status_code=401)
     _failed_logins.pop(ip, None)
-    response = RedirectResponse(_safe_next(next), status_code=303)
-    response.set_cookie(COOKIE, make_session(), max_age=SESSION_DAYS * 86400, httponly=True,
-                        samesite="lax", secure=request.url.scheme == "https")
-    return response
+    return _logged_in(request, next)
 
 
 @app.post("/logout")
@@ -287,7 +370,9 @@ def cover_url(book_id: str, book: Book) -> Optional[str]:
 
 def book_summary(book_id: str, book: Book) -> dict:
     state = read_state(book_id)
+    is_pdf = pdfs.is_pdf_book(book_dir(book_id))
     return {
+        "kind": "pdf" if is_pdf else "epub",
         "id": book_id,
         "title": book.metadata.title,
         "authors": book.metadata.authors,
@@ -310,6 +395,8 @@ async def library_view(request: Request):
 @app.get("/read/{book_id}", response_class=HTMLResponse)
 async def reader_view(request: Request, book_id: str):
     book = get_book_or_404(book_id)
+    if pdfs.is_pdf_book(book_dir(book_id)):
+        return templates.TemplateResponse(request, "pdf.html", {"book": book, "book_id": book_id})
     return templates.TemplateResponse(request, "reader.html", {"book": book, "book_id": book_id})
 
 
@@ -328,7 +415,7 @@ async def serve_image(book_id: str, image_name: str):
     img_path = os.path.join(path, "images", os.path.basename(image_name))
     if not os.path.exists(img_path):
         raise HTTPException(status_code=404, detail="Image not found")
-    return FileResponse(img_path, headers={"Cache-Control": "public, max-age=86400"})
+    return FileResponse(img_path, headers={"Cache-Control": "private, max-age=86400"})
 
 
 @app.get("/manifest.webmanifest")
@@ -372,8 +459,9 @@ def list_books():
 @app.post("/api/books")
 def upload_book(file: UploadFile = File(...)):
     name = os.path.basename(file.filename or "book.epub")
-    if not name.lower().endswith(".epub"):
-        raise HTTPException(status_code=400, detail="Only .epub files are supported")
+    ext = os.path.splitext(name)[1].lower()
+    if ext not in (".epub", ".pdf", ".djvu", ".djv"):
+        raise HTTPException(status_code=400, detail="Only .epub, .pdf and .djvu files are supported")
 
     base = slugify(os.path.splitext(name)[0])
     book_id, n = f"{base}_data", 1
@@ -385,11 +473,21 @@ def upload_book(file: UploadFile = File(...)):
         tmp_path = os.path.join(tmp, name)
         with open(tmp_path, "wb") as f:
             shutil.copyfileobj(file.file, f)
+        failure = None
         try:
-            book_id, book = import_epub(tmp_path, LIBRARY_DIR, book_id)
+            if ext == ".pdf":
+                book_id, book = pdfs.import_pdf(tmp_path, LIBRARY_DIR, book_id)
+            elif ext in (".djvu", ".djv"):
+                book_id, book = pdfs.import_djvu(tmp_path, LIBRARY_DIR, book_id)
+            else:
+                book_id, book = import_epub(tmp_path, LIBRARY_DIR, book_id)
         except Exception as e:
+            failure = re.sub(r"'[^']*[\\/]([^\\/']+)'", r"'\1'", str(e))        # keep file names, not the server's folders
+        if failure is not None:
+            # outside the except block: while the exception is alive, fitz still holds the file and Windows cannot delete it
+            gc.collect()
             shutil.rmtree(os.path.join(LIBRARY_DIR, book_id), ignore_errors=True)
-            raise HTTPException(status_code=422, detail=f"Could not read this EPUB: {e}")
+            raise HTTPException(status_code=422, detail=f"Could not read this file: {failure}")
     return book_summary(book_id, book)
 
 
@@ -398,6 +496,8 @@ def delete_book(book_id: str):
     path = book_dir(book_id)
     if not path:
         raise HTTPException(status_code=404, detail="Book not found")
+    pdfs.forget(path)
+    rag.forget(path)                                    # the notebook index (sqlite) must be closed before the folder goes
     shutil.rmtree(path)
     _book_cache.pop(book_id, None)
     return {"ok": True}
@@ -487,6 +587,8 @@ def patch_state(book_id: str, patch: StatePatch):
 # --- API: AI reading companion ---
 
 def ai_available() -> bool:
+    if AI_BACKEND == "claude-code":
+        return shutil.which("claude") is not None
     return bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")
                 or os.path.isdir(os.path.expanduser("~/.config/anthropic")))
 
@@ -511,6 +613,13 @@ explicitly asks for spoilers. Answer in the language the user writes in. Keep an
 short paragraphs, Markdown lists or bold only where they genuinely help."""
 
 
+PDF_SYSTEM_PROMPT = SYSTEM_PROMPT.replace(
+    "the full text of the chapter they are currently reading are below.",
+    "the text of the page they are looking at and of a few neighbouring pages are below.") + """
+
+This book is a PDF read page by page. The reader sees each page exactly as printed (columns, photos, screenshots, diagrams, captions); you only get the extracted text, marked <page number="N"> (N is the page number shown in the viewer; the one with current="true" is on screen). Pictures are not visible to you: when a question depends on an image or a diagram, say so and ask the user to describe it instead of guessing. Mention page numbers when helpful."""
+
+
 def sse(event: str, data) -> str:
     return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
 
@@ -532,6 +641,25 @@ async def chat(book_id: str, req: ChatRequest):
                f"<current_chapter index=\"{req.chapter + 1}\" of=\"{len(book.spine)}\" "
                f"title=\"{chapter_title(book, req.chapter)}\">\n{chapter.text}\n</current_chapter>")
 
+    return answer(context, messages)
+
+
+PDF_SYSTEM_PROMPT_VISION = PDF_SYSTEM_PROMPT.replace(
+    "Pictures are not visible to you: when a question depends on an image or a diagram, say so and ask the user to describe it instead of guessing.",
+    "You are also shown an image of the page or pages on screen: use it for pictures, screenshots, diagrams and layout, and the text for exact wording.")
+
+
+def answer(context: str, messages: List[dict], system_prompt: str = SYSTEM_PROMPT,
+           images: Optional[List[str]] = None) -> StreamingResponse:
+    """Streams the companion's reply (SSE) for a book context, through Claude Code or the Claude API."""
+    headers = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+    if AI_BACKEND == "claude-code":
+        return StreamingResponse(claude_code_stream(context, messages, system_prompt, images),
+                                 media_type="text/event-stream", headers=headers)
+    if images:      # pictures of the pages on screen ride with the last question
+        blocks = [{"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": b}} for b in images]
+        messages = messages[:-1] + [{"role": "user", "content": blocks + [{"type": "text", "text": messages[-1]["content"]}]}]
+
     async def generate():
         try:
             client = anthropic.AsyncAnthropic()
@@ -539,7 +667,7 @@ async def chat(book_id: str, req: ChatRequest):
                 model=AI_MODEL,
                 max_tokens=64000,
                 # The book context is stable across the conversation, so it is cached
-                system=[{"type": "text", "text": SYSTEM_PROMPT},
+                system=[{"type": "text", "text": system_prompt},
                         {"type": "text", "text": context, "cache_control": {"type": "ephemeral"}}],
                 messages=messages,
                 thinking={"type": "adaptive"},
@@ -570,6 +698,195 @@ async def chat(book_id: str, req: ChatRequest):
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
 
+# --- API: PDF books ---
+
+def pdf_dir_or_404(book_id: str) -> str:
+    get_book_or_404(book_id)
+    path = book_dir(book_id)
+    if not pdfs.is_pdf_book(path):
+        raise HTTPException(status_code=404, detail="This book is not a PDF")
+    return path
+
+
+class PdfChatRequest(BaseModel):
+    page: int
+    window: int = 2
+    pages: Optional[List[int]] = None   # the pages on screen (a spread has two)
+    images: bool = False                # also show the model pictures of those pages
+    messages: List[ChatMessage]
+
+
+@app.get("/api/pdf/{book_id}/info")
+def pdf_info(book_id: str):
+    path = pdf_dir_or_404(book_id)
+    pdfs.ensure_ocr(path)
+    return pdfs.info(path)
+
+
+@app.get("/api/pdf/{book_id}/page/{n}.jpg")
+def pdf_page_image(book_id: str, n: int, w: int = 1200):
+    path = pdf_dir_or_404(book_id)
+    try:
+        if n < 0 or n >= pdfs.page_count(path):
+            raise HTTPException(status_code=404, detail="Page not found")
+        image = pdfs.render_page(path, n, w)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Book not found")
+    return FileResponse(image, media_type="image/jpeg", headers={"Cache-Control": "private, max-age=86400"})
+
+
+@app.get("/api/pdf/{book_id}/text/{n}")
+def pdf_page_text(book_id: str, n: int):
+    path = pdf_dir_or_404(book_id)
+    try:
+        return {"page": n, "text": pdfs.page_text(path, n)}
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Book not found")
+
+
+@app.get("/api/pdf/{book_id}/search")
+def pdf_search(book_id: str, q: str, limit: int = 100):
+    return pdfs.search(pdf_dir_or_404(book_id), q, limit)
+
+
+@app.get("/api/pdf/{book_id}/file")
+def pdf_file(book_id: str):
+    path = pdf_dir_or_404(book_id)
+    media = "image/vnd.djvu" if pdfs.is_djvu_book(path) else "application/pdf"
+    return FileResponse(pdfs.source_file(path), media_type=media)
+
+
+@app.post("/api/pdf/{book_id}/chat")
+def pdf_chat(book_id: str, req: PdfChatRequest):
+    path = pdf_dir_or_404(book_id)
+    n = pdfs.page_count(path)
+    if req.page < 0 or req.page >= n:
+        raise HTTPException(status_code=404, detail="Page not found")
+    messages = [{"role": m.role, "content": m.content} for m in req.messages
+                if m.role in ("user", "assistant") and m.content.strip()]
+    if not messages or messages[-1]["role"] != "user":
+        raise HTTPException(status_code=400, detail="The last message must come from the user")
+    book = get_book_or_404(book_id)
+    m = book.metadata
+    context = (f"<book>\nTitle: {m.title}\nAuthors: {', '.join(m.authors) or 'unknown'}\n"
+               f"Language: {m.language}\nPages: {n}\n</book>\n\n"
+               + pdfs.context_text(path, req.page, max(0, min(req.window, 6))))
+    images = None
+    if req.images:
+        shown = [p for p in (req.pages or [req.page]) if 0 <= p < n][:2]
+        images = [base64.b64encode(open(pdfs.render_page(path, p, 1200), "rb").read()).decode() for p in shown]
+    return answer(context, messages, PDF_SYSTEM_PROMPT_VISION if images else PDF_SYSTEM_PROMPT, images)
+
+
+_claude_slots = threading.BoundedSemaphore(3)
+
+
+def claude_code_stream(context: str, messages: List[dict], system_prompt: str = SYSTEM_PROMPT,
+                       images: Optional[List[str]] = None):
+    """At most three headless Claude Code processes at a time."""
+    if not _claude_slots.acquire(timeout=120):
+        yield sse("error", {"message": "Сервер занят другими запросами, попробуйте через минуту."})
+        return
+    try:
+        yield from _claude_code_run(context, messages, system_prompt, images)
+    finally:
+        _claude_slots.release()
+
+
+def _claude_code_run(context: str, messages: List[dict], system_prompt: str = SYSTEM_PROMPT,
+                     images: Optional[List[str]] = None):
+    """Answers through headless Claude Code (`claude -p`) on the subscription it is logged into."""
+    import subprocess
+
+    # The chapter can exceed the Windows command-line limit, so the system prompt goes through a file
+    fd, prompt_file = tempfile.mkstemp(suffix=".md", prefix="reader3-")
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
+        f.write(system_prompt + "\n\n" + context)
+    history = "\n\n".join(f"<{m['role']}>\n{m['content']}\n</{m['role']}>" for m in messages[:-1])
+    prompt = (f"Earlier conversation:\n{history}\n\nNew message from the user:\n" if history else "") \
+        + messages[-1]["content"]
+    cmd = [shutil.which("claude") or "claude", "-p", "--model", AI_MODEL, "--effort", AI_EFFORT,
+           "--system-prompt-file", prompt_file, "--tools", "", "--strict-mcp-config", "--setting-sources", "",
+           "--disable-slash-commands", "--no-session-persistence",
+           "--output-format", "stream-json", "--include-partial-messages", "--verbose"]
+    if images:      # text and page pictures go in as one stream-json user message
+        cmd += ["--input-format", "stream-json"]
+        blocks = [{"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": b}} for b in images]
+        prompt = json.dumps({"type": "user", "message": {"role": "user",
+                             "content": blocks + [{"type": "text", "text": prompt}]}}) + "\n"
+    # Without the key the CLI uses its own login (the subscription), not paid API credits
+    env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")}
+
+    try:
+        proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                env=env, cwd=tempfile.gettempdir(), encoding="utf-8", errors="replace")
+    except OSError as e:
+        os.unlink(prompt_file)
+        yield sse("error", {"message": f"Не удалось запустить Claude Code: {e}"})
+        return
+    err_chunks = []
+    err_thread = threading.Thread(target=lambda: err_chunks.append(proc.stderr.read()), daemon=True)
+    err_thread.start()                      # a full stderr pipe must never stall the CLI
+    timer = threading.Timer(600, proc.kill)  # no answer takes more than ten minutes
+    timer.start()
+    errored = False
+    try:
+        proc.stdin.write(prompt)
+        proc.stdin.close()
+        model, got_text = AI_MODEL, False
+        # A sync generator: Starlette iterates it in a worker thread, so blocking reads are fine
+        for line in proc.stdout:
+            try:
+                event = json.loads(line)
+            except ValueError:
+                continue
+            if event.get("type") == "stream_event":
+                inner = event.get("event", {})
+                if inner.get("type") == "message_start":
+                    model = inner.get("message", {}).get("model", model)
+                delta = inner.get("delta", {})
+                if inner.get("type") == "content_block_delta" and delta.get("type") == "text_delta":
+                    got_text = True
+                    yield sse("delta", {"text": delta["text"]})
+            elif event.get("type") == "result":
+                if event.get("is_error"):
+                    errored = True
+                    yield sse("error", {"message": f"Claude Code: {event.get('result') or 'ошибка'}"})
+                elif not got_text and event.get("result"):
+                    yield sse("delta", {"text": event["result"]})
+        proc.wait()
+        err_thread.join(3)
+        if proc.returncode and not got_text and not errored:
+            err = (err_chunks[0] if err_chunks else "").strip()
+            yield sse("error", {"message": f"Claude Code завершился с ошибкой: {err[-500:] or proc.returncode}"})
+        yield sse("done", {"model": model})
+    finally:
+        timer.cancel()
+        if proc.poll() is None:
+            proc.kill()
+            proc.wait()
+        try:
+            os.unlink(prompt_file)
+        except OSError:
+            pass
+
+
+# --- Notebook mode (RAG chat over books, Studio outputs, notes) ---
+
+import notebook_api  # noqa: E402
+
+notebook_api.register(app, {
+    "book_dir": book_dir, "list_book_ids": list_book_ids, "load_book": load_book,
+    "library_dir": LIBRARY_DIR, "model": AI_MODEL, "backend": AI_BACKEND,
+    "port": lambda: int(os.environ.get("PORT", "8123")),
+})
+
+
+@app.get("/notebook", response_class=HTMLResponse)
+async def notebook_view(request: Request):
+    return templates.TemplateResponse(request, "notebook.html", {})
+
+
 if __name__ == "__main__":
     import uvicorn
     host = os.environ.get("HOST", "127.0.0.1")
@@ -584,8 +901,10 @@ if __name__ == "__main__":
                 print(f"Откройте на планшете или телефоне (та же Wi-Fi-сеть): http://{sock.getsockname()[0]}:{port}")
         except OSError:
             pass
-    if not PASSWORD:
-        print("Пароль не задан: читалка доступна всем в вашей домашней сети. Для доступа из интернета задайте READER3_PASSWORD.")
+    if not password_set():
+        print("Пароль ещё не задан: откройте читалку и придумайте его на первом экране.")
+    elif not PASSWORD:
+        print(f"Забыли пароль? Удалите файл {PASSWORD_FILE} и перезапустите сервер.")
     # Trust X-Forwarded-Proto from the tunnel so the session cookie is marked Secure over HTTPS
     uvicorn.run(app, host=host, port=port, proxy_headers=True,
                 forwarded_allow_ips=os.environ.get("FORWARDED_ALLOW_IPS", "127.0.0.1"))

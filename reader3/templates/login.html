@@ -33,6 +33,15 @@
   <main class="login">
     <div class="mark"><i data-icon="book"></i></div>
     <h1>reader3</h1>
+    {% if setup %}
+    <p>Придумайте пароль: его будут спрашивать при входе в библиотеку</p>
+    <form method="post" action="/setup">
+      <input class="input" type="password" name="password" placeholder="Новый пароль" autocomplete="new-password" minlength="4" autofocus required aria-label="Новый пароль">
+      <input class="input" type="password" name="password2" placeholder="Повторите пароль" autocomplete="new-password" minlength="4" required aria-label="Повторите пароль">
+      {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+      <button class="btn primary" type="submit">Задать пароль и войти</button>
+    </form>
+    {% else %}
     <p>Введите пароль, чтобы открыть библиотеку</p>
     <form method="post" action="/login">
       <input type="hidden" name="next" value="{{ next }}">
@@ -40,6 +49,7 @@
       {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
       <button class="btn primary" type="submit">Войти</button>
     </form>
+    {% endif %}
   </main>
   <script>hydrateIcons();</script>
 </body>

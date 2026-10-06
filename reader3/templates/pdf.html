@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="reader3">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/static/icons/icon-180.png">
+  <title>{{ book.metadata.title }} · reader3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400;1,7..72,600&display=swap">
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/reader.css">
+  <link rel="stylesheet" href="/static/css/pdf.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <script src="/static/js/common.js"></script>
+</head>
+<body class="reader pdf" data-book-id="{{ book_id }}">
+  <div id="book-progress" class="book-progress" aria-hidden="true"><div></div></div>
+
+  <header id="topbar" class="topbar">
+    <div class="tb-left">
+      <a href="/" class="icon-btn" title="Библиотека" aria-label="Библиотека"><i data-icon="back"></i></a>
+      <a href="/notebook" class="icon-btn" title="Блокнот: разговор по книгам" aria-label="Блокнот"><i data-icon="sparkles"></i></a>
+      <button id="toc-btn" class="icon-btn" title="Оглавление и страницы (T)" aria-label="Оглавление"><i data-icon="toc"></i></button>
+    </div>
+    <div class="tb-title">
+      <div class="tb-book">{{ book.metadata.title }}</div>
+      <div id="tb-page" class="tb-chapter"></div>
+    </div>
+    <div class="tb-right">
+      <button id="search-btn" class="icon-btn" title="Поиск по тексту (/)" aria-label="Поиск"><i data-icon="search"></i></button>
+      <button id="text-btn" class="icon-btn" title="Текст страницы (X)" aria-label="Текст страницы"><i data-icon="type"></i></button>
+      <button id="ai-btn" class="icon-btn" title="Обсудить с ИИ (A)" aria-label="ИИ-компаньон"><i data-icon="sparkles"></i></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar" class="panel panel-left" aria-label="Навигация">
+      <div class="panel-head">
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" data-tab="toc">Оглавление</button>
+          <button class="tab" role="tab" data-tab="pages">Страницы</button>
+          <button class="tab" role="tab" data-tab="search">Поиск</button>
+          <button class="tab" role="tab" data-tab="text">Текст</button>
+        </div>
+        <button class="icon-btn panel-close" data-close="sidebar" aria-label="Закрыть"><i data-icon="x"></i></button>
+      </div>
+
+      <div class="tab-panel scroll-thin" data-panel="toc">
+        <nav id="toc" class="toc"></nav>
+      </div>
+
+      <div class="tab-panel scroll-thin" data-panel="pages" hidden>
+        <div id="thumbs" class="thumbs"></div>
+      </div>
+
+      <div class="tab-panel" data-panel="search" hidden>
+        <div class="search-box">
+          <div class="input-wrap">
+            <i data-icon="search" class="sm"></i>
+            <input id="search-input" class="input" type="search" placeholder="Слово или фраза" autocomplete="off" aria-label="Поиск по тексту">
+          </div>
+          <div id="search-summary" class="search-summary"></div>
+        </div>
+        <div id="search-results" class="search-results scroll-thin"></div>
+      </div>
+
+      <div class="tab-panel scroll-thin" data-panel="text" hidden>
+        <div class="text-head">
+          <div id="text-status" class="text-status"></div>
+          <button id="text-copy" class="btn"><i data-icon="copy" class="sm"></i>Копировать</button>
+        </div>
+        <div id="page-text" class="page-text"></div>
+      </div>
+    </aside>
+
+    <main id="stage" class="scroller pdf-stage" tabindex="-1">
+      <div id="pages" class="pdf-pages" aria-live="polite"></div>
+    </main>
+
+    <aside id="ai-panel" class="panel panel-right" aria-label="ИИ-компаньон">
+      <div class="panel-head">
+        <div class="ai-title"><i data-icon="sparkles" class="sm"></i>Обсуждение</div>
+        <button id="ai-clear" class="icon-btn" title="Новый разговор" aria-label="Очистить разговор"><i data-icon="reset" class="sm"></i></button>
+        <button class="icon-btn" data-close="ai-panel" aria-label="Закрыть"><i data-icon="x"></i></button>
+      </div>
+      <div id="ai-body" class="ai-body scroll-thin"></div>
+      <div id="ai-composer" class="ai-composer">
+        <div class="composer-box">
+          <textarea id="ai-input" rows="1" placeholder="Спросите о странице…" aria-label="Сообщение"></textarea>
+          <button id="ai-send" class="icon-btn send-btn" aria-label="Отправить"><i data-icon="send"></i></button>
+        </div>
+        <label class="ai-vision" title="ИИ увидит рисунки, скриншоты и схемы, но ответ займёт больше времени и лимита">
+          <input id="ai-vision" type="checkbox"> Показывать ИИ страницу как картинку
+        </label>
+        <div class="ai-context">
+          <i data-icon="book" class="sm"></i><span id="ai-context"></span>
+          <label class="ai-window">Контекст:
+            <select id="ai-window" aria-label="Сколько страниц отправлять ИИ">
+              <option value="0">эта страница</option>
+              <option value="1">±1 страница</option>
+              <option value="2">±2 страницы</option>
+              <option value="4">±4 страницы</option>
+              <option value="6">±6 страниц</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <nav id="pdfbar" class="pdf-bar" aria-label="Страницы">
+    <button id="prev" class="icon-btn" aria-label="Назад" title="Назад (←)"><i data-icon="left"></i></button>
+    <input id="scrub" type="range" min="1" max="1" step="1" value="1" aria-label="Страница">
+    <button id="next" class="icon-btn" aria-label="Вперёд" title="Вперёд (→)"><i data-icon="right"></i></button>
+    <label class="page-jump"><input id="page-input" type="number" min="1" inputmode="numeric" aria-label="Номер страницы"><span id="page-total"></span></label>
+    <span class="bar-sep"></span>
+    <button id="zoom-out" class="icon-btn" aria-label="Уменьшить" title="Уменьшить (−)"><span class="glyph">−</span></button>
+    <button id="zoom-in" class="icon-btn" aria-label="Увеличить" title="Увеличить (+)"><i data-icon="plus"></i></button>
+    <button id="fit-btn" class="icon-btn" aria-label="Вписать" title="Вписать: страница / ширина (F)"><i data-icon="expand"></i></button>
+    <button id="spread-btn" class="icon-btn" aria-label="Разворот" title="Разворот из двух страниц (D)"><i data-icon="book"></i></button>
+  </nav>
+
+  <div id="backdrop" class="backdrop" hidden></div>
+  <script src="/static/js/pdf.js"></script>
+</body>
+</html>

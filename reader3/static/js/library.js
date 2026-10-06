@@ -18,7 +18,7 @@ function coverHtml(book) {
 function progressHtml(book) {
   const pct = Math.round((book.progress || 0) * 100);
   if (pct >= 99) return '<span class="done">Прочитано</span>';
-  if (!book.last_read) return `<span>${readingTime(book.words)}</span>`;
+  if (!book.last_read) return book.kind === 'pdf' ? `<span>PDF · ${book.chapters} стр.</span>` : `<span>${readingTime(book.words)}</span>`;
   return `<div class="progress-track"><div style="width:${pct}%"></div></div><span>${pct}%</span>`;
 }
 
@@ -48,6 +48,7 @@ function render() {
   if (recent) {
     const pct = Math.round(recent.progress * 100);
     const left = Math.round(recent.words * (1 - recent.progress));
+    const leftText = recent.kind === 'pdf' ? `${Math.round(recent.chapters * (1 - recent.progress))} стр.` : readingTime(left);
     cont.innerHTML = `
       <a class="continue" href="/read/${encodeURIComponent(recent.id)}">
         ${coverHtml(recent)}
@@ -56,7 +57,7 @@ function render() {
           <h3>${escapeHtml(recent.title)}</h3>
           <div class="author">${escapeHtml(recent.authors.join(', ') || 'Автор неизвестен')}</div>
           <div class="progress-row"><div class="progress-track"><div style="width:${pct}%"></div></div>
-            <span>${pct}% · осталось ~${readingTime(left)}</span></div>
+            <span>${pct}% · осталось ~${leftText}</span></div>
           <div class="progress-row" style="margin-top:6px">Открывали ${relativeTime(recent.last_read)}</div>
           <span class="btn primary">${icon('book', 'sm')}Продолжить</span>
         </div>
@@ -94,9 +95,9 @@ async function loadBooks() {
 }
 
 async function uploadFiles(files) {
-  const epubs = [...files].filter(f => f.name.toLowerCase().endsWith('.epub'));
-  if (!epubs.length) { toast('Поддерживаются только файлы EPUB', { type: 'error' }); return; }
-  for (const file of epubs) {
+  const accepted = [...files].filter(f => /[.](epub|pdf|djvu?)$/i.test(f.name));
+  if (!accepted.length) { toast('Поддерживаются файлы EPUB, PDF и DjVu', { type: 'error' }); return; }
+  for (const file of accepted) {
     state.uploads.push(file.name);
     render();
     const fd = new FormData();

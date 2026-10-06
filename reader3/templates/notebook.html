@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fbfaf7">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <title>Блокнот · reader3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/notebook.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <script src="/static/js/common.js"></script>
+</head>
+<body class="nb">
+  <header class="nb-top">
+    <a href="/" class="icon-btn" title="Библиотека" aria-label="Библиотека"><i data-icon="back"></i></a>
+    <div class="nb-title"><i data-icon="sparkles"></i><select id="nb-select" aria-label="Блокнот"></select></div>
+    <button id="nb-new" class="icon-btn" title="Новый блокнот" aria-label="Новый блокнот"><i data-icon="plus"></i></button>
+    <button id="nb-rename" class="icon-btn" title="Переименовать" aria-label="Переименовать"><i data-icon="type"></i></button>
+    <button id="nb-del" class="icon-btn" title="Удалить блокнот" aria-label="Удалить блокнот"><i data-icon="trash"></i></button>
+    <span class="grow"></span>
+    <span id="engine" class="engine" title="Модели поиска"></span>
+  </header>
+
+  <nav class="nb-tabs" id="nb-tabs">
+    <button data-pane="sources" class="on">Источники</button>
+    <button data-pane="chat">Чат</button>
+    <button data-pane="studio">Студия</button>
+  </nav>
+
+  <div class="nb-grid">
+    <aside id="pane-sources" class="pane on" aria-label="Источники">
+      <div class="pane-head"><h2>Источники</h2><span id="src-count" class="muted"></span></div>
+      <div id="sources" class="pane-body scroll-thin"></div>
+    </aside>
+
+    <main id="pane-chat" class="pane" aria-label="Чат">
+      <div class="pane-head chat-head">
+        <h2>Чат по книгам</h2>
+        <span class="grow"></span>
+        <label class="sel">Режим
+          <select id="mode">
+            <option value="chat">Обычный</option>
+            <option value="learn">Наставник</option>
+            <option value="critic">Критик</option>
+            <option value="debate">Дебаты</option>
+          </select>
+        </label>
+        <label class="sel">Ответ
+          <select id="length">
+            <option value="default">Обычный</option>
+            <option value="short">Короткий</option>
+            <option value="long">Развёрнутый</option>
+          </select>
+        </label>
+        <button id="chat-clear" class="icon-btn" title="Новый разговор" aria-label="Новый разговор"><i data-icon="reset"></i></button>
+      </div>
+      <div id="messages" class="pane-body messages scroll-thin"></div>
+      <div class="composer">
+        <div id="suggest" class="suggest"></div>
+        <div class="composer-box">
+          <textarea id="input" rows="1" placeholder="Спросите о выбранных книгах…" aria-label="Сообщение"></textarea>
+          <button id="send" class="icon-btn send-btn" aria-label="Отправить"><i data-icon="send"></i></button>
+        </div>
+        <div id="chat-hint" class="hint"></div>
+      </div>
+    </main>
+
+    <aside id="pane-studio" class="pane" aria-label="Студия">
+      <div class="pane-head">
+        <div class="seg"><button data-tab="studio" class="on">Студия</button><button data-tab="notes">Заметки <span id="notes-n" class="badge" hidden></span></button></div>
+      </div>
+      <div id="studio" class="pane-body scroll-thin"></div>
+      <div id="notes" class="pane-body scroll-thin" hidden></div>
+    </aside>
+  </div>
+
+  <dialog id="viewer" class="modal viewer">
+    <div class="modal-head"><h2 id="viewer-title"></h2>
+      <button id="viewer-export" class="btn small ghost" hidden>Экспорт</button>
+      <button class="icon-btn" id="viewer-close" aria-label="Закрыть"><i data-icon="x"></i></button></div>
+    <div id="viewer-body" class="modal-body viewer-body"></div>
+  </dialog>
+
+  <dialog id="studio-dlg" class="modal">
+    <div class="modal-head"><h2 id="sd-title">Создать</h2>
+      <button class="icon-btn" id="sd-close" aria-label="Закрыть"><i data-icon="x"></i></button></div>
+    <div class="modal-body sd-body">
+      <label class="field">Материал
+        <select id="sd-scope"></select></label>
+      <div class="row2" id="sd-range-row">
+        <label class="field">С <input id="sd-from" class="input" type="number" min="1" inputmode="numeric" placeholder="1"></label>
+        <label class="field">По <input id="sd-to" class="input" type="number" min="1" inputmode="numeric" placeholder="конец"></label>
+      </div>
+      <label class="field" id="sd-n-row">Сколько <input id="sd-n" class="input" type="number" min="3" max="40" value="10"></label>
+      <label class="field" id="sd-focus-row"><span id="sd-focus-label">Фокус (необязательно)</span>
+        <textarea id="sd-focus" class="input" rows="3" placeholder=""></textarea></label>
+    </div>
+    <div class="modal-foot"><button class="btn" id="sd-cancel">Отмена</button><button class="btn primary" id="sd-go">Создать</button></div>
+  </dialog>
+
+  <div id="pop" class="pop" hidden>
+    <div class="pop-head"><div><div id="pop-title" class="pop-title"></div><div id="pop-sub" class="pop-sub"></div></div>
+      <button class="icon-btn" id="pop-close" aria-label="Закрыть"><i data-icon="x"></i></button></div>
+    <div id="pop-status" class="pop-status"></div>
+    <div id="pop-text" class="pop-text scroll-thin"></div>
+    <div class="pop-foot"><a id="pop-open" class="btn small primary" target="_blank" rel="noopener">Открыть в книге</a></div>
+  </div>
+  <div id="pop-back" class="pop-back" hidden></div>
+  <script src="/static/js/notebook.js"></script>
+</body>
+</html>

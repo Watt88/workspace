@@ -16,3 +16,10 @@ library/
 
 # Secrets
 .env
+
+# local copies of third-party binaries (DjVuLibre, GPL): never committed
+tools/
+
+.pytest_cache/
+__pycache__/
+.coverage

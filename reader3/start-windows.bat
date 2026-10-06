@@ -13,5 +13,5 @@ if errorlevel 1 (
 set HOST=0.0.0.0
 set PORT=8123
 start "" http://localhost:8123
-uv run server.py
+if exist .env (uv run --env-file .env server.py) else (uv run server.py)
 pause

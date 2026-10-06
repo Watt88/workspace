@@ -10,6 +10,24 @@ dependencies = [
     "ebooklib>=0.20",
     "fastapi>=0.121.2",
     "jinja2>=3.1.6",
+    "mcp>=2.3.0",
+    "numpy>=2.2.6",
+    "pillow>=12.3.0",
+    "pymorphy3>=2.0.6",
+    "pymorphy3-dicts-ru>=2.4.417150.4580142",
+    "pymupdf>=1.24",
     "python-multipart>=0.0.32",
+    "sentence-transformers>=6.1.0",
+    "snowballstemmer>=3.1.1",
+    "torch>=2.6",
     "uvicorn>=0.38.0",
 ]
+
+# CUDA build of PyTorch for the embedder and reranker (the default PyPI wheel on Windows is CPU-only)
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
