@@ -1,0 +1,356 @@
+{
+ "answerable": [
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 5,
+   "also": [],
+   "q": "Какую общественную роль, по словам автора, играют полиритмы в африканской культуре?",
+   "q_en": "polyrhythm African culture social purpose community",
+   "quote": "a musical symbol of the rich relationships between individuals",
+   "answer": "Они символ отношений между людьми, из которых складывается культурное единство общины.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 11,
+   "also": [
+    13
+   ],
+   "q": "Является ли соотношение 4:1 полиритмом и почему?",
+   "q_en": "polyrhythm common divisor other than 1 not a polyrhythm",
+   "quote": "two rhythms will only be considered a polyrhythm if they have no common divisor other than 1",
+   "answer": "Нет: у 4 и 1 нет контрастирующих долей, делитель 1 общий; в упражнении ответ «не полиритм».",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 13,
+   "also": [],
+   "q": "Какую фразу предлагают проговаривать, чтобы отработать ритм «три на два»?",
+   "q_en": "phrase Hot Cup of Tea practice 3:2 polyrhythm",
+   "quote": "you can use the phrase Hot Cup of Tea to practice 3:2 polyrhythms",
+   "answer": "Фразу «Hot Cup of Tea».",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 15,
+   "also": [],
+   "q": "Сколько долей занимает полный цикл полиритма 3:4 и как это вычислить?",
+   "q_en": "lowest common multiple LCM 3:4 full cycle 12 beats",
+   "quote": "The LCM is 12, meaning that 12 beats represent a full cycle of the polyrhythm",
+   "answer": "12 долей; нужно найти наименьшее общее кратное чисел X и Y.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 16,
+   "also": [],
+   "q": "Чему равен полный цикл полиритма 4:5?",
+   "q_en": "LCM of 4 and 5 is 20 beats full cycle 4:5",
+   "quote": "The lowest common multiple (LCM) of 4 and 5 is 20",
+   "answer": "20 долей.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 17,
+   "also": [],
+   "q": "На какой темп советуют ставить метроном новичкам, изучающим полиритмы?",
+   "q_en": "set metronome 60 beats per minute start slow",
+   "quote": "set your metronome to 60 beats per minute",
+   "answer": "На 60 ударов в минуту, начиная медленно.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 7,
+   "also": [],
+   "q": "Что происходит на отметке 1:22 в песне Nine Inch Nails «La Mer»?",
+   "q_en": "La Mer at 1:22 drums kick in four beats against three piano",
+   "quote": "the drums kick in, playing four beats against the three beats of the piano",
+   "answer": "Вступают барабаны: четыре доли против трёх у фортепиано.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 7,
+   "also": [],
+   "q": "Как в Африке называют гемиолу, повторяющуюся на протяжении всей песни?",
+   "q_en": "hemiola African music cross rhythm systematic rhythm base of a piece",
+   "quote": "cross rhythm, or a systematic rhythm that is the base of a piece",
+   "answer": "Кросс-ритм: систематический ритм, на котором держится вся пьеса.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 18,
+   "also": [],
+   "q": "Какую функцию приложения PolyNome автор особенно хвалит?",
+   "q_en": "PolyNome app Practice Log feature track progress",
+   "quote": "Especially wonderful is the app's Practice Log feature",
+   "answer": "Журнал практики: какие ритмы, в каком темпе и сколько играл, плюс графики и отчёты.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 19,
+   "also": [],
+   "q": "Как пианисту или гитаристу потренироваться играть полиритм?",
+   "q_en": "piano guitar practice polyrhythm beat on instrument humming tapping clapping different rhythm",
+   "quote": "Try playing a beat on your instrument, whether it's on one note or a simple melodic motif, while humming, tapping, or clapping overtop in a different rhythm",
+   "answer": "Играть ровный бит на инструменте и одновременно напевать, отстукивать или хлопать другой ритм.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 8,
+   "also": [],
+   "q": "Что обозначают X и Y в записи полиритма X:Y?",
+   "q_en": "polyrhythmic formula X:Y Y basic pulse X counter rhythm",
+   "quote": "Y is the basic pulse, over which the counter rhythm will be played, and X is the counter rhythm",
+   "answer": "Y: основной пульс; X: контр-ритм, играемый поверх него.",
+   "kind": "hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 9,
+   "also": [],
+   "q": "Почему в ритме 3:2 триоли приходится играть быстрее дуолей?",
+   "q_en": "3:2 triplets played faster than duplets arrive on beat one at the same time",
+   "quote": "the triplets will be played faster than the duplets, in order to arrive on beat one at the same time",
+   "answer": "Обе фигуры занимают одно и то же время, и первые ноты должны совпасть на первой доле.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 5,
+   "also": [],
+   "q": "Кто и когда придумал круг квинт?",
+   "q_en": "Circle of Fifths invented Nikolay Diletsky 1670s Grammatika",
+   "quote": "Russian composer and music theorist Nikolay Diletsky set this whole wheel rolling in the late 1670's",
+   "answer": "Николай Дилецкий, русский композитор и теоретик, в конце 1670-х годов.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 8,
+   "also": [],
+   "q": "На каком ладу гитары струна делится пополам и где получается квинта?",
+   "q_en": "guitar 12th fret splits string in half 7th fret fifth",
+   "quote": "when you put your finger on the 12th fret of a guitar, you're splitting that string in half",
+   "answer": "На 12-м ладу струна делится пополам (2:1), а квинта получается на 7-м ладу.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 8,
+   "also": [],
+   "q": "Сколько полутонов в чистой квинте?",
+   "q_en": "perfect fifth seven semitones counting up",
+   "quote": "the fifth can be found by counting seven semitones up",
+   "answer": "Семь полутонов.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 14,
+   "also": [],
+   "q": "В каком порядке добавляются диезы при движении по кругу квинт по часовой стрелке?",
+   "q_en": "order sharps added clockwise F-C-G-D-A-E-B",
+   "quote": "new sharps are added in the order F-C-G-D-A-E-B",
+   "answer": "Фа, до, соль, ре, ля, ми, си (F-C-G-D-A-E-B).",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 18,
+   "also": [],
+   "q": "Как быстро найти параллельный минор данной мажорной тональности по кругу квинт?",
+   "q_en": "relative minor circle of fifths move three positions clockwise",
+   "quote": "simply move three positions clockwise around the to find the relative minor",
+   "answer": "Сдвинуться на три позиции по часовой стрелке (от до мажор: соль, ре, ля: параллельный минор ля).",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 19,
+   "also": [],
+   "q": "Какой лад получается, если сжать семь соседних нот круга квинт в гамму?",
+   "q_en": "seven adjacent notes in the circle squish to a scale Lydian mode",
+   "quote": "If you squish any seven adjacent notes in the Circle down to a scale, you wind up with the Lydian mode",
+   "answer": "Лидийский лад.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 27,
+   "also": [],
+   "q": "Как найти септиму доминантсептаккорда с помощью круга квинт?",
+   "q_en": "dominant seventh chord find the seventh count two steps counterclockwise",
+   "quote": "Simply count two steps counterclockwise from the key in which you're building the chord to give you the seventh",
+   "answer": "Отсчитать два шага против часовой стрелки от тоники.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 28,
+   "also": [],
+   "q": "Из каких нот состоит доминантсептаккорд от фа-диез?",
+   "q_en": "dominant seventh chord in F# notes F# A# C# E",
+   "quote": "your dominant seventh chord in F# will contain the notes F#, A#, C#, and E",
+   "answer": "Фа-диез, ля-диез, до-диез и ми.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 31,
+   "also": [],
+   "q": "Как по кругу квинт найти IV и V ступени любой тональности?",
+   "q_en": "chord IV and V circle of fifths letter to the left right of tonic",
+   "quote": "The letter to the left is IV, and the letter to the right is V",
+   "answer": "Слева от тоники IV ступень, справа V (в до мажоре IV это фа, V это соль).",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 33,
+   "also": [],
+   "q": "Сколько нот из семи совпадает в гаммах соседних по кругу тональностей?",
+   "q_en": "adjacent keys circle of fifths six out of seven notes in common",
+   "quote": "Two keys that are adjacent to each other in the circle have six out of seven notes in their scales in common",
+   "answer": "Шесть из семи.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 23,
+   "also": [],
+   "q": "Сколько полутонов отделяют большую терцию от тоники в мажорном аккорде?",
+   "q_en": "major chord major third counting up four semitones",
+   "quote": "The major third interval is found simply by counting up four semitones",
+   "answer": "Четыре полутона (два целых тона).",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 15,
+   "also": [],
+   "q": "Что такое энгармонизм и как он связан с тональностями до-диез мажор и ре-бемоль мажор?",
+   "q_en": "enharmonic equivalence C sharp major identical D flat major",
+   "quote": "C♯ major will be identical to D♭ major",
+   "answer": "Энгармоническое равенство: до-диез мажор звучит так же, как ре-бемоль мажор, а записывать его бемолями проще.",
+   "kind": "hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "lang": "en",
+   "kind_book": "pdf",
+   "loc": 7,
+   "also": [],
+   "q": "С какой частотой колеблется нота ля в примере автора и какова частота ля октавой выше?",
+   "q_en": "note A vibrating at 440 Hz octave 880 Hz 2:1 ratio",
+   "quote": "this note (A) is vibrating at 440 Hz",
+   "answer": "440 Гц; октавой выше 880 Гц (отношение 2:1).",
+   "kind": "hand"
+  }
+ ],
+ "negatives": [
+  {
+   "book": "Polyrhythms_data",
+   "q": "Какой рецепт борща приводит автор?",
+   "lang": "en",
+   "kind": "neg_hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "q": "Сколько стоит подписка на приложение PolyNome?",
+   "lang": "en",
+   "kind": "neg_hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "q": "Какую модель барабанной установки автор советует купить новичку?",
+   "lang": "en",
+   "kind": "neg_hand"
+  },
+  {
+   "book": "Polyrhythms_data",
+   "q": "В каком году была основана компания Musical U?",
+   "lang": "en",
+   "kind": "neg_hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "q": "Какую гитару Fender автор рекомендует для изучения круга квинт?",
+   "lang": "en",
+   "kind": "neg_hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "q": "Кто написал вальс «Амурские волны»?",
+   "lang": "en",
+   "kind": "neg_hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "q": "Как автор предлагает настраивать гитару в открытом строе DADGAD?",
+   "lang": "en",
+   "kind": "neg_hand"
+  },
+  {
+   "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "q": "Какой кофе пьёт автор, когда сочиняет песни?",
+   "lang": "en",
+   "kind": "neg_hand"
+  }
+ ]
+}

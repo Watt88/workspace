@@ -1,0 +1,4193 @@
+[
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Какую общественную роль, по словам автора, играют полиритмы в африканской культуре?",
+  "scope": [
+   "Polyrhythms_data",
+   "Intelligent_Music_Production_data",
+   "Style_and_idea_data"
+  ],
+  "text": "По словам автора, у полиритмов в африканской культуре была важная социальная функция. Они служат музыкальным символом связей между людьми: из этих отношений складывается целостное культурное самовыражение общины. [[A:5|they are a musical symbol of the rich relationships between individuals that combine to build the cohesive cultural expression of a community]]\n\nЕщё несколько моментов из книги:\n- Полиритмы, звучащие сегодня, в основном пришли из африканских музыкальных традиций. Это ритмы для танца, которые исполняют на традиционных ударных. [[A:5|Most polyrhythms that we hear today originated in the musical traditions of Africa, with highly danceable rhythms played on traditional percussion instruments]]\n- Кроме того, полиритмы дают возможность рассказывать истории через музыку, и эта традиция продолжилась в африканской и афроамериканской музыке. [[A:5|Polyrhythms provide a perfect way to musically tell stories on many levels]]\n- В качестве примера автор приводит ритм Fanga из Либерии в исполнении Babatunde Olatunji. Полиритм там есть и внутри партии джембе, и между всеми инструментами. [[A:5|there is a polyrhythm both within the main djembe rhythm, and between all the instruments being played]]\n\n**Мои рассуждения:** этот пример хорошо показывает метафору автора. Каждый инструмент держит собственный ритм, как отдельный человек в общине, а вместе они складываются в общее целое. Сам автор так этот пример не разбирает и упоминает его просто как иллюстрацию.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "5",
+    "quote": "they are a musical symbol of the rich relationships between individuals that combine to build the cohesive cultural expression of a community",
+    "span": [
+     213,
+     362
+    ],
+    "status": "ok",
+    "found": 5
+   },
+   {
+    "alias": "A",
+    "loc": "5",
+    "quote": "Most polyrhythms that we hear today originated in the musical traditions of Africa, with highly danceable rhythms played on traditional percussion instruments",
+    "span": [
+     547,
+     713
+    ],
+    "status": "ok",
+    "found": 5
+   },
+   {
+    "alias": "A",
+    "loc": "5",
+    "quote": "Polyrhythms provide a perfect way to musically tell stories on many levels",
+    "span": [
+     859,
+     941
+    ],
+    "status": "ok",
+    "found": 5
+   },
+   {
+    "alias": "A",
+    "loc": "5",
+    "quote": "there is a polyrhythm both within the main djembe rhythm, and between all the instruments being played",
+    "span": [
+     1104,
+     1214
+    ],
+    "status": "ok",
+    "found": 5
+   }
+  ],
+  "errors": [],
+  "seconds": 18.9,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: полиритмы — музыкальный символ отношений между людьми, из которых складывается культурное единство общины. Дополнительные детали не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Является ли соотношение 4:1 полиритмом и почему?",
+  "scope": [
+   "Polyrhythms_data",
+   "Musimathics_Volume_2_data",
+   "Style_and_idea_data"
+  ],
+  "text": "**Короткий ответ:** нет. Книга прямо называет 4:1 «не полиритмом», но её собственное правило объясняет это не совсем корректно.\n\n**Что сказано в книге**\n\n- В упражнении на стр. 12 соотношение 4:1 стоит в списке примеров, и в ответах помечено: [[A:13|2. Not a polyrhythm]].\n- Правило, по которому предлагается решать упражнение: [[A:11|two rhythms will only be considered a polyrhythm if they have no common divisor other than 1]].\n- Главный признак полиритма по книге — разное деление доли: [[A:4|each rhythm containing a different beat subdivision]]. Пример с 3:2 показывает, что без контрастных долей полиритм пропадает: [[A:11|it ceases to be a polyrhythm. This is because there are no longer contrasting beats]].\n\n**Мои рассуждения**\n\n- Здесь есть противоречие. Если применить правило буквально, у 4 и 1 нет общего делителя, кроме 1. Значит, по формулировке 4:1 должно было бы оказаться полиритмом, но ответ в книге обратный.\n- Настоящая причина другая: 4 делится на 1 нацело. Четыре ноты на одну долю — это обычное деление доли, например четыре шестнадцатые на четверть. Каждая нота основного ритма совпадает с каждой четвёртой нотой второго. Получается один и тот же ритм с разной плотностью, а не два независимых ритма, которые «спорят» друг с другом.\n- Поэтому точнее так: полиритм возникает, когда ни одно число не делится на другое. Для двух чисел больше 1 это то же, что «нет общего делителя, кроме 1», а единица — исключение. По такому правилу 5:4, 2:5 и 3:7 — полиритмы, а 4:1, 6:3 и 4:2 — нет.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "13",
+    "quote": "2. Not a polyrhythm",
+    "span": [
+     243,
+     271
+    ],
+    "status": "ok",
+    "found": 13
+   },
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "two rhythms will only be considered a polyrhythm if they have no common divisor other than 1",
+    "span": [
+     328,
+     429
+    ],
+    "status": "ok",
+    "found": 11
+   },
+   {
+    "alias": "A",
+    "loc": "4",
+    "quote": "each rhythm containing a different beat subdivision",
+    "span": [
+     491,
+     550
+    ],
+    "status": "ok",
+    "found": 4
+   },
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "it ceases to be a polyrhythm. This is because there are no longer contrasting beats",
+    "span": [
+     623,
+     715
+    ],
+    "status": "ok",
+    "found": 11
+   }
+  ],
+  "errors": [],
+  "seconds": 20.6,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент верно отвечает «нет, не полиритм» и объясняет отсутствием контрастирующих долей (4 делится на 1, ритмы совпадают). Он также указывает на формулировку правила про общий делитель 1, хотя и спорит с ней; ключевой факт эталона (не полиритм из-за отсутствия контрастных долей) присутствует."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Какую фразу предлагают проговаривать, чтобы отработать ритм «три на два»?",
+  "scope": [
+   "Polyrhythms_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "Для ритма 3:2 в книге «Polyrhythms» предлагают фразу **«Hot Cup of Tea»**: [[A:13|you can use the phrase “Hot Cup of Tea” to practice 3:2 polyrhythms]].\n\nАвтор объясняет, почему это помогает: многие простые полиритмы звучат как короткие фразы речи, поэтому новичкам удобнее связать ритм с подходящей фразой: [[A:13|associating a polyrhythm with a phrase that fits with the beat]].\n\nВ книге есть ещё две подсказки:\n- Для более сложного ритма 4:3 предлагают фразу «What Atrocious Weather»: [[A:14|The slightly trickier 4:3 polyrhythm can be remembered with the phrase “What Atrocious Weather”]].\n- В дополнение к упражнению с «Hot Cup of Tea» советуют отхлопывать 3:2 ладонями по бёдрам, чтобы каждая рука вела свой ритм: [[A:17|try slapping your hands on your thighs along to a 3:2 rhythm]].",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "13",
+    "quote": "you can use the phrase “Hot Cup of Tea” to practice 3:2 polyrhythms",
+    "span": [
+     75,
+     151
+    ],
+    "status": "ok",
+    "found": 13
+   },
+   {
+    "alias": "A",
+    "loc": "13",
+    "quote": "associating a polyrhythm with a phrase that fits with the beat",
+    "span": [
+     308,
+     379
+    ],
+    "status": "ok",
+    "found": 13
+   },
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "The slightly trickier 4:3 polyrhythm can be remembered with the phrase “What Atrocious Weather”",
+    "span": [
+     488,
+     592
+    ],
+    "status": "ok",
+    "found": 14
+   },
+   {
+    "alias": "A",
+    "loc": "17",
+    "quote": "try slapping your hands on your thighs along to a 3:2 rhythm",
+    "span": [
+     720,
+     789
+    ],
+    "status": "ok",
+    "found": 17
+   }
+  ],
+  "errors": [],
+  "seconds": 16.9,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет фразу «Hot Cup of Tea» для отработки полиритма 3:2, что совпадает с эталоном; дополнительные детали не противоречат."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Сколько долей занимает полный цикл полиритма 3:4 и как это вычислить?",
+  "scope": [
+   "Polyrhythms_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data"
+  ],
+  "text": "Полный цикл полиритма 3:4 занимает **12 долей**. Это число получается как наименьшее общее кратное (НОК, по-английски lowest common multiple, LCM) чисел 3 и 4.\n\n**По книге (A, «Polyrhythms»)**\n- НОК — это наименьшее число, на которое без остатка делятся оба числа: [[A:15|the lowest number that two (or more) numbers can fit evenly into.]]\n- Через НОК можно точно рассчитать, как считать полиритм: [[A:15|We can figure out exactly how to count a polyrhythm by finding the LCM of the two numbers ​X​ and ​Y​.]]\n- Для 3:4 автор прямо приводит результат: [[A:15|The LCM is 12, meaning that 12 beats represent a full “cycle” of the polyrhythm]], то есть только через 12 долей ритмы снова совпадают.\n- Если разложить цикл на сетку из 12 долей, видно, что обе линии равномерны, а вместе они звучат только на первой доле: [[A:15|the only time the beats occur simultaneously is right at the beginning - on beat one.]]\n\n**Как это вычислить (мои рассуждения)**\n1. Выпишите кратные чисел. Для 3: 3, 6, 9, **12**. Для 4: 4, 8, **12**. Первое общее число — 12.\n2. Есть и короткий путь. В книге полиритмом считаются только ритмы, у которых нет общего делителя, кроме 1. Для таких чисел НОК равен их произведению: 3 × 4 = 12.\n3. Сетка из 12 клеток выглядит так:\n   - линия «3» звучит каждые 12 / 3 = 4 клетки, то есть на клетках 1, 5 и 9;\n   - линия «4» звучит каждые 12 / 4 = 3 клетки, то есть на клетках 1, 4, 7 и 10;\n   - вместе они ударяют только на клетке 1.\n\nВ книге есть и упражнение: самому найти НОК для 4:5 и нарисовать сетку. По той же логике получится 20.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "the lowest number that two (or more) numbers can fit evenly into.",
+    "span": [
+     265,
+     339
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "We can figure out exactly how to count a polyrhythm by finding the LCM of the two numbers ​X​ and ​Y​.",
+    "span": [
+     398,
+     509
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "The LCM is 12, meaning that 12 beats represent a full “cycle” of the polyrhythm",
+    "span": [
+     552,
+     640
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "the only time the beats occur simultaneously is right at the beginning - on beat one.",
+    "span": [
+     815,
+     909
+    ],
+    "status": "ok",
+    "found": 15
+   }
+  ],
+  "errors": [],
+  "seconds": 18.6,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет 12 долей и объясняет вычисление через наименьшее общее кратное чисел 3 и 4, что совпадает с эталоном; дополнительные детали верны."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Чему равен полный цикл полиритма 4:5?",
+  "scope": [
+   "Polyrhythms_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data",
+   "Style_and_idea_data"
+  ],
+  "text": "Полный цикл 4:5 длится 20 долей. Книга считает его через наименьшее общее кратное (НОК) чисел 4 и 5: [[A:16|The lowest common multiple (LCM) of 4 and 5 is 20 - therefore, it will take 20 beats to go through one full cycle of 4:5.]]\n\n**Мои рассуждения:** 20 долей нужны потому, что 4 и 5 не имеют общих делителей, кроме 1. Поэтому они снова совпадают на сильной доле только через 4 × 5 долей. На сетке из 20 клеток:\n- ритм «4» звучит каждые 5 клеток: 1, 6, 11, 16;\n- ритм «5» звучит каждые 4 клетки: 1, 5, 9, 13, 17.\n\nДальше книга советует просто играть по такой сетке: [[A:16|Count out loud, clapping or tapping your foot everytime an “X” appears.]]",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "16",
+    "quote": "The lowest common multiple (LCM) of 4 and 5 is 20 - therefore, it will take 20 beats to go through one full cycle of 4:5.",
+    "span": [
+     101,
+     231
+    ],
+    "status": "ok",
+    "found": 16
+   },
+   {
+    "alias": "A",
+    "loc": "16",
+    "quote": "Count out loud, clapping or tapping your foot everytime an “X” appears.",
+    "span": [
+     569,
+     649
+    ],
+    "status": "ok",
+    "found": 16
+   }
+  ],
+  "errors": [],
+  "seconds": 15.7,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ говорит, что полный цикл 4:5 равен 20 долям (через НОК 4 и 5), что совпадает с эталоном. Дополнительные рассуждения не противоречат."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "На какой темп советуют ставить метроном новичкам, изучающим полиритмы?",
+  "scope": [
+   "Polyrhythms_data",
+   "Musimathics_Volume_2_data",
+   "Style_and_idea_data"
+  ],
+  "text": "В книге «Polyrhythms» советуют ставить **60 ударов в минуту** и начинать медленно: [[A:17|be sure to start slow; set your metronome to 60 beats per minute, taking the time to make sure you]] — то есть следить, чтобы точно попадал каждый звук и каждая доля. Ускоряться можно, когда ритм станет привычнее: [[A:18|speeding up as you become more comfortable with the rhythm]].\n\nЕсли с обычным метрономом сразу не выходит, автор предлагает специальный метроном для полиритмов, например PolyNome. Он отбивает доли обоих размеров одновременно: [[A:18|It plays each beat of both meters for you to play along to]]. В приложении есть журнал практики, где видно, какие ритмы и в каком темпе вы играли.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "17",
+    "quote": "be sure to start slow; set your metronome to 60 beats per minute, taking the time to make sure you",
+    "span": [
+     83,
+     190
+    ],
+    "status": "ok",
+    "found": 17
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "speeding up as you become more comfortable with the rhythm",
+    "span": [
+     304,
+     371
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "It plays each beat of both meters for you to play along to",
+    "span": [
+     537,
+     604
+    ],
+    "status": "fuzzy",
+    "found": 18
+   }
+  ],
+  "errors": [],
+  "seconds": 13.5,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ указывает 60 ударов в минуту и начинать медленно, что совпадает с эталоном и выдержкой; дополнительные детали не противоречат."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Что происходит на отметке 1:22 в песне Nine Inch Nails «La Mer»?",
+  "scope": [
+   "Polyrhythms_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data"
+  ],
+  "text": "Если коротко: на 1:22 вступают барабаны. Они играют четыре доли против трёх долей фортепиано, и получается полиритм 4:3.\n\n**Что говорит книга**\n\nВ «Polyrhythms» эта песня дана как упражнение на слух. Трент Резнор, по словам автора, любит эксперименты со звуком, и среди его приёмов есть полиритмы: [[A:6|Listen to one of NIN's more soothing tracks, appropriately entitled \"La Mer\", and see if you can spot the polyrhythm]]\n\nОтвет приведён на следующей странице: [[A:7|At [1:22], the drums kick in, playing four beats against the three beats of the piano.]]\n\nЧуть дальше книга объясняет, как устроен такой ритм. Четыре удара и три удара растягиваются на один и тот же отрезок времени и совпадают только на первой доле: [[A:10|As in the previous example, the only time the beats line up is on beat one.]] Чтобы запомнить 4:3, автор предлагает фразу «What Atrocious Weather»: [[A:14|The slightly trickier 4:3 polyrhythm can be remembered with the phrase \"What Atrocious Weather\"]]\n\n**Мои рассуждения**\n\nЧтобы услышать полиритм, сначала поймайте трёхдольную пульсацию фортепиано до 1:22. Когда вступят барабаны, считайте их удары отдельно, на четыре. Ощущение «плывущего» ритма как раз и возникает оттого, что две сетки совпадают только раз за цикл.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "6",
+    "quote": "Listen to one of NIN's more soothing tracks, appropriately entitled \"La Mer\", and see if you can spot the polyrhythm",
+    "span": [
+     298,
+     422
+    ],
+    "status": "ok",
+    "found": 6
+   },
+   {
+    "alias": "A",
+    "loc": "7",
+    "quote": "At [1:22], the drums kick in, playing four beats against the three beats of the piano.",
+    "span": [
+     462,
+     556
+    ],
+    "status": "ok",
+    "found": 7
+   },
+   {
+    "alias": "A",
+    "loc": "10",
+    "quote": "As in the previous example, the only time the beats line up is on beat one.",
+    "span": [
+     718,
+     802
+    ],
+    "status": "ok",
+    "found": 10
+   },
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "The slightly trickier 4:3 polyrhythm can be remembered with the phrase \"What Atrocious Weather\"",
+    "span": [
+     873,
+     977
+    ],
+    "status": "ok",
+    "found": 14
+   }
+  ],
+  "errors": [],
+  "seconds": 11.6,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ прямо указывает, что на 1:22 вступают барабаны, играя четыре доли против трёх у фортепиано, что совпадает с эталоном; дополнительные пояснения не противоречат ему."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Как в Африке называют гемиолу, повторяющуюся на протяжении всей песни?",
+  "scope": [
+   "Polyrhythms_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data"
+  ],
+  "text": "Её называют **cross rhythm** (кросс-ритм). В книге это систематический ритм, на котором строится вся пьеса: [[A:7|it often repeats across the whole song and is referred to as a cross rhythm, or a systematic rhythm that is the base of a piece]]\n\nСама гемиола — это три равные доли, уложенные в две: [[A:7|three notes are superimposed onto two]]. Книга упоминает, что в западной музыке гемиолу тоже применяют, но иначе: в барокко ею удивляли слушателя.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "7",
+    "quote": "it often repeats across the whole song and is referred to as a cross rhythm, or a systematic rhythm that is the base of a piece",
+    "span": [
+     108,
+     243
+    ],
+    "status": "ok",
+    "found": 7
+   },
+   {
+    "alias": "A",
+    "loc": "7",
+    "quote": "three notes are superimposed onto two",
+    "span": [
+     298,
+     343
+    ],
+    "status": "ok",
+    "found": 7
+   }
+  ],
+  "errors": [],
+  "seconds": 9.8,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет «cross rhythm» (кросс-ритм) и поясняет, что это систематический ритм, на котором строится вся пьеса, что совпадает с эталоном. Дополнительные детали о гемиоле не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Какую функцию приложения PolyNome автор особенно хвалит?",
+  "scope": [
+   "Polyrhythms_data",
+   "Intelligent_Music_Production_data",
+   "Style_and_idea_data"
+  ],
+  "text": "Автор особенно хвалит функцию **Practice Log**, то есть журнал занятий: [[A:18|Especially wonderful is the app's Practice Log feature - you can keep track of what rhythms you played at what tempos and for how long]]. Там же есть [[A:18|access to charts and reports to track your progress]], то есть графики и отчёты, по которым видно, как продвигается обучение.\n\nСамо приложение автор советует тем, кому трудно сразу сыграть полиритм под обычный метроном. PolyNome [[A:18|plays each beat of both meters for you to play along to]], то есть отыгрывает доли обоих метров одновременно, и под него можно играть.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "Especially wonderful is the app's Practice Log feature - you can keep track of what rhythms you played at what tempos and for how long",
+    "span": [
+     72,
+     215
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "access to charts and reports to track your progress",
+    "span": [
+     229,
+     289
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "plays each beat of both meters for you to play along to",
+    "span": [
+     465,
+     529
+    ],
+    "status": "ok",
+    "found": 18
+   }
+  ],
+  "errors": [],
+  "seconds": 11.6,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет Practice Log (журнал практики), упоминает ритмы, темпы, длительность, графики и отчёты — совпадает с эталоном."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Как пианисту или гитаристу потренироваться играть полиритм?",
+  "scope": [
+   "Polyrhythms_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data"
+  ],
+  "text": "В книге «Polyrhythms» (источник A) есть раздел как раз для пианистов и гитаристов, плюс общие советы. Если собрать их в план, получится так.\n\n**1. Начните с самого простого: 3:2**\nСыграйте ритм на инструменте, хоть на одной ноте, хоть короткий мотив, и одновременно напевайте, отстукивайте или прохлопывайте поверх него другой ритм: [[A:19|Try playing a beat on your instrument, whether it's on one note or a simple melodic motif, while humming, tapping, or clapping overtop in a different rhythm.]] Начинать советуют с 3:2: [[A:19|Start with an easier one such as 3:2.]]\n\n**2. Потом гаммы поверх бита**\nКогда это начнёт получаться, включите метроном или драм-машину в 4/4 и играйте гаммы в другом делении, например 5:4: [[A:19|lay down a 4/4 beat on a metronome or drum machine, and try playing scales in a different rhythm overtop the beat]]. Гитаристам автор советует примеры от Mile High Shred, где показано, как получить полиритм «на два инструмента» при игре поверх барабанов.\n\n**3. Вспомогательные приёмы из книги**\n- **Медленно и с малого.** [[A:17|the key is to start small and start slow, then work your way up]]. Метроном ставьте на 60 ударов в минуту.\n- **Фразы-подсказки.** Для 3:2 подходит «Hot Cup of Tea», для 4:3 — «What Atrocious Weather».\n- **Перкуссия телом.** Если на инструменте пока не выходит, хлопайте 3:2 по бёдрам, каждой рукой свой ритм: [[A:17|with your right and left hands each taking on one rhythm]].\n- **Секвенсор.** Например, onlinesequencer.net: в нём можно настроить сетку под любой полиритм и [[A:18|hear exactly what your polyrhythm sounds like and clap or play along]].\n\n**Мои рассуждения (в книге этого нет)**\n- Пианисту естественно перенести упражнение с хлопками по бёдрам на клавиатуру: левая рука играет 2, правая 3. Сначала на одной ноте в каждой руке, потом левая берёт аккорды, а правая играет мелодию триолями.\n- Гитаристу удобно держать один ритм ногой (притоптывать), а другой играть медиатором. Ещё один вариант — басовые ноты пальцем против мелодии в фингерстайле.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "19",
+    "quote": "Try playing a beat on your instrument, whether it's on one note or a simple melodic motif, while humming, tapping, or clapping overtop in a different rhythm.",
+    "span": [
+     333,
+     499
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "A",
+    "loc": "19",
+    "quote": "Start with an easier one such as 3:2.",
+    "span": [
+     525,
+     571
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "A",
+    "loc": "19",
+    "quote": "lay down a 4/4 beat on a metronome or drum machine, and try playing scales in a different rhythm overtop the beat",
+    "span": [
+     721,
+     843
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "A",
+    "loc": "17",
+    "quote": "the key is to start small and start slow, then work your way up",
+    "span": [
+     1050,
+     1122
+    ],
+    "status": "ok",
+    "found": 17
+   },
+   {
+    "alias": "A",
+    "loc": "17",
+    "quote": "with your right and left hands each taking on one rhythm",
+    "span": [
+     1366,
+     1431
+    ],
+    "status": "ok",
+    "found": 17
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "hear exactly what your polyrhythm sounds like and clap or play along",
+    "span": [
+     1530,
+     1607
+    ],
+    "status": "ok",
+    "found": 18
+   }
+  ],
+  "errors": [],
+  "seconds": 16.6,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: играть бит на инструменте (на одной ноте или мотиве) и одновременно напевать, отстукивать или хлопать другой ритм. Цитата из книги приведена дословно, дополнительные советы не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Что обозначают X и Y в записи полиритма X:Y?",
+  "scope": [
+   "Polyrhythms_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Style_and_idea_data"
+  ],
+  "text": "По книге «Polyrhythms», в записи X:Y **Y — это основная пульсация, а X — контрритм, который играется поверх неё**: [[A:8|Generally, Y is the basic pulse, over which the counter rhythm will be played, and X is the counter rhythm.]]\n\n**Другие способы записи.** Книга называет три равнозначных варианта: «X over Y», «X against Y» и «X:Y». [[A:8|All three mean the same thing, and are used interchangeably.]]\n\n**Пример 3:2 (гемиола).** Здесь X = 3, Y = 2. Три равномерно расположенных удара звучат поверх двух долей, поэтому это называют триолями поверх дуолей: [[A:8|The polyrhythm will be played over two beats, with three evenly spaced beats played on top of those two beats]]. Обе группы занимают одинаковое время, и их первые ноты звучат одновременно: [[A:9|the triplets and duplets take up the same amount of time, so that the first notes in each individual rhythm will sound together]].\n\n**Ещё два момента из книги:**\n- Сочетание считается полиритмом, только если у X и Y нет общего делителя, кроме 1: [[A:11|two rhythms will only be considered a polyrhythm if they have no common divisor other than 1]]. Поэтому 4:1 полиритмом не считается.\n- Чтобы просчитать полиритм, книга советует найти наименьшее общее кратное X и Y. Например, для 3:4 это 12, то есть [[A:15|12 beats represent a full “cycle” of the polyrhythm]].",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "Generally, Y is the basic pulse, over which the counter rhythm will be played, and X is the counter rhythm.",
+    "span": [
+     115,
+     230
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "All three mean the same thing, and are used interchangeably.",
+    "span": [
+     336,
+     404
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "The polyrhythm will be played over two beats, with three evenly spaced beats played on top of those two beats",
+    "span": [
+     558,
+     675
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "9",
+    "quote": "the triplets and duplets take up the same amount of time, so that the first notes in each individual rhythm will sound together",
+    "span": [
+     753,
+     888
+    ],
+    "status": "ok",
+    "found": 9
+   },
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "two rhythms will only be considered a polyrhythm if they have no common divisor other than 1",
+    "span": [
+     1005,
+     1106
+    ],
+    "status": "ok",
+    "found": 11
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "12 beats represent a full “cycle” of the polyrhythm",
+    "span": [
+     1261,
+     1321
+    ],
+    "status": "ok",
+    "found": 15
+   }
+  ],
+  "errors": [],
+  "seconds": 11.1,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ прямо утверждает, что Y — основной пульс, а X — контрритм поверх него, что совпадает с эталоном; дополнительные детали не противоречат."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Почему в ритме 3:2 триоли приходится играть быстрее дуолей?",
+  "scope": [
+   "Polyrhythms_data",
+   "Style_and_idea_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "Дело в том, что обе партии должны уложиться в один и тот же отрезок времени.\n\n**Что говорит книга**\n- В записи 3:2 число 2 — это основная пульсация, а 3 — встречный ритм. Три равные ноты играются поверх двух долей. Это называют «триоли поверх дуолей»: [[A:8|The polyrhythm will be played over two beats, with three evenly spaced beats played on top of those two beats]].\n- Главное условие: [[A:9|Remember that the triplets and duplets take up the same amount of time, so that the first notes in each individual rhythm will sound together.]]\n\n**Мои рассуждения (прямо в книге этого нет)**\nЕсли три ноты и две ноты занимают одинаковое время, то каждая нота триоли короче ноты дуоли. Допустим, весь цикл длится 1 секунду. Тогда:\n- дуоли звучат каждые 1/2 с (0,5 с);\n- триоли звучат каждые 1/3 с (≈0,33 с).\n\nПолучается, что нота триоли в 1,5 раза короче, то есть триоли идут в полтора раза быстрее. Обе партии начинаются вместе на первой доле. Внутри цикла их удары расходятся, а на следующей сильной доле снова совпадают. Из-за этого и появляется ощущение двух скоростей одновременно, которое книга называет напряжением и разрядкой.\n\nДля практики книга советует простое упражнение: отстукивать 3:2 ладонями по бёдрам, каждая рука играет свой ритм. Начинать стоит медленно, с метрономом на 60 ударов в минуту (с. 17).",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "The polyrhythm will be played over two beats, with three evenly spaced beats played on top of those two beats",
+    "span": [
+     252,
+     369
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "9",
+    "quote": "Remember that the triplets and duplets take up the same amount of time, so that the first notes in each individual rhythm will sound together.",
+    "span": [
+     390,
+     540
+    ],
+    "status": "ok",
+    "found": 9
+   }
+  ],
+  "errors": [],
+  "seconds": 11.4,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ передаёт ключевой факт эталона: обе фигуры занимают одно и то же время и первые ноты совпадают на первой доле; из этого верно выведено, что триоли быстрее (в 1,5 раза). Выводы честно помечены как собственные рассуждения."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Кто и когда придумал круг квинт?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "**По книге A** круг квинт придумал русский композитор и теоретик музыки **Николай Дилецкий** в конце 1670-х годов: [[A:5|Russian composer and music theorist Nikolay Diletsky set this whole wheel rolling in the late 1670’s.]]\n\n- Он описал его в трактате *Grammatika*, задуманном как руководство по композиции с опорой на правила теории музыки: [[A:5|He intended his book ​Grammatika​ as a guide to composition, but with the rules of music theory in mind]].\n- Позже схему расширяли и дорабатывали, и из неё получилась привычная нам круговая диаграмма: [[A:6|Since then, it has been expanded and improved-upon to yield the comprehensive circular diagram we have today.]]\n\n**Мои рассуждения:** имена следующих теоретиков, которые развивали круг квинт, в найденных фрагментах не названы. Обычно в этой связи вспоминают Иоганна Давида Хайнихена (1728), но это моё знание, а не цитата из ваших книг.\n\n**Ещё одна деталь из книги B:** в строгом смысле круг замыкается только в равномерной темперации. Если считать квинту точным отношением 2:3, получается не круг, а спираль: [[B:16|When fifths are defined as the ratio of two integers, 2:3, however, as in this study, they produce a tone spiral rather than a tone circle.]]",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "5",
+    "quote": "Russian composer and music theorist Nikolay Diletsky set this whole wheel rolling in the late 1670’s.",
+    "span": [
+     115,
+     224
+    ],
+    "status": "ok",
+    "found": 5
+   },
+   {
+    "alias": "A",
+    "loc": "5",
+    "quote": "He intended his book ​Grammatika​ as a guide to composition, but with the rules of music theory in mind",
+    "span": [
+     343,
+     454
+    ],
+    "status": "ok",
+    "found": 5
+   },
+   {
+    "alias": "A",
+    "loc": "6",
+    "quote": "Since then, it has been expanded and improved-upon to yield the comprehensive circular diagram we have today.",
+    "span": [
+     550,
+     667
+    ],
+    "status": "ok",
+    "found": 6
+   },
+   {
+    "alias": "B",
+    "loc": "16",
+    "quote": "When fifths are defined as the ratio of two integers, 2:3, however, as in this study, they produce a tone spiral rather than a tone circle.",
+    "span": [
+     1066,
+     1214
+    ],
+    "status": "ok",
+    "found": 16
+   }
+  ],
+  "errors": [],
+  "seconds": 12.7,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет Николая Дилецкого, русского композитора и теоретика, и конец 1670-х годов — это совпадает с эталоном. Дополнительные детали не противоречат ему."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "На каком ладу гитары струна делится пополам и где получается квинта?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "Polyrhythms_data"
+  ],
+  "text": "**По книге «The Ultimate Guide to: The Circle of Fifths»:**\n\n- **12-й лад:** струна делится пополам, соотношение 2:1, то есть получается октава. [[A:8|when you put your finger on the 12th fret of a guitar, you're splitting that string in half (2:1 ratio)]]\n- **7-й лад:** здесь получается квинта. [[A:8|To produce the fifth, divide the string in three parts (7th fret).]]\n- Квинта соответствует соотношению 3:2. [[A:8|The next smallest simple ratio is 3:2]] На ней основаны гитарные «power chords». [[A:8|which is how the famous guitar \"power chords\" work.]]\n\n**Мои рассуждения:** фраза «разделить струну на три части» сформулирована неточно. На 7-м ладу от порожка отсекается примерно треть струны, а звучит оставшаяся часть, около 2/3 длины. Поэтому частота становится выше в 3/2 раза, и это квинта. Есть ещё одна тонкость. При равномерной темперации 7-й лад даёт квинту в 700 центов, а чистая квинта 3:2 равна 702 центам ([[B:57|702.0]] в таблице интервалов книги «Harmonograph»). Поэтому 7-й лад лишь очень близок к точной трети струны, но не совпадает с ней.",
+  "tools": [
+   "search",
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "when you put your finger on the 12th fret of a guitar, you're splitting that string in half (2:1 ratio)",
+    "span": [
+     145,
+     256
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "To produce the fifth, divide the string in three parts (7th fret).",
+    "span": [
+     297,
+     371
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "The next smallest simple ratio is 3:2",
+    "span": [
+     412,
+     457
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "which is how the famous guitar \"power chords\" work.",
+    "span": [
+     499,
+     558
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "B",
+    "loc": "57",
+    "quote": "702.0",
+    "span": [
+     925,
+     939
+    ],
+    "status": "missing",
+    "found": null
+   }
+  ],
+  "errors": [],
+  "seconds": 19.3,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ верно указывает 12-й лад (деление пополам, 2:1) и 7-й лад (квинта), что совпадает с эталоном; дополнительные пояснения не противоречат."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Сколько полутонов в чистой квинте?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Intelligent_Music_Production_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data"
+  ],
+  "text": "В чистой квинте **7 полутонов**. В книге A это сказано прямо: [[A:11|remember, a perfect fifth = seven semitones]].\n\nКак найти квинту на практике, по книге:\n- Отсчитайте семь полутонов вверх от тоники. На фортепиано это семь соседних клавиш, чёрные тоже считаются: [[A:8|the fifth can be found by counting ​seven semitones up​. Starting at the tonic, this is seven adjacent keys]].\n- Частоты звуков чистой квинты соотносятся как 3:2, поэтому она звучит консонантно. На гитаре её даёт 7-й лад: [[A:8|To produce the fifth, divide the string in three parts (7th fret).]]\n\n**Мои рассуждения:** пример — от C вверх на 7 полутонов (C♯, D, D♯, E, F, F♯, G) получается G. Именно так соседние ноты и связаны в круге квинт.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "remember, a perfect fifth = seven semitones",
+    "span": [
+     62,
+     114
+    ],
+    "status": "ok",
+    "found": 11
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "the fifth can be found by counting ​seven semitones up​. Starting at the tonic, this is seven adjacent keys",
+    "span": [
+     265,
+     380
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "To produce the fifth, divide the string in three parts (7th fret).",
+    "span": [
+     493,
+     567
+    ],
+    "status": "ok",
+    "found": 8
+   }
+  ],
+  "errors": [],
+  "seconds": 13.4,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент прямо отвечает, что в чистой квинте 7 полутонов, что совпадает с эталоном и выдержкой. Дополнительные детали (3:2, 7-й лад, пример C–G) не противоречат ответу."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "В каком порядке добавляются диезы при движении по кругу квинт по часовой стрелке?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "Intelligent_Music_Production_data"
+  ],
+  "text": "Порядок диезов: **F – C – G – D – A – E – B** (фа, до, соль, ре, ля, ми, си).\n\n**Как это устроено (по книге A):**\n- Начинаем с C major (без знаков) и движемся по часовой стрелке. В G major один диез (F♯), в D major два (F♯, C♯) и так далее: [[A:14|Soon you'll notice that new sharps are added in the order F-C-G-D-A-E-B.]]\n- Количество шагов от C равно количеству знаков. Например, до B major пять шагов, поэтому в нём пять диезов: [[A:14|its sharps are F♯, C♯, G♯, D♯, and]] A♯.\n- Против часовой стрелки добавляются бемоли, в обратном порядке: [[A:14|flats are added in the reverse order: B-E-A-D-G-C-F.]]\n- Мнемоника из книги для порядка диезов: [[A:14|\"Father Christmas Gave Dad An Electric Blanket\".]]\n\n**Мои рассуждения:** сама последовательность F-C-G-D-A-E-B тоже идёт по квинтам вверх. Каждый новый диез стоит на квинту выше предыдущего, так же как тональности на круге. Новый диез всегда приходится на VII ступень новой тональности: в G major это F♯, в D major это C♯.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "Soon you'll notice that new sharps are added in the order F-C-G-D-A-E-B.",
+    "span": [
+     241,
+     322
+    ],
+    "status": "ok",
+    "found": 14
+   },
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "its sharps are F♯, C♯, G♯, D♯, and",
+    "span": [
+     432,
+     475
+    ],
+    "status": "ok",
+    "found": 14
+   },
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "flats are added in the reverse order: B-E-A-D-G-C-F.",
+    "span": [
+     545,
+     606
+    ],
+    "status": "ok",
+    "found": 14
+   },
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "\"Father Christmas Gave Dad An Electric Blanket\".",
+    "span": [
+     648,
+     705
+    ],
+    "status": "ok",
+    "found": 14
+   }
+  ],
+  "errors": [],
+  "seconds": 12.7,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ даёт порядок диезов F-C-G-D-A-E-B (фа, до, соль, ре, ля, ми, си), полностью совпадающий с эталоном; дополнительные пояснения не противоречат ему."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Как быстро найти параллельный минор данной мажорной тональности по кругу квинт?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Style_and_idea_data"
+  ],
+  "text": "Чтобы найти параллельную минорную тональность (relative minor), отсчитайте **три позиции по часовой стрелке** от мажорной тональности на круге квинт.\n\n**По книге** (источник A):\n\n- Параллельный минор имеет тот же ключевой знак, что и мажор, а значит, и те же ноты: [[A:17|the relative minor of a key has the same key signature, and therefore all the same notes, as the major]].\n- **Способ 1, по кругу квинт.** Сделайте три шага по часовой стрелке. Пример из книги для C: [[A:18|simply move three positions clockwise around the to find the relative minor! So, starting from C, count]] → G (1), D (2), A (3). Получается A minor.\n- **Способ 2, через гамму.** Тоника минора стоит на VI ступени мажорной гаммы: [[A:18|The relative minor tonic will be on the sixth degree of the scale.]] Это то же самое, что [[A:18|a major sixth up or a minor third down]], то есть большая секста вверх или малая терция вниз.\n- Ещё одна закономерность: [[A:18|the relative minors going clockwise around the circle ​are also a fifth apart!]] Минорные тональности по кругу тоже идут через квинту, поэтому их можно вписать прямо в тот же круг.\n\n**Мои рассуждения.** Самый быстрый на практике приём — опуститься на малую терцию (3 полутона). Например, от G вниз будет E, значит E minor. От F вниз будет D, значит D minor. Шаги по кругу дают тот же результат, потому что три квинты вверх (C→G→D→A) за вычетом октав равны большой сексте. Во многих схемах круга минорные тональности уже подписаны во внутреннем кольце, напротив своих мажорных.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "17",
+    "quote": "the relative minor of a key has the same key signature, and therefore all the same notes, as the major",
+    "span": [
+     265,
+     376
+    ],
+    "status": "ok",
+    "found": 17
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "simply move three positions clockwise around the to find the relative minor! So, starting from C, count",
+    "span": [
+     471,
+     583
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "The relative minor tonic will be on the sixth degree of the scale.",
+    "span": [
+     706,
+     781
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "a major sixth up or a minor third down",
+    "span": [
+     803,
+     850
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "the relative minors going clockwise around the circle ​are also a fifth apart!",
+    "span": [
+     931,
+     1018
+    ],
+    "status": "ok",
+    "found": 18
+   }
+  ],
+  "errors": [],
+  "seconds": 12.8,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: сдвинуться на три позиции по часовой стрелке (C → G, D, A = A minor). Дополнительные пояснения верны и не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Какой лад получается, если сжать семь соседних нот круга квинт в гамму?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Musimathics_Volume_2_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data"
+  ],
+  "text": "По книге A это **лидийский лад (Lydian)**, а не мажорная гамма. Там прямо сказано: [[A:19|If you squish any seven adjacent notes in the Circle down to a scale, you wind up with the ​Lydian mode​, rather than the major scale]].\n\n**Звучание.** По сравнению с мажором лидийский лад звучит «парящим», как бы вечно неразрешённым: [[A:19|the ​Lydian mode​ is distinctive in its floaty, perpetually unresolved demeanor]].\n\n**Как получить мажор.** Начинать нужно на одну ноту раньше, то есть с ноты, стоящей против часовой стрелки от тоники: [[A:22|count seven notes clockwise, beginning from the note immediately counterclockwise​ in the circle (otherwise you’ll find the Lydian mode)]].\n\n**Теоретическая связь.** На этом свойстве круга квинт джазовый теоретик George Russell построил свою Lydian Chromatic concept: [[A:19|Jazz theorist George Russell built his Lydian Chromatic concept on this quality of the Circle of Fifths]].\n\n**Пример (мои рассуждения).** Возьмём семь нот подряд, начиная с C: C–G–D–A–E–B–F♯. Если расположить их по высоте, получится C D E F♯ G A B, то есть C-лидийский: мажор с повышенной четвёртой ступенью. Если же начать с F (F–C–G–D–A–E–B), выйдет обычный до мажор.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "19",
+    "quote": "If you squish any seven adjacent notes in the Circle down to a scale, you wind up with the ​Lydian mode​, rather than the major scale",
+    "span": [
+     83,
+     225
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "A",
+    "loc": "19",
+    "quote": "the ​Lydian mode​ is distinctive in its floaty, perpetually unresolved demeanor",
+    "span": [
+     325,
+     413
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "A",
+    "loc": "22",
+    "quote": "count seven notes clockwise, beginning from the note immediately counterclockwise​ in the circle (otherwise you’ll find the Lydian mode)",
+    "span": [
+     534,
+     679
+    ],
+    "status": "ok",
+    "found": 22
+   },
+   {
+    "alias": "A",
+    "loc": "19",
+    "quote": "Jazz theorist George Russell built his Lydian Chromatic concept on this quality of the Circle of Fifths",
+    "span": [
+     809,
+     921
+    ],
+    "status": "ok",
+    "found": 19
+   }
+  ],
+  "errors": [],
+  "seconds": 15.7,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет лидийский лад, что совпадает с эталоном и подтверждается цитатой из книги. Дополнительные пояснения верны и не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Как найти септиму доминантсептаккорда с помощью круга квинт?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data"
+  ],
+  "text": "**По книге.** Доминантсептаккорд — это мажорное трезвучие с малой септимой сверху: [[A:27|The dominant seventh chord simply consists of a major triad with a minor seventh stacked on top.]]\n\nПорядок такой:\n1. **Квинта и терция.** Находятся так же, как в обычном трезвучии. Важно помнить, что терция здесь большая: [[A:27|keeping in mind that dominant seventh chords will contain a major third]]\n2. **Септима.** Отсчитайте два шага по кругу против часовой стрелки от тоники аккорда: [[A:27|Simply count two steps ​counterclockwise ​from the key in which you’re building the chord to give you the seventh.]]\n\n**Мои рассуждения (пример и почему это работает).**\n- Для G7: от G идём против часовой стрелки — сначала к C, затем к F. F и есть септима, аккорд получается G–B–D–F.\n- Шаг против часовой стрелки — это кварта вверх. Две кварты от G дают G → C → F, а это малая септима (10 полутонов). Поэтому правило всегда даёт именно малую септиму, какая и нужна доминантсептаккорду.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "27",
+    "quote": "The dominant seventh chord simply consists of a major triad with a minor seventh stacked on top.",
+    "span": [
+     83,
+     188
+    ],
+    "status": "ok",
+    "found": 27
+   },
+   {
+    "alias": "A",
+    "loc": "27",
+    "quote": "keeping in mind that dominant seventh chords will contain a major third",
+    "span": [
+     313,
+     393
+    ],
+    "status": "ok",
+    "found": 27
+   },
+   {
+    "alias": "A",
+    "loc": "27",
+    "quote": "Simply count two steps ​counterclockwise ​from the key in which you’re building the chord to give you the seventh.",
+    "span": [
+     481,
+     604
+    ],
+    "status": "ok",
+    "found": 27
+   }
+  ],
+  "errors": [],
+  "seconds": 13.9,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: отсчитать два шага против часовой стрелки от тоники для получения септимы. Пример G7 (G→C→F) корректен."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Из каких нот состоит доминантсептаккорд от фа-диез?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Intelligent_Music_Production_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data"
+  ],
+  "text": "Доминантсептаккорд от фа-диез (F#7) состоит из нот **F# – A# – C# – E** (фа-диез, ля-диез, до-диез, ми).\n\n**Как это объясняет книга A («The Ultimate Guide to: The Circle of Fifths»)**\n\nЭтот пример разобран прямо в книге:\n- Сначала строится мажорное трезвучие: [[A:28|Your major triad in F# will contain the notes F#, A#, and C#.]]\n- Септиму находят по кругу квинт: нужно отсчитать два шага против часовой стрелки от тоники: [[A:27|Simply count two steps ​counterclockwise ​from the key in which you're building the chord to give you the seventh.]]\n- От F# так получается E, и в итоге аккорд [[A:28|will contain the notes F#, A#, C#, and]] E.\n\n**Мои рассуждения**\n\nE — это малая септима от F#. Поэтому в доминантсептаккорде она натуральная, а не E#: E# дала бы большую септиму, то есть большой мажорный септаккорд. Кстати, F#7 — это доминанта к си мажору и си минору.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "28",
+    "quote": "Your major triad in F# will contain the notes F#, A#, and C#.",
+    "span": [
+     260,
+     330
+    ],
+    "status": "ok",
+    "found": 28
+   },
+   {
+    "alias": "A",
+    "loc": "27",
+    "quote": "Simply count two steps ​counterclockwise ​from the key in which you're building the chord to give you the seventh.",
+    "span": [
+     424,
+     547
+    ],
+    "status": "ok",
+    "found": 27
+   },
+   {
+    "alias": "A",
+    "loc": "28",
+    "quote": "will contain the notes F#, A#, C#, and",
+    "span": [
+     591,
+     638
+    ],
+    "status": "ok",
+    "found": 28
+   }
+  ],
+  "errors": [],
+  "seconds": 10.5,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент указал верные ноты F#, A#, C#, E, что полностью совпадает с эталоном. Дополнительные пояснения не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Как по кругу квинт найти IV и V ступени любой тональности?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Style_and_idea_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "Всё дело в соседях: IV и V стоят по бокам от тоники.\n\n**По книге (источник A)**\n- Правило такое: возьмите на круге любую ноту и считайте её I ступенью. Сосед слева — IV ступень, сосед справа — V: [[A:31|just pick any letter around the circle and treat that as I. The letter to the left is IV, and the letter to the right is V]].\n- Пример из книги: [[A:31|So chord IV of C is F, and chord V is G.]]\n- Почему это работает: по часовой стрелке каждая следующая нота на чистую квинту выше предыдущей ([[A:11|going clockwise around the circle, each note is a ​fifth ​(a perfect fifth, to be exact) above the previous one]]). Поэтому V стоит справа от тоники, а IV слева, и вместе I, IV и V образуют компактную группу. Этим книга объясняет, почему прогрессия I–IV–V звучит так привычно: [[A:34|with V found immediately to the right of the tonic, and IV immediately to the left]].\n- Чем ближе аккорды на круге, тем теснее их родство: [[A:31|The closer they are in the circle, the more closely they are related]].\n\n**Мои рассуждения (не из книги)**\n- Примеры: в D мажоре IV = G, V = A; в E♭ мажоре IV = A♭, V = B♭.\n- Если удобнее без «лево/право»: V — это шаг по часовой стрелке (квинта вверх), IV — шаг против часовой (квинта вниз, то есть кварта вверх).\n- Для натурального минора тот же приём работает на внутреннем кольце минорных тональностей. Например, в A minor iv = Dm, v = Em. Но в гармоническом миноре доминанта обычно мажорная (E).",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "31",
+    "quote": "just pick any letter around the circle and treat that as I. The letter to the left is IV, and the letter to the right is V",
+    "span": [
+     196,
+     327
+    ],
+    "status": "ok",
+    "found": 31
+   },
+   {
+    "alias": "A",
+    "loc": "31",
+    "quote": "So chord IV of C is F, and chord V is G.",
+    "span": [
+     348,
+     397
+    ],
+    "status": "ok",
+    "found": 31
+   },
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "going clockwise around the circle, each note is a ​fifth ​(a perfect fifth, to be exact) above the previous one",
+    "span": [
+     496,
+     616
+    ],
+    "status": "ok",
+    "found": 11
+   },
+   {
+    "alias": "A",
+    "loc": "34",
+    "quote": "with V found immediately to the right of the tonic, and IV immediately to the left",
+    "span": [
+     780,
+     871
+    ],
+    "status": "ok",
+    "found": 34
+   },
+   {
+    "alias": "A",
+    "loc": "31",
+    "quote": "The closer they are in the circle, the more closely they are related",
+    "span": [
+     926,
+     1003
+    ],
+    "status": "ok",
+    "found": 31
+   }
+  ],
+  "errors": [],
+  "seconds": 11.5,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: слева от тоники IV, справа V, с примером в до мажоре (IV = F, V = G). Дополнительные пояснения не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Сколько нот из семи совпадает в гаммах соседних по кругу тональностей?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Style_and_idea_data",
+   "Polyrhythms_data"
+  ],
+  "text": "Шесть из семи. В книге прямо сказано: [[A:33|Two keys that are adjacent to each other in the circle have six out of seven notes in their scales in common!]]\n\nОтсюда в книге и вывод: близко стоящие на круге аккорды и тональности родственны и легко переходят друг в друга. По этой же причине так естественно звучит последовательность I–IV–V: [[A:34|V found immediately to the right of the tonic, and IV immediately to the left]].\n\n**Мои рассуждения:** различается ровно одна нота. Это видно из того, как в книге описано добавление знаков: при каждом шаге по часовой стрелке добавляется один диез ([[A:14|G major has one sharp (F♯), D major two (F♯, C♯) and so on]]). Например, C major и G major совпадают во всём, кроме F/F♯.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "33",
+    "quote": "Two keys that are adjacent to each other in the circle have six out of seven notes in their scales in common!",
+    "span": [
+     38,
+     156
+    ],
+    "status": "ok",
+    "found": 33
+   },
+   {
+    "alias": "A",
+    "loc": "34",
+    "quote": "V found immediately to the right of the tonic, and IV immediately to the left",
+    "span": [
+     340,
+     426
+    ],
+    "status": "ok",
+    "found": 34
+   },
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "G major has one sharp (F♯), D major two (F♯, C♯) and so on",
+    "span": [
+     595,
+     662
+    ],
+    "status": "ok",
+    "found": 14
+   }
+  ],
+  "errors": [],
+  "seconds": 9.6,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ «Шесть из семи» совпадает с эталоном и подтверждён цитатой из книги. Дополнительные рассуждения (различается одна нота, пример C и G) верны и не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Сколько полутонов отделяют большую терцию от тоники в мажорном аккорде?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "Polyrhythms_data"
+  ],
+  "text": "Большая терция находится **на 4 полутона** выше тоники. Например, в аккорде C major это C → E: C–C♯–D–D♯–E.\n\n**По книге.** В «The Ultimate Guide to: The Circle of Fifths» (A) прямо сказано, что минорный аккорд отличается от мажорного только терцией: [[A:25|A minor chord is the same, save for a minor third above the tonic instead of a major third.]] Число полутонов там указано только для малой терции: [[A:25|count up three semitones from the tonic to determine your third.]] Для квинты книга тоже приводит счёт: [[A:8|the fifth can be found by counting ​seven semitones up​.]]\n\n**Мои рассуждения.** Явной фразы «большая терция = 4 полутона» я в найденных страницах не нашёл. Но это стандартная теория, и она согласуется с книгой: большая терция на полутон шире малой, поэтому 3 + 1 = 4. В итоге мажорное трезвучие строится так: тоника, затем +4 полутона (большая терция), затем +7 полутонов (квинта).",
+  "tools": [
+   "search",
+   "read"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "25",
+    "quote": "A minor chord is the same, save for a minor third above the tonic instead of a major third.",
+    "span": [
+     250,
+     350
+    ],
+    "status": "ok",
+    "found": 25
+   },
+   {
+    "alias": "A",
+    "loc": "25",
+    "quote": "count up three semitones from the tonic to determine your third.",
+    "span": [
+     404,
+     477
+    ],
+    "status": "ok",
+    "found": 25
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "the fifth can be found by counting ​seven semitones up​.",
+    "span": [
+     515,
+     579
+    ],
+    "status": "ok",
+    "found": 8
+   }
+  ],
+  "errors": [],
+  "seconds": 11.7,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ прямо указывает, что большая терция находится на 4 полутона выше тоники, что совпадает с эталоном; пример C–E корректен. Оговорка об отсутствии явной фразы в книге не влияет на правильность."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Что такое энгармонизм и как он связан с тональностями до-диез мажор и ре-бемоль мажор?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Polyrhythms_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data"
+  ],
+  "text": "**По книгам**\n\n**Что такое энгармонизм.** Энгармонические ноты звучат одинаково, а различаются только названием и записью. В книге C это объясняется на примере ре-диеза и ми-бемоля: в равномерно темперированном строе они [[C:132|are enharmonic notes: they sound exactly the same, differing only in name and notation]]. Там же есть забавная деталь: Берлиоз приписывал энгармонически равным тональностям разный характер. D-sharp major у него был «dull», а E-flat major — «majestic».\n\n**Связь с C♯ major и D♭ major.** Эта пара разобрана в книге A, в главе о квинтовом круге. Если идти по кругу по часовой стрелке, на каждом шаге добавляется по диезу. Когда диезов становится семь, повышены уже все ступени, и гамму удобнее записывать бемолями, потому что знаков будет меньше: [[A:15|it actually becomes far easier to think of the scale in terms of ​flats​, because there will be less accidentals!]]\n\nОтсюда вывод книги: [[A:15|C♯ major will be identical to D♭ major]]. Если ноты гаммы C♯ major записать бемолями и бекарами вместо одних диезов, получится [[A:15|the five-flat key signature of D♭ major]].\n\nТам же объясняется, почему в последовательности F-C-G-D-A-E-B не встречаются тональности E♯ и B♯. Они совпадают с F major и C major и на практике [[A:16|would be rare exotic beasts for any instrument]].\n\n**Мои рассуждения**\n- Получается простая арифметика: 7 диезов у C♯ major против 5 бемолей у D♭ major, вместе 12. Это общее правило для энгармонических пар на квинтовом круге: например, у F♯ major 6 диезов, у G♭ major 6 бемолей. Именно на энгармонизме квинтовая спираль «замыкается» в круг.\n- Звуковое тождество таких тональностей держится на равномерной темперации, это прямо следует из цитаты из книги C. В чистом или пифагорейском строе C♯ и D♭ немного различаются по высоте. Книга C подробно разбирает строи в главе 6 «Musical Temperament», если хотите копнуть глубже.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "C",
+    "loc": "132",
+    "quote": "are enharmonic notes: they sound exactly the same, differing only in name and notation",
+    "span": [
+     221,
+     317
+    ],
+    "status": "ok",
+    "found": 132
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "it actually becomes far easier to think of the scale in terms of ​flats​, because there will be less accidentals!",
+    "span": [
+     773,
+     895
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "C♯ major will be identical to D♭ major",
+    "span": [
+     917,
+     964
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "the five-flat key signature of D♭ major",
+    "span": [
+     1051,
+     1099
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "16",
+    "quote": "would be rare exotic beasts for any instrument",
+    "span": [
+     1248,
+     1303
+    ],
+    "status": "ok",
+    "found": 16
+   }
+  ],
+  "errors": [],
+  "seconds": 17.0,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ объясняет энгармонизм и приводит ключевой факт эталона: C♯ major идентичен D♭ major, а записывать бемолями проще (меньше знаков). Дополнительные рассуждения не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "С какой частотой колеблется нота ля в примере автора и какова частота ля октавой выше?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "В примере из «The Ultimate Guide to: The Circle of Fifths» нота ля (A) колеблется с частотой 440 Гц, а ля октавой выше — с частотой 880 Гц.\n\n**По книге:**\n- Автор пишет: [[A:7|this note (A) is vibrating at 440 Hz (cycles per second)]].\n- Ля октавой выше [[A:7|is vibrating twice as fast, at 880 Hz]].\n- Такой интервал называется чистой октавой (perfect octave), соотношение частот в ней 2:1: [[A:7|Octaves relate to each other in some multiple of a 2:1 ratio]].\n\nКнига B тоже называет 440 Гц современным стандартом для ля над средним до: [[B:44|The modern standard is to assign the note A above middle C the frequency 440 Hz]]. Этот стандарт приняли в 1939 году.\n\n**Мои рассуждения:** если удвоить 880 Гц, получится ля ещё на октаву выше, 1760 Гц. Если разделить 440 Гц пополам, получится ля на октаву ниже, 220 Гц.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "7",
+    "quote": "this note (A) is vibrating at 440 Hz (cycles per second)",
+    "span": [
+     170,
+     234
+    ],
+    "status": "ok",
+    "found": 7
+   },
+   {
+    "alias": "A",
+    "loc": "7",
+    "quote": "is vibrating twice as fast, at 880 Hz",
+    "span": [
+     254,
+     299
+    ],
+    "status": "ok",
+    "found": 7
+   },
+   {
+    "alias": "A",
+    "loc": "7",
+    "quote": "Octaves relate to each other in some multiple of a 2:1 ratio",
+    "span": [
+     392,
+     460
+    ],
+    "status": "ok",
+    "found": 7
+   },
+   {
+    "alias": "B",
+    "loc": "44",
+    "quote": "The modern standard is to assign the note A above middle C the frequency 440 Hz",
+    "span": [
+     538,
+     626
+    ],
+    "status": "ok",
+    "found": 44
+   }
+  ],
+  "errors": [],
+  "seconds": 10.2,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ верно указывает 440 Гц для ля и 880 Гц для ля октавой выше, с соотношением 2:1, что совпадает с эталоном. Дополнительные детали (1939 год, 1760 и 220 Гц) не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Style_and_idea_data",
+  "q": "Почему, по мнению автора, осторожность при покупке особенно оправдана в случае произведений искусства по сравнению с домом, обувью или автомобилем?",
+  "scope": [
+   "Style_and_idea_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Polyrhythms_data"
+  ],
+  "text": "Это рассуждение Шёнберга из эссе «Criteria for the Evaluation of Music» (источник A, гл. 13). Вот его доводы.\n\n**1. Достоинства обычных вещей очевидны любому.** Покупая дом, обувь или машину, мы проверяем их ценность и не хотим переплачивать. Но их плюсы и минусы может оценить каждый, без эксперта. С искусством иначе: [[A:c13|how much more is caution justified in the case of art objects, where criteria of evaluation are really only within the domain of the experts]].\n\n**2. Настоящих экспертов мало.** Шёнберг добавляет, что эти эксперты встречаются [[A:c13|as rare as a good judgment]].\n\n**3. У бытовых вещей есть понятное назначение, и оно не устаревает.** Мода на дома, обувь и машины тоже меняется, но [[A:c13|as they serve a definite purpose, their useability remains the same, and one who judges only that will not fail]]. То есть даже неспециалист не ошибётся, если судит только о пригодности вещи.\n\n**4. Стиль в искусстве меняется очень быстро.** По словам автора, [[A:c13|style in art changes approximately every ten to fifteen years]]. Опереться на что-то устойчивое, вроде полезности, здесь нельзя.\n\n**Мои рассуждения:** в итоге у произведения искусства нет ни понятных всем критериев, ни практической функции, которая служила бы страховкой. Поэтому риск переплатить или ошибиться в оценке намного выше. Найденный фрагмент обрывается на словах «And …». Если хотите, я дочитаю главу и посмотрю, какой вывод Шёнберг делает дальше.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "c13",
+    "quote": "how much more is caution justified in the case of art objects, where criteria of evaluation are really only within the domain of the experts",
+    "span": [
+     320,
+     470
+    ],
+    "status": "ok",
+    "found": 13
+   },
+   {
+    "alias": "A",
+    "loc": "c13",
+    "quote": "as rare as a good judgment",
+    "span": [
+     554,
+     590
+    ],
+    "status": "ok",
+    "found": 13
+   },
+   {
+    "alias": "A",
+    "loc": "c13",
+    "quote": "as they serve a definite purpose, their useability remains the same, and one who judges only that will not fail",
+    "span": [
+     710,
+     831
+    ],
+    "status": "ok",
+    "found": 13
+   },
+   {
+    "alias": "A",
+    "loc": "c13",
+    "quote": "style in art changes approximately every ten to fifteen years",
+    "span": [
+     977,
+     1048
+    ],
+    "status": "ok",
+    "found": 13
+   }
+  ],
+  "errors": [],
+  "seconds": 11.4,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевые факты эталона: критерии оценки искусства доступны только экспертам, эксперты редки, стиль меняется каждые 10–15 лет, а полезность дома, обуви и машины остаётся неизменной."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Intelligent_Music_Production_data",
+  "q": "Какой пример различий в обработке между музыкальными жанрами приводится как препятствие для универсальных систем музыкального продакшна, но при этом как возможность для высокоуровневого взаимодействия с пользователем?",
+  "scope": [
+   "Intelligent_Music_Production_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "По книге «Intelligent Music Production» пример такой: в роке ударные обычно звучат громче, чем в джазе. Авторы пишут, что разные жанры требуют разной обработки, [[A:185|such as a higher drum loudness in rock music compared to jazz]], и что [[A:185|This distinction presents an obstacle for one-size-ﬁts-all music production systems, but offers opportunities for]]… На этом слове фрагмент в результатах поиска обрывается, поэтому окончание фразы я дословно не видел.\n\nЧто это за «возможности», видно из введения. Если дать пользователю управлять высокоуровневыми параметрами, например выбором жанра, системы IMP перестают быть только исправляющими инструментами: [[A:30|Adding control over high-level parameters, such as targeted genre, shifts the potential of]] — они становятся [[A:30|creative tools offering countless possibilities and the user-friendly parameters to achieve them]].\n\n**Мои рассуждения:** получается, что жанровые различия мешают созданию одного «идеального» универсального микса. Но то же самое различие можно сделать понятной ручкой управления: пользователь выбирает «рок» или «джаз», а система сама подстраивает баланс, в частности громкость барабанов.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "185",
+    "quote": "such as a higher drum loudness in rock music compared to jazz",
+    "span": [
+     161,
+     232
+    ],
+    "status": "ok",
+    "found": 185
+   },
+   {
+    "alias": "A",
+    "loc": "185",
+    "quote": "This distinction presents an obstacle for one-size-ﬁts-all music production systems, but offers opportunities for",
+    "span": [
+     240,
+     363
+    ],
+    "status": "ok",
+    "found": 185
+   },
+   {
+    "alias": "A",
+    "loc": "30",
+    "quote": "Adding control over high-level parameters, such as targeted genre, shifts the potential of",
+    "span": [
+     662,
+     761
+    ],
+    "status": "ok",
+    "found": 30
+   },
+   {
+    "alias": "A",
+    "loc": "30",
+    "quote": "creative tools offering countless possibilities and the user-friendly parameters to achieve them",
+    "span": [
+     779,
+     884
+    ],
+    "status": "ok",
+    "found": 30
+   }
+  ],
+  "errors": [],
+  "seconds": 12.0,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент верно указал ключевой факт: более высокая громкость ударных в роке по сравнению с джазом, как препятствие для универсальных систем и возможность для высокоуровневого управления. Упоминание «InstaMix» отсутствует, но суть эталона передана."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+  "q": "Почему в патче Pure Data можно спокойно оставить включённой обработку звука (DSP), даже если генератор синусоиды уже добавлен и подключён к выходу?",
+  "scope": [
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+   "Polyrhythms_data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "Всё дело в том, что у генератора нет частоты. В книге это относится к патчу из раздела «Working with Different Frequencies»: в нём `osc~` создан без аргумента и подключён через `*~` к `output~`. Автор пишет: [[A:36|You can safely keep DSP on in this case because the osc~ doesn't have an initial frequency]]. Кроме того, к его входу [[A:36|doesn't have anything connected to its inlet telling it a frequency to use. It will make no sound.]]\n\n**Для сравнения по книге:** в первом патче было `osc~ 440`. Это значит, что частота задана аргументом сразу, поэтому после включения DSP [[A:27|you should hear a high-pitched tone coming from your speakers]]. В этом и разница. Если генератор подключён к выходу, это ещё не значит, что он будет звучать. Нужно, чтобы ему была задана частота: либо аргументом при создании, либо через вход.\n\n**Мои рассуждения:** если у `osc~` нет аргумента, его частота по умолчанию равна 0. Синусоида с нулевой частотой не колеблется, а выдаёт постоянное значение, и такое значение не слышно как звук. Звук появится, только когда на левый вход придёт число частоты. Похожий приём в книге показан с `*~`: без значения он умножает сигнал на [[A:32|its default value of 0]], и в результате получается тишина.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "36",
+    "quote": "You can safely keep DSP on in this case because the osc~ doesn't have an initial frequency",
+    "span": [
+     208,
+     307
+    ],
+    "status": "ok",
+    "found": 36
+   },
+   {
+    "alias": "A",
+    "loc": "36",
+    "quote": "doesn't have anything connected to its inlet telling it a frequency to use. It will make no sound.",
+    "span": [
+     333,
+     440
+    ],
+    "status": "ok",
+    "found": 36
+   },
+   {
+    "alias": "A",
+    "loc": "27",
+    "quote": "you should hear a high-pitched tone coming from your speakers",
+    "span": [
+     579,
+     649
+    ],
+    "status": "ok",
+    "found": 27
+   },
+   {
+    "alias": "A",
+    "loc": "32",
+    "quote": "its default value of 0",
+    "span": [
+     1163,
+     1194
+    ],
+    "status": "ok",
+    "found": 32
+   }
+  ],
+  "errors": [],
+  "seconds": 12.3,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: у osc~ нет начальной частоты и к входу ничего не подключено, поэтому звука не будет. Дополнительные рассуждения (частота по умолчанию 0, сравнение с osc~ 440) не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Style_and_idea_data",
+  "q": "Почему автор возражает против того, чтобы его додекафонную технику называли «системой» хромatической гаммы, и чем, по его определению, метод отличается от системы?",
+  "scope": [
+   "Style_and_idea_data",
+   "Polyrhythms_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "Ответ находится в сноске 6 к эссе «Composition with Twelve Tones». В EPUB все примечания собраны в отдельную главу «Notes» (гл. 20).\n\n**По книге**\n\n1. **Это ошибка в словах.** Шёнберг пишет, что многие неверно говорят о «системе» хроматической гаммы, а у него не система: [[A:c20|Curiously and wrongly, most people speak of the “system” of the chromatic scale. Mine is no system but only a method]].\n\n2. **Его определение метода.** Метод — это лишь способ регулярно применять заранее заданную формулу: [[A:c20|which means a modus of applying regularly a preconceived formula]].\n\n3. **Как метод связан с системой.** Метод может вытекать из системы, но это не обязательно: [[A:c20|A method can, but need not, be one of the consequences of a system]].\n\n4. **Хроматическую гамму придумал не он.** С иронией он добавляет: [[A:c20|I am also not the inventor of the chromatic scale; somebody else must have occupied himself with this task long ago]].\n\nСам текст главы это подтверждает. Шёнберг называет своё изобретение «procedure» и «method», а не системой: [[A:c9|I called this procedure Method of Composing with Twelve Tones Which are Related Only with One Another]]. Суть метода в том, что [[A:c9|consists primarily of the constant and exclusive use of a set of twelve different tones]].\n\n**Мои рассуждения**\n\nВидимо, разница такая. Система — это законченная теоретическая постройка, которая объясняет и предписывает. Метод — практический приём для работы с материалом. Если назвать технику «системой», можно решить, что Шёнберг придумал новый звуковой строй или теорию, заменяющую тональность. А он лишь предлагает способ организовать уже существующие двенадцать тонов. Это сходится с его словами в той же главе: метод не облегчает сочинение, а наоборот, [[A:c9|it makes it more difficult]]. Значит, это не готовый механизм, который пишет музыку за композитора.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "c20",
+    "quote": "Curiously and wrongly, most people speak of the “system” of the chromatic scale. Mine is no system but only a method",
+    "span": [
+     272,
+     398
+    ],
+    "status": "ok",
+    "found": 20
+   },
+   {
+    "alias": "A",
+    "loc": "c20",
+    "quote": "which means a modus of applying regularly a preconceived formula",
+    "span": [
+     502,
+     576
+    ],
+    "status": "ok",
+    "found": 20
+   },
+   {
+    "alias": "A",
+    "loc": "c20",
+    "quote": "A method can, but need not, be one of the consequences of a system",
+    "span": [
+     671,
+     747
+    ],
+    "status": "ok",
+    "found": 20
+   },
+   {
+    "alias": "A",
+    "loc": "c20",
+    "quote": "I am also not the inventor of the chromatic scale; somebody else must have occupied himself with this task long ago",
+    "span": [
+     817,
+     942
+    ],
+    "status": "ok",
+    "found": 20
+   },
+   {
+    "alias": "A",
+    "loc": "c9",
+    "quote": "I called this procedure Method of Composing with Twelve Tones Which are Related Only with One Another",
+    "span": [
+     1052,
+     1162
+    ],
+    "status": "ok",
+    "found": 9
+   },
+   {
+    "alias": "A",
+    "loc": "c9",
+    "quote": "consists primarily of the constant and exclusive use of a set of twelve different tones",
+    "span": [
+     1187,
+     1283
+    ],
+    "status": "ok",
+    "found": 9
+   },
+   {
+    "alias": "A",
+    "loc": "c9",
+    "quote": "it makes it more difficult",
+    "span": [
+     1753,
+     1788
+    ],
+    "status": "ok",
+    "found": 9
+   }
+  ],
+  "errors": [],
+  "seconds": 15.0,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: у автора не система, а метод — способ регулярного применения заранее заданной формулы; также отмечено, что метод может, но не обязан быть следствием системы, и что он не изобретал хроматическую гамму. Дополнительные рассуждения не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Чем, согласно определению, полиритм отличается по построению от обычного ритма, и по какому признаку различаются накладываемые друг на друга ритмические слои?",
+  "scope": [
+   "Polyrhythms_data",
+   "Intelligent_Music_Production_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "**По книге (A, «Polyrhythms»)**\n\n- **Как устроен.** Обычный ритм — это одна ритмическая линия. Полиритм же складывается из нескольких более простых ритмов, наложенных друг на друга: [[A:4|Simply put, a polyrhythm consists of layers of simpler rhythms]]. Эти ритмы звучат одновременно: [[A:4|More than one type of rhythm is played at the same time]].\n- **Чем различаются слои.** Признак — деление доли: у каждого слоя оно своё, [[A:4|with each rhythm containing a different beat subdivision]]. Пример — 3:2, то есть триоли против дуолей. За одно и то же время звучат две ровные доли и три ровные ноты поверх них: [[A:8|three evenly spaced beats played on top of those two beats - this is also known as triplets over duplets]]. При этом [[A:9|the triplets and duplets take up the same amount of time]].\n- **Уточнение к определению.** Деления не должны иметь общего делителя, кроме 1: [[A:11|two rhythms will only be considered a polyrhythm if they have no common divisor other than 1]]. Поэтому 4:1 полиритмом не считается, а 5:4 и 3:7 считаются. Если 8-е ноты в примере заменить четвертями, полиритм пропадает, потому что [[A:11|there are no longer contrasting beats]].\n\n**Мои рассуждения:** по сути, слои отличаются не темпом и не размером такта, а тем, на сколько равных частей делится один и тот же промежуток времени.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "4",
+    "quote": "Simply put, a polyrhythm consists of layers of simpler rhythms",
+    "span": [
+     182,
+     252
+    ],
+    "status": "ok",
+    "found": 4
+   },
+   {
+    "alias": "A",
+    "loc": "4",
+    "quote": "More than one type of rhythm is played at the same time",
+    "span": [
+     285,
+     348
+    ],
+    "status": "ok",
+    "found": 4
+   },
+   {
+    "alias": "A",
+    "loc": "4",
+    "quote": "with each rhythm containing a different beat subdivision",
+    "span": [
+     427,
+     491
+    ],
+    "status": "ok",
+    "found": 4
+   },
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "three evenly spaced beats played on top of those two beats - this is also known as triplets over duplets",
+    "span": [
+     612,
+     724
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "9",
+    "quote": "the triplets and duplets take up the same amount of time",
+    "span": [
+     735,
+     799
+    ],
+    "status": "ok",
+    "found": 9
+   },
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "two rhythms will only be considered a polyrhythm if they have no common divisor other than 1",
+    "span": [
+     882,
+     983
+    ],
+    "status": "ok",
+    "found": 11
+   },
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "there are no longer contrasting beats",
+    "span": [
+     1121,
+     1167
+    ],
+    "status": "ok",
+    "found": 11
+   }
+  ],
+  "errors": [],
+  "seconds": 16.0,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ передаёт оба ключевых факта эталона: полиритм состоит из слоёв более простых ритмов, звучащих одновременно, а слои различаются делением доли (beat subdivision). Дополнения про 3:2 и общий делитель не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+  "q": "Какую реакцию вызвала у публики премьера второго струнного квартета Шёнберга в 1908 году и как сам композитор объяснил эти протесты?",
+  "scope": [
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "Ответ есть в книге A, «Music by the numbers», глава 11 «Aftermath».\n\n**Реакция публики.** Премьера едва не закончилась беспорядками: слушатели прерывали исполнение свистом и выкриками, а журналисты называли и музыку, и композитора «безумными». Автор пишет: [[A:152|a near riot broke out when the audience interrupted the performance with catcalls; reporters described the music and its composer as “insane.”]] При этом он ставит эпизод в более широкий контекст. В Вене атональную музыку Шёнберга принимали неоднозначно: часть коллег её ценила, а публика в основном была равнодушна, а иногда и враждебна ([[A:152|the public was mostly indifferent, sometimes even hostile]]).\n\n**Объяснение Шёнберга.** Композитор считал эти протесты закономерной реакцией консервативно воспитанной аудитории на музыку нового типа: [[A:152|a natural reaction of a conservatively educated audience to a new kind of music.]] Автор добавляет от себя, что публика просто не могла привыкнуть к музыке без центральной тональности ([[A:152|The public simply could not get used to music lacking a central key, a tonality.]]).\n\n**Контекст.** Протест вызвала именно последняя часть квартета. В ней нет ключевых знаков, то есть она атональна, а в двух финальных частях участвует сопрано: [[A:145|its final two movements called for a soprano voice, and its last movement lacked any key signature whatsoever—it was atonal.]] Сам Шёнберг не любил слово «атональный», потому что оно наводит на мысль, будто в музыке нет структуры. Он предпочитал термин «pantonal».\n\n**Моё замечание.** Объяснение Шёнберга перекладывает причину провала на воспитание публики, а не на саму музыку. Это согласуется с его отношением к критикам, о котором говорится в книге: он легко обижался и резко отвечал недоброжелателям. Есть и параллель в главе 8: премьера «Весны священной» Стравинского в 1913 году вызвала такой же скандал, только там публику возмутили ритм и диссонансы, а не отсутствие тональности.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "152",
+    "quote": "a near riot broke out when the audience interrupted the performance with catcalls; reporters described the music and its composer as “insane.”",
+    "span": [
+     257,
+     409
+    ],
+    "status": "ok",
+    "found": 152
+   },
+   {
+    "alias": "A",
+    "loc": "152",
+    "quote": "the public was mostly indifferent, sometimes even hostile",
+    "span": [
+     604,
+     671
+    ],
+    "status": "ok",
+    "found": 152
+   },
+   {
+    "alias": "A",
+    "loc": "152",
+    "quote": "a natural reaction of a conservatively educated audience to a new kind of music.",
+    "span": [
+     812,
+     902
+    ],
+    "status": "ok",
+    "found": 152
+   },
+   {
+    "alias": "A",
+    "loc": "152",
+    "quote": "The public simply could not get used to music lacking a central key, a tonality.",
+    "span": [
+     1005,
+     1095
+    ],
+    "status": "ok",
+    "found": 152
+   },
+   {
+    "alias": "A",
+    "loc": "145",
+    "quote": "its final two movements called for a soprano voice, and its last movement lacked any key signature whatsoever—it was atonal.",
+    "span": [
+     1257,
+     1391
+    ],
+    "status": "ok",
+    "found": 145
+   }
+  ],
+  "errors": [],
+  "seconds": 19.8,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевые факты эталона: едва не начавшийся бунт, свист и выкрики, журналисты назвали музыку и композитора «безумными», а Шёнберг объяснил протесты естественной реакцией консервативно воспитанной публики на новый вид музыки. Дополнительный контекст не противоречит эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Polyrhythms_data",
+  "q": "Сколько ударов в одной полной цикличной последовательности полиритма 4:5 и по какому правилу это число определяется?",
+  "scope": [
+   "Polyrhythms_data",
+   "Intelligent_Music_Production_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data"
+  ],
+  "text": "**20 ударов.** Это число равно наименьшему общему кратному (LCM) чисел 4 и 5.\n\n**По книге:**\n- Правило: чтобы понять, как считать полиритм X:Y, находят LCM этих двух чисел. LCM определяется так: [[A:15|The lowest common multiple (LCM) is simply the lowest number that two (or more) numbers can fit evenly into.]]\n- Пример с 3:4: [[A:15|The LCM is 12, meaning that 12 beats represent a full “cycle” of the polyrhythm]], потому что [[A:15|it takes 12 beats for the beat to “align” again.]]\n- Затем книга предлагает самому разобрать 4:5: [[A:15|Let’s try a 4:5 polyrhythm next. Figure out the LCM, and draw a beat grid]]. Ответ напечатан на странице 16, но её текст мне полностью не попался, поэтому число 20 я посчитал сам.\n\n**Мои рассуждения:**\n- LCM(4, 5) = 4 × 5 = 20, потому что у 4 и 5 нет общих делителей, кроме 1. Книга как раз требует этого от настоящего полиритма: [[A:11|two rhythms will only be considered a polyrhythm if they have no common divisor other than 1]]. Поэтому для любого такого полиритма LCM просто равен произведению двух чисел.\n- Как это выглядит на сетке из 20 клеток:\n  - ритм «4» звучит на каждой 5-й клетке: 1, 6, 11, 16;\n  - ритм «5» звучит на каждой 4-й клетке: 1, 5, 9, 13, 17.\n- Вместе они попадают только на первую клетку, после чего цикл начинается заново.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "The lowest common multiple (LCM) is simply the lowest number that two (or more) numbers can fit evenly into.",
+    "span": [
+     195,
+     312
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "The LCM is 12, meaning that 12 beats represent a full “cycle” of the polyrhythm",
+    "span": [
+     329,
+     417
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "it takes 12 beats for the beat to “align” again.",
+    "span": [
+     430,
+     487
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "15",
+    "quote": "Let’s try a 4:5 polyrhythm next. Figure out the LCM, and draw a beat grid",
+    "span": [
+     535,
+     617
+    ],
+    "status": "ok",
+    "found": 15
+   },
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "two rhythms will only be considered a polyrhythm if they have no common divisor other than 1",
+    "span": [
+     872,
+     973
+    ],
+    "status": "ok",
+    "found": 11
+   }
+  ],
+  "errors": [],
+  "seconds": 13.5,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ даёт 20 ударов и правило наименьшего общего кратного 4 и 5, что совпадает с эталоном; дополнительные пояснения верны."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+  "q": "Почему начальная форма щипнутой струны вызвала спор у математиков XVIII века относительно уравнения, описывающего её колебания?",
+  "scope": [
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Style_and_idea_data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "Всё дело в острой вершине. Щипок придаёт струне форму треугольника с изломом, а волновое уравнение было выведено в предположении, что форма струны всюду гладкая.\n\n**По книге (Maor, «Music by the numbers», гл. 4)**\n\n1. **Форма щипнутой струны.** Щипок на мгновение придаёт струне форму вытянутого треугольника [[A:59|we momentarily disturb it from its state of rest by giving it the shape of a triangle]]. Отпущенная струна разделяет это возмущение на два импульса, которые бегут в противоположные стороны.\n\n2. **Несовместимость с уравнением.** D'Alembert утверждал, что начальная форма решения может быть произвольной. Это сразу вызвало вопрос: как треугольник с углом в вершине, где наклон кривой не определён, может быть решением уравнения [[A:67|whose very nature assumes that the string has everywhere a smooth shape?]]\n\n3. **Конфликт с разложением на синусоиды.** Движение струны — это сумма её собственных колебаний. Отсюда дилемма: как треугольник с острым углом [[A:60|evolve into the sum of many—perhaps infinitely many—sine waves piled on top of each other, each having a perfectly smooth shape?]] В этом споре участвовали D. Bernoulli, Euler, d'Alembert и Lagrange.\n\n4. **Что такое функция.** Затем спор перешёл к вопросу, [[A:67|what exactly is the definition of a function. Can it include sharp corners]] и обязан ли её график вообще быть непрерывным. В XVIII веке понятие функции было ещё [[A:67|poorly understood and open to different interpretations]].\n\n5. **Обход проблемы и новый спор.** Bernoulli и Euler предложили искать решение как сумму чистых синусоид, и вопрос об угле отпал. Но возник другой: как бегущие волны d'Alembert и синусоидальные колебания Bernoulli могут быть решениями одного и того же уравнения? До конца спор так и не разрешился: окончательное решение [[A:70|had to wait another half]] века.\n\n**Дополнение из Loy, «Musimathics» vol. 2.** Сейчас этот сценарий описывают спокойно: начальное смещение треугольное, начальная скорость нулевая, и [[C:326|the kink splits, then propagates from the center in both directions]].\n\n**Мои рассуждения.** «Ответ на загадку» — это ряд Фурье, который появился уже в XIX веке. Бесконечная сумма гладких синусоид действительно может сходиться к функции с изломом: гладкость отдельных слагаемых не переходит к пределу. В XVIII веке именно это казалось парадоксом.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "59",
+    "quote": "we momentarily disturb it from its state of rest by giving it the shape of a triangle",
+    "span": [
+     309,
+     403
+    ],
+    "status": "ok",
+    "found": 59
+   },
+   {
+    "alias": "A",
+    "loc": "67",
+    "quote": "whose very nature assumes that the string has everywhere a smooth shape?",
+    "span": [
+     742,
+     823
+    ],
+    "status": "ok",
+    "found": 67
+   },
+   {
+    "alias": "A",
+    "loc": "60",
+    "quote": "evolve into the sum of many—perhaps infinitely many—sine waves piled on top of each other, each having a perfectly smooth shape?",
+    "span": [
+     970,
+     1107
+    ],
+    "status": "ok",
+    "found": 60
+   },
+   {
+    "alias": "A",
+    "loc": "67",
+    "quote": "what exactly is the definition of a function. Can it include sharp corners",
+    "span": [
+     1234,
+     1317
+    ],
+    "status": "ok",
+    "found": 67
+   },
+   {
+    "alias": "A",
+    "loc": "67",
+    "quote": "poorly understood and open to different interpretations",
+    "span": [
+     1403,
+     1467
+    ],
+    "status": "ok",
+    "found": 67
+   },
+   {
+    "alias": "A",
+    "loc": "70",
+    "quote": "had to wait another half",
+    "span": [
+     1791,
+     1824
+    ],
+    "status": "ok",
+    "found": 70
+   },
+   {
+    "alias": "C",
+    "loc": "326",
+    "quote": "the kink splits, then propagates from the center in both directions",
+    "span": [
+     1980,
+     2057
+    ],
+    "status": "ok",
+    "found": 326
+   }
+  ],
+  "errors": [],
+  "seconds": 102.9,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт: треугольная форма с углом, где наклон не определён, не может быть решением уравнения, предполагающего гладкую форму струны; спор перешёл к определению функции. Совпадает с эталоном."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+  "q": "Какое существо изображено в солнечном диске на ладье бога солнца при её входе в Дуат в первый час ночи, и что окружает этот диск?",
+  "scope": [
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Polyrhythms_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data"
+  ],
+  "text": "Это скарабей, то есть жук Khepura. Солнечный диск окружён огромным змеем, который держит собственный хвост во рту. Так описана иллюстрация Chart 53 «The Boat of Rā in the First Hour of the Night» в книге «The myth of invariance» (A).\n\n**По книге:**\n- В центре изображения находится ладья Солнца с диском, а внутри диска — жук: [[A:209|In the center the boat of the Sun carries his disc containing a beetle (Khepura), encircled by a huge serpent, which holds its tail in its mouth.]]\n- Ладья входит в Tuat через «отверстие» на западе: [[A:209|As the boat of the Sun enters the Tuat through a “hole” on the left (to the west)]]. По пути она минует штандарты с головами шакала и барана, по обеим сторонам стоят по двенадцать богов.\n- Ладью сопровождают два бога. Она приближается к пилону с закрытыми дверями, который охраняет змей, стоящий на хвосте: [[A:209|Two gods escort the boat which approaches a pylon with closed doors, guarded by a huge serpent which stands on his tail]].\n- Иллюстрация взята у Budge (The Gods of the Egyptians). Редактор отмечает, что ладья и пилон на ней [[A:209|unaccountably reversed]].\n\n**Мои рассуждения:** скарабей связывает начало ночного пути с его концом. Автор пишет, что в последний час ладья Ра проходит сквозь змея, чтобы утром Солнце снова родилось как Khepura: [[A:206|before he can be born again in the morning as Khepura, the beetle, the scarab-headed god]]. Змей, кусающий свой хвост, у автора символизирует continuum, к которому относится пифагорова комма.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "209",
+    "quote": "In the center the boat of the Sun carries his disc containing a beetle (Khepura), encircled by a huge serpent, which holds its tail in its mouth.",
+    "span": [
+     327,
+     482
+    ],
+    "status": "ok",
+    "found": 209
+   },
+   {
+    "alias": "A",
+    "loc": "209",
+    "quote": "As the boat of the Sun enters the Tuat through a “hole” on the left (to the west)",
+    "span": [
+     534,
+     625
+    ],
+    "status": "ok",
+    "found": 209
+   },
+   {
+    "alias": "A",
+    "loc": "209",
+    "quote": "Two gods escort the boat which approaches a pylon with closed doors, guarded by a huge serpent which stands on his tail",
+    "span": [
+     849,
+     978
+    ],
+    "status": "ok",
+    "found": 209
+   },
+   {
+    "alias": "A",
+    "loc": "209",
+    "quote": "unaccountably reversed",
+    "span": [
+     1081,
+     1113
+    ],
+    "status": "ok",
+    "found": 209
+   },
+   {
+    "alias": "A",
+    "loc": "206",
+    "quote": "before he can be born again in the morning as Khepura, the beetle, the scarab-headed god",
+    "span": [
+     1301,
+     1399
+    ],
+    "status": "ok",
+    "found": 206
+   }
+  ],
+  "errors": [],
+  "seconds": 39.1,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет жука (скарабея Khepura) в диске и огромного змея, держащего хвост во рту, что полностью совпадает с эталоном."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Musimathics_Volume_2_data",
+  "q": "Как называется выражение под знаком корня в формуле для коэффициента затухающего осциллятора, и какой знак оно должно иметь, чтобы система вообще не совершала колебаний, а лишь экспоненциально затухала?",
+  "scope": [
+   "Musimathics_Volume_2_data",
+   "Polyrhythms_data",
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data"
+  ],
+  "text": "Это выражение называется **дискриминант** (discriminant). Чтобы система вообще не колебалась, он должен быть **положительным**.\n\n**По книге (Musimathics, Vol. 2, раздел 6.3):**\n\n- Подкоренное выражение в формуле для β — это c² − 4km. Книга называет его так: [[A:305|The term under the rad- ical sign c 2 - 4km is called the discriminant.]]\n- Название объясняется тем, что дискриминант отделяет режим с колебаниями от режима без них: [[A:305|it dis- criminates between the conditions that cause vibration and those that do not.]]\n- Если дискриминант положителен, β вещественное, и множитель e^(−βt) — обычное экспоненциальное затухание: [[A:305|If f3 is real, then e-fJ, is a simple exponential decay function, which doesn't vibrate.]]\n- Условие записано явно: [[A:305|The discriminant is positive if c 2 - 4km > O.]] Физически это означает, что затухание сильнее остальных сил: [[A:305|the system does not vibrate when dissipation dominates over the other forces.]]\n\n**Три режима:**\n- **c² − 4km > 0 — передемпфирование (overdamping).** Решение — произведение двух убывающих экспонент.\n- **c² − 4km = 0 — критическое затухание.** [[A:306|so the result is a pure exponential decay term.]] Колебаний тоже нет.\n- **c² − 4km < 0 — недодемпфирование (underdamping).** β комплексное, e^(−βt) становится фазором, и получается затухающая синусоида.\n\n**Мои рассуждения:** если считать, что строго «без колебаний» означает и случай с нулевым дискриминантом, то точное условие — c² − 4km ≥ 0. Именно при положительном дискриминанте книга относит систему к случаю, который «doesn't vibrate».",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "305",
+    "quote": "The term under the rad- ical sign c 2 - 4km is called the discriminant.",
+    "span": [
+     258,
+     339
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "A",
+    "loc": "305",
+    "quote": "it dis- criminates between the conditions that cause vibration and those that do not.",
+    "span": [
+     433,
+     528
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "A",
+    "loc": "305",
+    "quote": "If f3 is real, then e-fJ, is a simple exponential decay function, which doesn't vibrate.",
+    "span": [
+     636,
+     734
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "A",
+    "loc": "305",
+    "quote": "The discriminant is positive if c 2 - 4km > O.",
+    "span": [
+     760,
+     816
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "A",
+    "loc": "305",
+    "quote": "the system does not vibrate when dissipation dominates over the other forces.",
+    "span": [
+     878,
+     965
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "A",
+    "loc": "306",
+    "quote": "so the result is a pure exponential decay term.",
+    "span": [
+     1130,
+     1187
+    ],
+    "status": "ok",
+    "found": 306
+   }
+  ],
+  "errors": [],
+  "seconds": 81.3,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент верно назвал выражение дискриминантом и указал, что при положительном значении (c² − 4km > 0) система не колеблется. Также упомянул случай равенства нулю как критическое затухание без колебаний, что совпадает с эталоном."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+  "q": "На какой степени числа 3 по мысли автора останавливается «ось» в мандала-янтрах, соответствующая Новому Иерусалиму, и какой музыкальный феномен наступает после этой точки?",
+  "scope": [
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "Автор (McClain) считает, что ось Нового Иерусалима останавливается на **3¹²**. Дальше, по его словам, после схождения на пифагорейской комме **начинается расхождение**: каждый следующий цикл квинт добавляет ещё одну комму.\n\n**По книге:**\n- Колесо в мандала-янтрах «вращается», пока ось не достигнет предела, и [[A:142|Jerusalem axis stops at 312 where musicians learn all that higher powers of the divine number 3 can teach them]].\n- Что происходит дальше: [[A:142|After that convergence at the Pythagorean comma, divergence begins, by an additional comma for each subsequent cycle.]]\n- Ось состоит из тринадцати элементов. Это последовательность квинт или кварт от 3⁰ до 3¹², которую автор сравнивает с «вождём и двенадцатью учениками» ([[A:132|a “leader and twelve disciples” (3° = 1 to 312)]]). Пифагорейская комма с отношением 531441:524288 приходится между крайними тонами оси, F и E♯.\n- Автор связывает это с образом предательства: [[A:134|It is the twelfth “follower” = 312 which “betrays” the leader with a “kiss,” a near-miss of about 24 cents.]] Двенадцатая квинта почти, но не совсем совпадает с исходным тоном.\n\n**Мои рассуждения:** 3¹² = 531441 — это ровно числитель пифагорейской коммы. Двенадцать чистых квинт почти замыкают круг, но промахиваются примерно на 23,5 цента. Поэтому 3¹² — естественный предел: ближе всего к замыканию цикл квинт подходит именно здесь, а с каждым новым витком ошибка только накапливается.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "142",
+    "quote": "Jerusalem axis stops at 312 where musicians learn all that higher powers of the divine number 3 can teach them",
+    "span": [
+     310,
+     430
+    ],
+    "status": "ok",
+    "found": 142
+   },
+   {
+    "alias": "A",
+    "loc": "142",
+    "quote": "After that convergence at the Pythagorean comma, divergence begins, by an additional comma for each subsequent cycle.",
+    "span": [
+     457,
+     584
+    ],
+    "status": "ok",
+    "found": 142
+   },
+   {
+    "alias": "A",
+    "loc": "132",
+    "quote": "a “leader and twelve disciples” (3° = 1 to 312)",
+    "span": [
+     738,
+     795
+    ],
+    "status": "ok",
+    "found": 132
+   },
+   {
+    "alias": "A",
+    "loc": "134",
+    "quote": "It is the twelfth “follower” = 312 which “betrays” the leader with a “kiss,” a near-miss of about 24 cents.",
+    "span": [
+     938,
+     1055
+    ],
+    "status": "ok",
+    "found": 134
+   }
+  ],
+  "errors": [],
+  "seconds": 58.2,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент верно указал 3^12 и пифагорейскую комму, а также расхождение на дополнительную комму с каждым циклом — это совпадает с эталоном."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data",
+  "q": "Какой синтезатор Хлоя Раунет запускает с помощью MIDI-арпеджиаций из Ableton, после чего записывает его звук обратно в сессию как аудио?",
+  "scope": [
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data"
+  ],
+  "text": "Это **Arturia MicroFreak**. В книге (источник A) об этом сказано так: [[A:92|Chloé uses MIDI arpeggiations to trigger the Arturia MicroFreak and records the audio back in.]]\n\nРечь идёт о её ремиксе трека Weaver. Кроме партии, которую запускают арпеджиации из Ableton, она отдельно играет на MicroFreak вживую и записывает это сразу на другую дорожку: [[A:92|she also plays another MF part and records it directly in onto another track.]]",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "92",
+    "quote": "Chloé uses MIDI arpeggiations to trigger the Arturia MicroFreak and records the audio back in.",
+    "span": [
+     70,
+     173
+    ],
+    "status": "ok",
+    "found": 92
+   },
+   {
+    "alias": "A",
+    "loc": "92",
+    "quote": "she also plays another MF part and records it directly in onto another track.",
+    "span": [
+     351,
+     437
+    ],
+    "status": "ok",
+    "found": 92
+   }
+  ],
+  "errors": [],
+  "seconds": 13.6,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент правильно назвал Arturia MicroFreak и привёл цитату, совпадающую с эталоном; дополнительные детали не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Почему цикл квинт можно с тем же успехом называть циклом кварт, и в каком направлении движения по кругу каждый следующий звук оказывается на кварту выше предыдущего?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Polyrhythms_data"
+  ],
+  "text": "**По книге.** Это одна и та же схема, у которой просто два названия. Всё зависит от того, в какую сторону идти по кругу:\n\n- **По часовой стрелке** каждый следующий звук оказывается на квинту выше предыдущего. Отсюда и название «цикл квинт»: [[A:11|going clockwise around the circle, each note is a ​fifth ​(a perfect fifth, to be exact) above the previous one]].\n- **Против часовой стрелки** каждый следующий звук на кварту выше предыдущего: [[A:18|if you decide to go ​counterclockwise​ around the circle, each note is a ​fourth ​above the previous one]].\n\nПоэтому автор подчёркивает, что [[A:18|this and the Circle of Fifths are not two separate concepts, but two different names for the exact same thing]]. Оба названия [[A:18|equally “right”]], и в ходу оба.\n\n**Мои рассуждения.** Объясняется это тем, что кварта и квинта дополняют друг друга до октавы: 5 + 7 = 12 полутонов. Если от C спуститься на квинту, получится F. Книга сама так и пишет: [[A:21|A perfect fifth below C is F]]. Но если не учитывать октаву, этот же F лежит на кварту выше C. Получается, что шаг против часовой стрелки можно описать и как «квинта вниз», и как «кварта вверх». Например: C → F → B♭ → E♭…",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "11",
+    "quote": "going clockwise around the circle, each note is a ​fifth ​(a perfect fifth, to be exact) above the previous one",
+    "span": [
+     241,
+     361
+    ],
+    "status": "ok",
+    "found": 11
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "if you decide to go ​counterclockwise​ around the circle, each note is a ​fourth ​above the previous one",
+    "span": [
+     442,
+     555
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "this and the Circle of Fifths are not two separate concepts, but two different names for the exact same thing",
+    "span": [
+     590,
+     708
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "equally “right”",
+    "span": [
+     723,
+     747
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "21",
+    "quote": "A perfect fifth below C is F",
+    "span": [
+     949,
+     986
+    ],
+    "status": "ok",
+    "found": 21
+   }
+  ],
+  "errors": [],
+  "seconds": 16.7,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ говорит, что это два названия одного круга, и верно указывает, что против часовой стрелки каждый следующий звук на кварту выше, что совпадает с эталоном. Дополнительное объяснение про дополнение до октавы корректно."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+  "q": "Почему пифагорейская музыкальная гамма, построенная лишь на одном соотношении, считалась не соответствующей законам акустики, и какие важные интервалы она оставляла за пределами рассмотрения?",
+  "scope": [
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Style_and_idea_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data"
+  ],
+  "text": "Если коротко: шкала строилась только на степенях отношения 3:2, поэтому в ней не было места созвучным терциям и секстам. Из‑за этого, когда эти интервалы стали употреблять, гамму пришлось перестроить.\n\n**По книге (Maor, «Music by the numbers»)**\n\n1. **Простота на одном отношении.** Пифагорейская гамма привлекает тем, что в ней используются [[A:38|powers of just one ratio, 3:2]]. Но автор сразу предупреждает: [[A:38|this simplicity is deceiving, and for a number of reasons]].\n\n2. **Первый изъян: круг квинт не замыкается.** После двенадцати квинт нужно вернуться к исходной ноте на семь октав выше, но [[A:39|this is impossible to do with the Pythagorean scale]]. Harmonograph объясняет это численно: [[C:46|(3/2)12 =129.75, whereas (2)7=128]]. Эта разница называется пифагорейской коммой.\n\n3. **Узкий набор консонансов.** Гамма опиралась только на [[A:91|the ratios 2:1, 3:2, and 4:3—that is, on the simple numerical sequence 4:3:2:1]], то есть октаву, квинту и кварту. К ним добавлялся тон 9:8. А [[A:91|All other intervals were considered dissonances, to be avoided or at least resolved into consonances.]]\n\n4. **Какие интервалы остались за бортом.** В Средние века музыканты обнаружили, что большая терция (C–E) и малая терция (C–E♭) звучат так же приятно, и что они [[A:91|corresponded to the hitherto excluded ratios 5:4 and 6:5]]. К ним добавились обращения терций: малая секста 8:5 и большая секста 5:3.\n\n5. **Почему это «не по законам акустики».** Когда композиторы приняли эти интервалы, потребовалось [[A:92|the Pythagorean scale be restructured into something more in tune with the laws of acoustics]]. Так в 1558 году появилась чистая интонация (just intonation) Царлино. В ней терция равна 5:4 = 80:64, она [[A:92|a tad smaller than its Pythagorean counterpart, 81:64]].\n\n6. **Добавление из Harmonograph.** Два пифагорейских целых тона дают 81:64. Это [[C:16|not in fact the perfect major third 5:4, but are slightly sharp as 81:80]], то есть выше на синтоническую комму.\n\n**Мои рассуждения**\n\nКорень проблемы в том, что в степенях 3/2 и 2 нет множителя 5. Поэтому чистую терцию 5:4 в такой системе получить невозможно, можно лишь приблизиться к ней (81:64). Пока музыка была одноголосной, этого почти не было слышно: по словам Маора, гамму считали пригодной [[A:91|as long as only a single voice or instrument was involved]]. С приходом многоголосия терции стали звучать одновременно, и их «завышенность» стала заметна на слух.",
+  "tools": [
+   "search",
+   "read"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "38",
+    "quote": "powers of just one ratio, 3:2",
+    "span": [
+     342,
+     380
+    ],
+    "status": "ok",
+    "found": 38
+   },
+   {
+    "alias": "A",
+    "loc": "38",
+    "quote": "this simplicity is deceiving, and for a number of reasons",
+    "span": [
+     412,
+     478
+    ],
+    "status": "ok",
+    "found": 38
+   },
+   {
+    "alias": "A",
+    "loc": "39",
+    "quote": "this is impossible to do with the Pythagorean scale",
+    "span": [
+     606,
+     666
+    ],
+    "status": "ok",
+    "found": 39
+   },
+   {
+    "alias": "C",
+    "loc": "46",
+    "quote": "(3/2)12 =129.75, whereas (2)7=128",
+    "span": [
+     705,
+     747
+    ],
+    "status": "ok",
+    "found": 46
+   },
+   {
+    "alias": "A",
+    "loc": "91",
+    "quote": "the ratios 2:1, 3:2, and 4:3—that is, on the simple numerical sequence 4:3:2:1",
+    "span": [
+     853,
+     940
+    ],
+    "status": "ok",
+    "found": 91
+   },
+   {
+    "alias": "A",
+    "loc": "91",
+    "quote": "All other intervals were considered dissonances, to be avoided or at least resolved into consonances.",
+    "span": [
+     1003,
+     1113
+    ],
+    "status": "ok",
+    "found": 91
+   },
+   {
+    "alias": "A",
+    "loc": "91",
+    "quote": "corresponded to the hitherto excluded ratios 5:4 and 6:5",
+    "span": [
+     1275,
+     1340
+    ],
+    "status": "ok",
+    "found": 91
+   },
+   {
+    "alias": "A",
+    "loc": "92",
+    "quote": "the Pythagorean scale be restructured into something more in tune with the laws of acoustics",
+    "span": [
+     1516,
+     1617
+    ],
+    "status": "ok",
+    "found": 92
+   },
+   {
+    "alias": "A",
+    "loc": "92",
+    "quote": "a tad smaller than its Pythagorean counterpart, 81:64",
+    "span": [
+     1725,
+     1787
+    ],
+    "status": "ok",
+    "found": 92
+   },
+   {
+    "alias": "C",
+    "loc": "16",
+    "quote": "not in fact the perfect major third 5:4, but are slightly sharp as 81:80",
+    "span": [
+     1870,
+     1951
+    ],
+    "status": "ok",
+    "found": 16
+   },
+   {
+    "alias": "A",
+    "loc": "91",
+    "quote": "as long as only a single voice or instrument was involved",
+    "span": [
+     2277,
+     2343
+    ],
+    "status": "ok",
+    "found": 91
+   }
+  ],
+  "errors": [],
+  "seconds": 27.4,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ говорит, что гамма строилась только на отношении 3:2, не учитывала терции 5:4 и 6:5, и из-за этого её пришлось перестроить в соответствии с законами акустики. Это совпадает с ключевыми фактами эталона."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+  "q": "Какие интервалы образуют горизонтальные и вертикальные «каналы» прямоугольной сетки на «равнине Атлантиды», и каким интервалом отделён каждый ряд от следующего, из-за чего названия тонов нельзя отождествлять с равномерно темперированными?",
+  "scope": [
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Intelligent_Music_Production_data",
+   "Polyrhythms_data"
+  ],
+  "text": "Если коротко, по книге McClain (источник A) сетка устроена так.\n\n**Прямоугольная сетка («каналы»):**\n- **По горизонтали** идут чистые кварты 3:4. На стр. 186 автор уточняет, что горизонтальные ряды можно читать и как квинты 2:3. [[A:185|perfect fourths of 3:4 left to right, and chromatic semitones of 24:25 vertically]], [[A:186|my horizontal arrays of fifths and fourths, ratios 2 : 3 and 3 : 4]]\n- **По вертикали** идут хроматические полутоны 24:25.\n\n**Вторая, «радиальная» система каналов** наложена поверх прямоугольной сетки по диагоналям. Вдоль одной оси (/) идут большие терции 4:5, вдоль другой (\\) — малые терции 5:6: [[A:185|a grid of major thirds of 4:5 along the one axis, /, and minor thirds of 5:6 along the other \\]]. Любой элемент таблицы зеркально отражается через центр D: [[A:185|EVERY ELEMENT HAS “REFLECTIVE” SYMMETRY THROUGH THE REFERENCE D]].\n\n**Почему названия тонов условны.** Каждый ряд смещён относительно соседнего на **синтонную комму 80:81**. Поэтому одноимённые ноты в разных рядах различаются по высоте, и обозначения автора нельзя понимать как ноты современного равномерно темперированного строя: [[A:185|since each row is displaced from the next by a syntonic comma of ratio 80:81, tone names must not be associated with those in modern equal-temperament]]. Автор поясняет, что его обозначения тонов передают смысл алгебры Платона, то есть последовательности логарифмических (равноинтервальных) прогрессий.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "185",
+    "quote": "perfect fourths of 3:4 left to right, and chromatic semitones of 24:25 vertically",
+    "span": [
+     229,
+     320
+    ],
+    "status": "ok",
+    "found": 185
+   },
+   {
+    "alias": "A",
+    "loc": "186",
+    "quote": "my horizontal arrays of fifths and fourths, ratios 2 : 3 and 3 : 4",
+    "span": [
+     322,
+     398
+    ],
+    "status": "ok",
+    "found": 186
+   },
+   {
+    "alias": "A",
+    "loc": "185",
+    "quote": "a grid of major thirds of 4:5 along the one axis, /, and minor thirds of 5:6 along the other \\",
+    "span": [
+     628,
+     732
+    ],
+    "status": "ok",
+    "found": 185
+   },
+   {
+    "alias": "A",
+    "loc": "185",
+    "quote": "EVERY ELEMENT HAS “REFLECTIVE” SYMMETRY THROUGH THE REFERENCE D",
+    "span": [
+     792,
+     865
+    ],
+    "status": "ok",
+    "found": 185
+   },
+   {
+    "alias": "A",
+    "loc": "185",
+    "quote": "since each row is displaced from the next by a syntonic comma of ratio 80:81, tone names must not be associated with those in modern equal-temperament",
+    "span": [
+     1131,
+     1291
+    ],
+    "status": "ok",
+    "found": 185
+   }
+  ],
+  "errors": [],
+  "seconds": 46.4,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ верно указывает чистые кварты 3:4 по горизонтали, хроматические полутоны 24:25 по вертикали и смещение рядов на синтонную комму 80:81, из-за чего названия нельзя отождествлять с равномерно темперированными. Лишние детали про диагональные каналы и квинты не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Musimathics_Volume_2_data",
+  "q": "Что происходит с фазорами положительной и отрицательной частоты в комплексном спектре косинусоиды, если к её аргументу добавить фазовый сдвиг?",
+  "scope": [
+   "Musimathics_Volume_2_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "По книге: фазовый сдвиг поворачивает оба фазора вокруг оси частот, но в противоположные стороны. Фазор положительной частоты поворачивается против часовой стрелки, а фазор отрицательной частоты — по часовой: [[A:112|adding a phase offset to the cosine wave rotates the positive frequency phasor counterclockwise and the negative frequency phasor clockwise]]. В общем виде это сформулировано так: [[A:112|Adding a phase offset to a real signal rotates its components in the complex spectral domain around the frequency axis.]]\n\nБез сдвига косинусоида равна сумме двух фазоров половинной амплитуды с противоположными частотами: [[A:110|a real cosine wave is the sum of two half-amplitude phasors with opposite frequencies]]. Оба фазора лежат на вещественной оси, смотрят в одну сторону и поэтому симметричны относительно 0 Hz ([[A:113|their phasors point in the same direction]]).\n\nАмплитуды при этом не меняются. У вещественного сигнала они всегда одинаковы на положительной и отрицательной частоте: [[A:113|This is true for real sines, real cosines, and in general, real sinusoids with any phase angle.]]\n\n**Мои рассуждения** (этого вывода в книге нет): cos(θ+φ) = (e^{iφ}·e^{iθ} + e^{−iφ}·e^{−iθ})/2. Положительный фазор получает множитель e^{iφ}, то есть поворачивается на +φ, а отрицательный — множитель e^{−iφ}, то есть на −φ. Поэтому повороты получаются зеркальными, а фазоры остаются комплексно-сопряжёнными. Благодаря этому их сумма всегда вещественна. Например, при φ = −90° получается sin θ: фазоры становятся чисто мнимыми и смотрят в противоположные стороны.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "112",
+    "quote": "adding a phase offset to the cosine wave rotates the positive frequency phasor counterclockwise and the negative frequency phasor clockwise",
+    "span": [
+     208,
+     357
+    ],
+    "status": "ok",
+    "found": 112
+   },
+   {
+    "alias": "A",
+    "loc": "112",
+    "quote": "Adding a phase offset to a real signal rotates its components in the complex spectral domain around the frequency axis.",
+    "span": [
+     396,
+     525
+    ],
+    "status": "ok",
+    "found": 112
+   },
+   {
+    "alias": "A",
+    "loc": "110",
+    "quote": "a real cosine wave is the sum of two half-amplitude phasors with opposite frequencies",
+    "span": [
+     626,
+     721
+    ],
+    "status": "ok",
+    "found": 110
+   },
+   {
+    "alias": "A",
+    "loc": "113",
+    "quote": "their phasors point in the same direction",
+    "span": [
+     825,
+     876
+    ],
+    "status": "ok",
+    "found": 113
+   },
+   {
+    "alias": "A",
+    "loc": "113",
+    "quote": "This is true for real sines, real cosines, and in general, real sinusoids with any phase angle.",
+    "span": [
+     999,
+     1104
+    ],
+    "status": "ok",
+    "found": 113
+   }
+  ],
+  "errors": [],
+  "seconds": 49.9,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: фазор положительной частоты поворачивается против часовой стрелки, отрицательной — по часовой, вокруг оси частот. Дополнительные пояснения верны и не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Intelligent_Music_Production_data",
+  "q": "Почему в области интеллектуального производства музыки сбор больших репрезентативных наборов данных особенно важен по сравнению с другими инженерными задачами?",
+  "scope": [
+   "Intelligent_Music_Production_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data",
+   "Style_and_idea_data"
+  ],
+  "text": "Главная причина, по книге «Intelligent Music Production» (A): системы этой области в основном **приближают субъективные решения человека**, а не вычисляют результат по заданным формулам.\n\n**По книге**\n\n- Сбор больших репрезентативных данных авторы называют общей проблемой инженерии. На таких данных обучают и тестируют модели, на них же проводят субъективную оценку систем: [[A:80|One of the key challenges in engineering is to gather large sets of relevant, representative data]].\n- Для IMP это особенно важно, потому что системы [[A:80|rely very heavily on the approximation of subjective decisions]].\n- Пример: чтобы алгоритм сводил трек как звукоинженер, сначала нужно понять, как сводит сам звукоинженер. Чёткого набора правил для этого нет, поэтому закономерности приходится выявлять на множестве сведений: [[A:80|In the absence of a complex set of deﬁned rules, one can imagine extracting this information and identifying trends by analyzing many mixes]].\n- Дополнительная трудность в том, что многодорожечного аудио мало. Обычных моно- и стереозаписей хватает, а вот multitrack-материала [[A:81|suffers from a severe lack of relevant material]]. Из-за этого страдают общность и качество исследований. Одна из главных причин дефицита — авторское право: оно мешает воспроизводить чужие исследования и сравнивать результаты.\n- Нужно и разнообразие данных. Разные жанры требуют разной обработки: например, в роке барабаны громче, чем в джазе. Поэтому нужны [[A:185|datasets of sufﬁcient size and diversity]], чтобы учитывать влияние жанра.\n\n**Мои рассуждения**\n\nВо многих инженерных задачах правильный ответ можно получить из физики или формальной спецификации. В сведении эталоном служит вкус и практика людей, и он меняется от инженера к инженеру и от жанра к жанру. Поэтому данные здесь выполняют роль самой спецификации: если выборка мала или однобока, модель выучит частный вкус, а не общие закономерности.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "80",
+    "quote": "One of the key challenges in engineering is to gather large sets of relevant, representative data",
+    "span": [
+     375,
+     481
+    ],
+    "status": "ok",
+    "found": 80
+   },
+   {
+    "alias": "A",
+    "loc": "80",
+    "quote": "rely very heavily on the approximation of subjective decisions",
+    "span": [
+     532,
+     603
+    ],
+    "status": "ok",
+    "found": 80
+   },
+   {
+    "alias": "A",
+    "loc": "80",
+    "quote": "In the absence of a complex set of deﬁned rules, one can imagine extracting this information and identifying trends by analyzing many mixes",
+    "span": [
+     814,
+     962
+    ],
+    "status": "ok",
+    "found": 80
+   },
+   {
+    "alias": "A",
+    "loc": "81",
+    "quote": "suffers from a severe lack of relevant material",
+    "span": [
+     1097,
+     1153
+    ],
+    "status": "ok",
+    "found": 81
+   },
+   {
+    "alias": "A",
+    "loc": "185",
+    "quote": "datasets of sufﬁcient size and diversity",
+    "span": [
+     1462,
+     1512
+    ],
+    "status": "ok",
+    "found": 185
+   }
+  ],
+  "errors": [],
+  "seconds": 38.2,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ прямо указывает ключевой факт эталона: системы IMP сильно опираются на приближение субъективных решений, поэтому нужны большие репрезентативные данные. Дополнительные детали не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+  "q": "Какое количество одинаковых по величине интервалов, меньших октавы, соответствует в равномерно темперированном строе делению октавы на малые терции, и чем в этом строе становится пифагорова комма?",
+  "scope": [
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Style_and_idea_data"
+  ],
+  "text": "Ответ есть в книге A («Harmonograph»), в разделе о равномерной темперации.\n\n**По книге**\n\n- **Четыре малые терции.** Октава делится на двенадцать равных полутонов, [[A:48|each chromatic semitone being 1.05946 times its neighbor]]. В таком строе [[A:48|Six (flat) whole tones now make an octave, as do four (very flat) minor thirds, or three (sharp) major thirds]]. Значит, октаву составляют ровно четыре одинаковые малые терции. Автор отмечает, что они «очень низкие» по сравнению с чистыми.\n- **Пифагорова комма исчезает.** [[A:48|The Pythagorean comma vanishes, as do all perfect intervals except the octave.]] Автор подытоживает так: [[A:48|It’s a clever fudge, slightly out of tune and we hear it every day.]]\n\n**Мои рассуждения**\n\nРасчёт ниже я сделал сам, в книге его нет.\n\n- Темперированная малая терция равна 3 полутонам, то есть 300 центам. Четыре такие терции дают 1200 центов, ровно одну октаву. Чистая малая терция 6:5 больше, около 315,6 цента. Поэтому четыре чистые терции перескакивают октаву, а темперированные терции «очень низкие».\n- Пифагорова комма — это примерно 23,5 цента. Столько набегает за двенадцать чистых квинт сверх семи октав. В равномерном строе каждая квинта уменьшена примерно на 2 цента: 700 центов вместо 702. В итоге двенадцать квинт дают ровно семь октав, и разрыва не остаётся. В книге B говорится о том же: пифагоров строй описан как приближение к равномерному с [[B:103|cumulative discrepancy of 2 cents in each perfect fifth or fourth]].",
+  "tools": [
+   "search",
+   "read"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "48",
+    "quote": "each chromatic semitone being 1.05946 times its neighbor",
+    "span": [
+     164,
+     229
+    ],
+    "status": "ok",
+    "found": 48
+   },
+   {
+    "alias": "A",
+    "loc": "48",
+    "quote": "Six (flat) whole tones now make an octave, as do four (very flat) minor thirds, or three (sharp) major thirds",
+    "span": [
+     245,
+     363
+    ],
+    "status": "ok",
+    "found": 48
+   },
+   {
+    "alias": "A",
+    "loc": "48",
+    "quote": "The Pythagorean comma vanishes, as do all perfect intervals except the octave.",
+    "span": [
+     525,
+     612
+    ],
+    "status": "ok",
+    "found": 48
+   },
+   {
+    "alias": "A",
+    "loc": "48",
+    "quote": "It’s a clever fudge, slightly out of tune and we hear it every day.",
+    "span": [
+     637,
+     713
+    ],
+    "status": "ok",
+    "found": 48
+   },
+   {
+    "alias": "B",
+    "loc": "103",
+    "quote": "cumulative discrepancy of 2 cents in each perfect fifth or fourth",
+    "span": [
+     1403,
+     1478
+    ],
+    "status": "ok",
+    "found": 103
+   }
+  ],
+  "errors": [],
+  "seconds": 23.4,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ называет четыре (очень низкие) малые терции в октаве и говорит, что пифагорова комма исчезает вместе со всеми чистыми интервалами, кроме октавы. Это совпадает с эталоном."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "Intelligent_Music_Production_data",
+  "q": "Чем различается смысл параметров времени срабатывания и отпускания у шумового гейта и у динамического компрессора диапазона?",
+  "scope": [
+   "Intelligent_Music_Production_data",
+   "Polyrhythms_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data"
+  ],
+  "text": "Суть различия в том, к какому действию привязаны attack и release.\n\n**По книге (Intelligent Music Production, гл. 2.3):**\n\n- **Noise gate.** Attack и release — это постоянные времени, которые показывают, как быстро гейт открывается и закрывается: [[A:45|The attack and release parameters are time constants representing how quickly the gate opens and closes.]]\n- **Компрессор.** Здесь те же названия значат другое. Attack — время, за которое компрессор снижает усиление, release — время, за которое он возвращает усиление к исходному уровню. Книга прямо подчёркивает это различие: [[A:45|Note that this is different from in the compressor, where attack relates to the time to reduce the gain and release to the time to restore to the original levels.]]\n\n**Мои рассуждения.** Направления этих фаз противоположны:\n- у гейта attack пропускает сигнал, то есть усиление растёт;\n- у компрессора attack приглушает сигнал, то есть усиление падает.\n\nRelease тоже работает наоборот. У гейта он снова закрывает сигнал, у компрессора — снимает подавление. При этом в обоих случаях attack срабатывает, когда сигнал поднимается выше порога, а release — когда опускается ниже.\n\n**Как это сказывается на настройке (по книге):**\n\n- **Гейт на барабанах.** Attack ставят на самое быстрое значение, при котором ещё нет искажений: [[A:136|The attack is set to the fastest value that does not introduce any distortion artifacts.]] Release делают как можно медленнее, но так, чтобы гейт успел закрыться до того, как появится «протечка» с других инструментов: [[A:136|The release is set as slow as possible while ensuring that the gate is closed before the onset of any bleed notes.]] У гейта есть и параметр hold — минимальное время, в течение которого он остаётся открытым. Он не даёт гейту слишком часто переключаться и создавать артефакты модуляции.\n- **Компрессор.** Attack и release выбирают с расчётом на «ловлю» транзиентов: [[A:121|attack and release time parameters are used to catch the transients in a signal]]. Типичные значения: attack от 5 до 250 мс, release от 5 мс до 3 с. Для перкуссионного материала обычно предпочитают более короткие постоянные времени.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "45",
+    "quote": "The attack and release parameters are time constants representing how quickly the gate opens and closes.",
+    "span": [
+     247,
+     360
+    ],
+    "status": "ok",
+    "found": 45
+   },
+   {
+    "alias": "A",
+    "loc": "45",
+    "quote": "Note that this is different from in the compressor, where attack relates to the time to reduce the gain and release to the time to restore to the original levels.",
+    "span": [
+     581,
+     752
+    ],
+    "status": "ok",
+    "found": 45
+   },
+   {
+    "alias": "A",
+    "loc": "136",
+    "quote": "The attack is set to the fastest value that does not introduce any distortion artifacts.",
+    "span": [
+     1310,
+     1408
+    ],
+    "status": "ok",
+    "found": 136
+   },
+   {
+    "alias": "A",
+    "loc": "136",
+    "quote": "The release is set as slow as possible while ensuring that the gate is closed before the onset of any bleed notes.",
+    "span": [
+     1536,
+     1660
+    ],
+    "status": "ok",
+    "found": 136
+   },
+   {
+    "alias": "A",
+    "loc": "121",
+    "quote": "attack and release time parameters are used to catch the transients in a signal",
+    "span": [
+     1909,
+     1998
+    ],
+    "status": "ok",
+    "found": 121
+   }
+  ],
+  "errors": [],
+  "seconds": 18.5,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ответ содержит ключевой факт эталона: у гейта attack/release — как быстро он открывается и закрывается, у компрессора — время снижения усиления и возврата к исходному уровню. Дополнительные рассуждения не противоречат эталону."
+  }
+ },
+ {
+  "item_kind": "answerable",
+  "book": "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+  "q": "Какому из четырёх ведических «языков» по де Николасу соответствует множество альтернативных наборов тонов и неизбежная жертва частью точности ради удержания системы в обозримых границах?",
+  "scope": [
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Polyrhythms_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data"
+  ],
+  "text": "Это третий «язык» — **language of Images and Sacrifice (Yajña)**.\n\nМаклейн разбирает схему де Николаса и связывает каждый из четырёх «языков» с одной из основ теории музыки. Третьему языку он отдаёт как раз множественность строев и вынужденный компромисс: [[A:22|The \"language of Images and Sacrifice\" (Yajña) is exemplified by the multitude of alternate tone-sets and the conflict of alternate values]]. Этот конфликт [[A:22|always results in some accuracy being \"sacrificed\" to keep the system within manageable limits]].\n\nОстальные три языка для сравнения:\n- **Non-Existence (Asat)** — непрерывный звуковысотный континуум внутри интервала, «хаос».\n- **Existence (Sat)** — каждый отдельный тон, то есть каждое число, задающее интервал, лад или строй.\n- **Embodied (Ṛta) Vision (Dhīh)** — он нужен, чтобы защищать альтернативные строи и [[A:22|refusing to grant dominion to any one of them]].\n\nКонкретный пример такой «жертвы» в книге — расхождение примерно в 24 цента между разными приближениями к √2. С ним приходится мириться, чтобы не работать с десятизначными числами. С этой зоной «трения» Маклейн связывает [[A:102|\"friction\" between alternate approximations to the square root of 2 produces the \"flames of sacrifice.\"]]",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "22",
+    "quote": "The \"language of Images and Sacrifice\" (Yajña) is exemplified by the multitude of alternate tone-sets and the conflict of alternate values",
+    "span": [
+     256,
+     403
+    ],
+    "status": "ok",
+    "found": 22
+   },
+   {
+    "alias": "A",
+    "loc": "22",
+    "quote": "always results in some accuracy being \"sacrificed\" to keep the system within manageable limits",
+    "span": [
+     419,
+     522
+    ],
+    "status": "ok",
+    "found": 22
+   },
+   {
+    "alias": "A",
+    "loc": "22",
+    "quote": "refusing to grant dominion to any one of them",
+    "span": [
+     838,
+     892
+    ],
+    "status": "ok",
+    "found": 22
+   },
+   {
+    "alias": "A",
+    "loc": "102",
+    "quote": "\"friction\" between alternate approximations to the square root of 2 produces the \"flames of sacrifice.\"",
+    "span": [
+     1115,
+     1228
+    ],
+    "status": "ok",
+    "found": 102
+   }
+  ],
+  "errors": [],
+  "seconds": 20.4,
+  "judge": {
+   "score": 2,
+   "refused": false,
+   "why": "Ассистент верно назвал «язык Образов и Жертвы» (Яджня) и привёл ту же суть: множество альтернативных наборов тонов и «жертва» частью точности ради управляемости системы. Совпадает с эталоном; дополнительные детали не противоречат ему."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Polyrhythms_data",
+  "q": "Какой рецепт борща приводит автор?",
+  "scope": [
+   "Polyrhythms_data",
+   "Musimathics_Volume_2_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data"
+  ],
+  "text": "Рецепта борща нет ни в одной из книг. Все три источника посвящены музыке: «Polyrhythms» — полиритмам, «Musimathics, Vol. 2» — математическим основам музыки и обработке звука, «The Ultimate Guide to: The Circle of Fifths» — квинтовому кругу. Поиск ничего похожего не нашёл.\n\nСлово «recipe» встречается только в переносном смысле. В Musimathics так названа функция sinc: она даёт «рецепт» восстановления пропущенных отсчётов сигнала: [[B:499|the shape of the sinc function provides a \"\"recipe\" for how to mix together the adjacent sample values]].\n\nСамое «кулинарное» место — в «Polyrhythms». Там полиритм 3:2 советуют запоминать по фразе «Hot Cup of Tea»: [[A:13|you can use the phrase “Hot Cup of Tea” to practice 3:2 polyrhythms]].\n\nЗа рецептом борща лучше обратиться к кулинарной книге. Если хотите, могу рассказать, что в этих книгах говорится о ритме, гармонии или звуке.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "B",
+    "loc": "499",
+    "quote": "the shape of the sinc function provides a \"\"recipe\" for how to mix together the adjacent sample values",
+    "span": [
+     432,
+     544
+    ],
+    "status": "ok",
+    "found": 499
+   },
+   {
+    "alias": "A",
+    "loc": "13",
+    "quote": "you can use the phrase “Hot Cup of Tea” to practice 3:2 polyrhythms",
+    "span": [
+     655,
+     731
+    ],
+    "status": "ok",
+    "found": 13
+   }
+  ],
+  "errors": [],
+  "seconds": 29.9,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо сообщает, что рецепта борща в книгах нет, и объясняет, что книги посвящены музыке. Упомянутые цитаты («recipe» для sinc, «Hot Cup of Tea») приведены как реальные места, не выдают рецепт борща за содержимое книг, и факты о книгах не выдуманы."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Polyrhythms_data",
+  "q": "Сколько стоит подписка на приложение PolyNome?",
+  "scope": [
+   "Polyrhythms_data",
+   "Intelligent_Music_Production_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data"
+  ],
+  "text": "Цены на PolyNome в книгах нет. В «Polyrhythms» приложение упоминается только как совет для практики, о стоимости или подписке там ничего не сказано.\n\n**Что сказано в книге:**\n- Новичкам, которым сложно играть полиритм под обычный метроном, автор предлагает попробовать полиритмический: [[A:18|try out a polyrhythm metronome, such as​ ​PolyNome !]]\n- Приложение проигрывает доли обоих размеров сразу: [[A:18|plays each beat of both meters for you to play along to]]\n- Особо отмечается функция Practice Log. В ней видно, какие ритмы, в каком темпе и как долго вы играли, а прогресс можно отслеживать: [[A:18|have access to charts and reports to track your progress]]\n\n**Где узнать цену:** на официальном сайте PolyNome или на странице приложения в App Store или Google Play. Цены и тарифы со временем меняются, так что лучше смотреть там.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "try out a polyrhythm metronome, such as​ ​PolyNome !",
+    "span": [
+     286,
+     347
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "plays each beat of both meters for you to play along to",
+    "span": [
+     400,
+     464
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "have access to charts and reports to track your progress",
+    "span": [
+     599,
+     664
+    ],
+    "status": "ok",
+    "found": 18
+   }
+  ],
+  "errors": [],
+  "seconds": 28.4,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что цены на PolyNome в книге нет, а приложение упоминается только как совет для практики. Перечисленные детали (полиритмический метроном, воспроизведение долей обоих размеров, Practice Log) подкреплены цитатами из книги. Совет искать цену на сайте или в магазинах приложений явно дан как внешний, не из книги."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Polyrhythms_data",
+  "q": "Какую модель барабанной установки автор советует купить новичку?",
+  "scope": [
+   "Polyrhythms_data",
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data"
+  ],
+  "text": "Ни в одной из трёх книг нет совета, какую барабанную установку купить новичку. Конкретные модели и бренды там не упоминаются вообще. «Polyrhythms» — книга о ритме, а не о покупке инструмента.\n\n**Что книга советует начинающим вместо этого:**\n- **Заниматься с метрономом на медленном темпе.** [[A:17|set your metronome to 60 beats per minute]]\n- **Если обычный метроном не помогает, взять полиритмический.** [[A:18|try out a polyrhythm metronome, such as PolyNome]]\n- **Попробовать онлайн-секвенсор**, если вам удобно представлять ритм в виде сетки. [[A:18|your learning style may be best served with an online sequencer tool]]\n- **Для барабанщиков есть ссылки на упражнения**, например [[A:14|how to play them on the drums, check out Niels Myrner’s exercises]]\n\nЧтобы выбрать установку, лучше почитать обзоры для начинающих барабанщиков или спросить совета в музыкальном магазине.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "17",
+    "quote": "set your metronome to 60 beats per minute",
+    "span": [
+     291,
+     341
+    ],
+    "status": "ok",
+    "found": 17
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "try out a polyrhythm metronome, such as PolyNome",
+    "span": [
+     406,
+     463
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "18",
+    "quote": "your learning style may be best served with an online sequencer tool",
+    "span": [
+     548,
+     625
+    ],
+    "status": "ok",
+    "found": 18
+   },
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "how to play them on the drums, check out Niels Myrner’s exercises",
+    "span": [
+     685,
+     759
+    ],
+    "status": "ok",
+    "found": 14
+   }
+  ],
+  "errors": [],
+  "seconds": 21.2,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что в книгах нет совета по выбору барабанной установки и моделей, а рекомендации по обзорам/магазину помечены как внешние. Перечисленные советы (метроном, PolyNome, секвенсор, упражнения Niels Myrner) даны как содержимое книги с цитатами и не выглядят выдуманными по отношению к вопросу."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Polyrhythms_data",
+  "q": "В каком году была основана компания Musical U?",
+  "scope": [
+   "Polyrhythms_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "Год основания Musical U в книгах не указан.\n\nПро компанию там есть только строка копирайта в колонтитуле на страницах, например: [[B:36|© Copyright Musical U, https://www.musical-u.com/]]. Такая же стоит и в «Polyrhythms». То есть эти два руководства выпустила Musical U, но о её истории ничего не сказано.\n\nГод основания стоит искать на сайте musical-u.com, в разделе «About».",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "B",
+    "loc": "36",
+    "quote": "© Copyright Musical U, https://www.musical-u.com/",
+    "span": [
+     129,
+     187
+    ],
+    "status": "ok",
+    "found": 36
+   }
+  ],
+  "errors": [],
+  "seconds": 12.4,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что год основания Musical U в книгах не указан, упоминает только копирайт в колонтитуле и советует искать на сайте. Выдуманных фактов о содержимом книги нет."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Какую гитару Fender автор рекомендует для изучения круга квинт?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Intelligent_Music_Production_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "Такой рекомендации в книге нет. В «The Ultimate Guide to: The Circle of Fifths» (источник A) я не нашёл ни упоминаний Fender, ни советов, на какой гитаре изучать круг квинт.\n\nГитара в книге встречается только в теоретических примерах:\n\n- **Квинта на грифе.** Чтобы получить квинту, струну делят на три части, то есть зажимают 7-й лад: [[A:8|To produce the fifth, divide the string in three parts (7th fret).]] Там же сказано, что на квинтах построены «power chords».\n- **Диезы на круге.** G♯, D♯ и A♯ включены в схему в основном ради гитаристов: [[A:16|thanks mostly to guitarists, who tend to like sharps more than flats]]\n\nКнига написана для любого инструмента: [[A:2|regardless of whether you are a classical violinist, jazz saxophone player, a bassist in a rock band, or aspiring DJ.]]\n\n**Мои рассуждения:** круг квинт — это теория, и марка гитары для него не важна. Подойдёт любой инструмент с нормальным строем. Если нужен совет по выбору гитары, лучше поискать обзоры или спросить в музыкальном магазине: в ваших трёх источниках этой темы нет.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "8",
+    "quote": "To produce the fifth, divide the string in three parts (7th fret).",
+    "span": [
+     335,
+     409
+    ],
+    "status": "ok",
+    "found": 8
+   },
+   {
+    "alias": "A",
+    "loc": "16",
+    "quote": "thanks mostly to guitarists, who tend to like sharps more than flats",
+    "span": [
+     546,
+     623
+    ],
+    "status": "ok",
+    "found": 16
+   },
+   {
+    "alias": "A",
+    "loc": "2",
+    "quote": "regardless of whether you are a classical violinist, jazz saxophone player, a bassist in a rock band, or aspiring DJ.",
+    "span": [
+     664,
+     789
+    ],
+    "status": "ok",
+    "found": 2
+   }
+  ],
+  "errors": [],
+  "seconds": 18.3,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо заявил, что рекомендации гитары Fender в книге нет и Fender не упоминается. Приведённые цитаты (квинта на 7-м ладу, диезы для гитаристов, книга для любого инструмента) описаны как реальные фрагменты книги, а не как ответ на вопрос, и выдуманных фактов о книге нет. Общие рассуждения помечены как собственные."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Кто написал вальс «Амурские волны»?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Style_and_idea_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data"
+  ],
+  "text": "Вальс «Амурские волны» написал военный капельмейстер и композитор **Макс Авельевич Кюсс**. Он сочинил его в 1903 году, когда служил во Владивостоке. Позже появились слова, самая известная версия текста — Константина Васильева.\n\nЭто мои общие знания, а не данные из книг блокнота. Ни один из источников не посвящён русской вальсовой музыке:\n- «The Circle of Fifths» — по теории музыки;\n- «Style and Idea» — эссе Шёнберга;\n- «The Myth of Invariance» — о Ригведе, математике и музыке до Платона.\n\nЕсли хотите, могу поискать в книгах что-нибудь о вальсе как жанре или о трёхдольном размере.",
+  "tools": [],
+  "verify": [],
+  "errors": [],
+  "seconds": 10.6,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо указал, что ответ — его общие знания, а не данные из книг блокнота, и что ни один источник не посвящён этой теме. Содержимое книг он не выдумывал: перечислил их реальные темы и предложил поискать связанное."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Как автор предлагает настраивать гитару в открытом строе DADGAD?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "Intelligent_Music_Production_data"
+  ],
+  "text": "Ни в одной из трёх книг блокнота нет инструкций по настройке гитары в DADGAD.\n\n- **A — «The Ultimate Guide to: The Circle of Fifths»:** точный поиск слова «DADGAD» ничего не дал. Книга про кварто-квинтовый круг и ключевые знаки, например: [[A:14|Head clockwise around the circle starting at C major. G major has one sharp (F♯)]].\n- **B — «Harmonograph»:** книга о соотношениях интервалов и системах строя вообще (пифагорейский строй, чистый строй, равномерная темперация), а не о настройке гитары. Например: [[B:48|The octave is divided into twelve equal intervals, each chromatic semitone being 1.05946 times its neighbor]].\n- **C — «Intelligent Music Production»:** гитара упоминается только в списке литературы, в связи с обработкой записей.\n\n**Мои рассуждения (не из книг):** обычно DADGAD получают из стандартного строя EADGBE так: 6-ю струну опускают с E на D, 2-ю — с B на A, 1-ю — с E на D. Если хотите, могу показать, как этот строй связан с материалом книг. Например, по книге B можно разобрать, почему квинты D–A и кварты A–D, D–G звучат так устойчиво. Если вы нашли упоминание DADGAD в какой-то другой книге, добавьте её в блокнот, и я поищу там.",
+  "tools": [
+   "search",
+   "find_exact"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "14",
+    "quote": "Head clockwise around the circle starting at C major. G major has one sharp (F♯)",
+    "span": [
+     239,
+     328
+    ],
+    "status": "ok",
+    "found": 14
+   },
+   {
+    "alias": "B",
+    "loc": "48",
+    "quote": "The octave is divided into twelve equal intervals, each chromatic semitone being 1.05946 times its neighbor",
+    "span": [
+     508,
+     624
+    ],
+    "status": "ok",
+    "found": 48
+   }
+  ],
+  "errors": [],
+  "seconds": 16.4,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что ни в одной из книг нет инструкций по настройке DADGAD, а общие знания о строе явно помечает как «не из книг». Содержание книг описано в рамках их реальных тем, без выдуманных фактов о DADGAD."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+  "q": "Какой кофе пьёт автор, когда сочиняет песни?",
+  "scope": [
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Musimathics_Volume_2_data",
+   "Intelligent_Music_Production_data"
+  ],
+  "text": "Ни в одной из трёх книг ответа нет. Поиск ничего не нашёл ни про кофе, ни про то, в каких условиях авторы пишут музыку.\n\n**Что всё-таки есть в источниках:**\n- **A** (The Circle of Fifths): про сочинение песен там написано только с точки зрения теории, например как подбирать аккорды по кругу квинт: [[A:33|if you're writing songs you will know which chords will work well together]]. О привычках автора ничего нет.\n- **B** (Musimathics): в предисловии John Chowning рассказывает о Gareth Loy как о композиторе: [[B:12|Because Loy was trained as a composer, composition was his ultimate purpose]]. Но про кофе там тоже ничего.\n- **C** (Intelligent Music Production): это научная книга о технологиях. Авторы пишут о себе только в разделах про место работы и в благодарностях.\n\nЕсли вам интересен кто-то конкретный, например Gareth Loy, попробуйте поискать его интервью. Обычно такие подробности бывают там, а не в учебниках.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "A",
+    "loc": "33",
+    "quote": "if you're writing songs you will know which chords will work well together",
+    "span": [
+     299,
+     382
+    ],
+    "status": "ok",
+    "found": 33
+   },
+   {
+    "alias": "B",
+    "loc": "12",
+    "quote": "Because Loy was trained as a composer, composition was his ultimate purpose",
+    "span": [
+     511,
+     595
+    ],
+    "status": "ok",
+    "found": 12
+   }
+  ],
+  "errors": [],
+  "seconds": 26.1,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что ни в одной из книг ответа про кофе нет. Приведённые цитаты и описания источников выглядят как реальное содержимое книг, а не выдумка о кофе, и предложение поискать интервью помечено как внешний совет."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+  "q": "Какой пример различий в обработке между музыкальными жанрами приводится как препятствие для универсальных систем музыкального продакшна, но при этом как возможность для высокоуровневого взаимодействия с пользователем?",
+  "scope": [
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Style_and_idea_data",
+   "Intelligent_Music_Production_data"
+  ],
+  "text": "В книге *Intelligent Music Production* (источник C) приводится пример громкости барабанов: в рок-музыке её обычно делают выше, чем в джазе.\n\n**По книге**\n\n- Это сказано в разделе «10.3 Future Directions»: [[C:185|Different genres seem to require different treatments too, such as a higher drum loudness in rock music compared to jazz]].\n- Сразу после этого авторы называют двойственную роль такого различия: [[C:185|This distinction presents an obstacle for one-size-ﬁts-all music production systems, but offers opportunities for]]… Дальше фраза в найденном фрагменте обрывается. Поэтому точное окончание про «высокоуровневое взаимодействие» я дословно подтвердить не могу.\n- Та же мысль есть во введении (раздел 1.5). Если дать пользователю выбирать высокоуровневые параметры, например жанр, система перестаёт быть только корректирующим инструментом: [[C:30|Adding control over high-level parameters, such as targeted genre, shifts the potential of]] IMP-систем к [[C:30|creative tools offering countless possibilities and the user-friendly parameters to achieve them]].\n\n**Мои рассуждения**\n\nПрепятствие в том, что не существует единого «правильного» микса для любого жанра. Возможность в том, что сам жанр можно сделать понятной ручкой управления: пользователь выбирает «rock» или «jazz», а система подстраивает баланс, в том числе громкость барабанов.\n\nЕсли хотите, могу прочитать страницу 185 целиком и найти окончание фразы.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "C",
+    "loc": "185",
+    "quote": "Different genres seem to require different treatments too, such as a higher drum loudness in rock music compared to jazz",
+    "span": [
+     205,
+     335
+    ],
+    "status": "ok",
+    "found": 185
+   },
+   {
+    "alias": "C",
+    "loc": "185",
+    "quote": "This distinction presents an obstacle for one-size-ﬁts-all music production systems, but offers opportunities for",
+    "span": [
+     408,
+     531
+    ],
+    "status": "ok",
+    "found": 185
+   },
+   {
+    "alias": "C",
+    "loc": "30",
+    "quote": "Adding control over high-level parameters, such as targeted genre, shifts the potential of",
+    "span": [
+     852,
+     951
+    ],
+    "status": "ok",
+    "found": 30
+   },
+   {
+    "alias": "C",
+    "loc": "30",
+    "quote": "creative tools offering countless possibilities and the user-friendly parameters to achieve them",
+    "span": [
+     965,
+     1070
+    ],
+    "status": "ok",
+    "found": 30
+   }
+  ],
+  "errors": [],
+  "seconds": 29.3,
+  "judge": {
+   "refused": false,
+   "invented": false,
+   "why": "Ассистент не говорит, что в книге ответа нет, а отвечает примером про громкость барабанов в роке и джазе со ссылками на книгу. Он честно оговаривает, что фраза обрывается, и отделяет свои рассуждения от текста книги. Выдуманных фактов нет, но и отказа тоже."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Musimathics_Volume_2_data",
+  "q": "Почему в патче Pure Data можно спокойно оставить включённой обработку звука (DSP), даже если генератор синусоиды уже добавлен и подключён к выходу?",
+  "scope": [
+   "Musimathics_Volume_2_data",
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data"
+  ],
+  "text": "Вопрос с подвохом: дело не в том, что генератор подключён, а в том, что ему не задали частоту.\n\n**По книге.** Речь идёт о патче из раздела «Working with Different Frequencies». В нём объект `osc~` создан **без аргумента**, то есть просто `osc~`, а не `osc~ 440`. Автор объясняет: [[B:36|You can safely keep DSP on in this case because the osc~ doesn't have an initial frequency]]. Кроме того, к его входу ничего не подключено: [[B:36|it doesn't have anything connected to its inlet telling it a frequency to use. It will make no sound.]]\n\nДля сравнения, в первом примере `osc~ 440` сразу давал звук. Там совет был обратный: включить DSP, послушать и выключить: [[B:27|When you're done listening, toggle DSP off.]]\n\nТот же приём книга использует с `*~`: пока на второй вход ничего не подано, сигнал умножается на 0, и стоит тишина: [[B:32|it's multiplying the signal by its default value of 0.]]\n\n**Мои рассуждения.** Если DSP включён, Pd обрабатывает сигналы. Если при этом генератор на частоте 0 Гц, он выдаёт постоянное значение вместо колебаний, и в динамиках ничего не слышно. Поэтому DSP можно не выключать, пока собираете патч. Но как только вы подадите на `osc~` частоту, звук появится сразу. Перед этим стоит убавить громкость, например слайдером `output~`, который тоже есть в этом патче.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "B",
+    "loc": "36",
+    "quote": "You can safely keep DSP on in this case because the osc~ doesn't have an initial frequency",
+    "span": [
+     280,
+     379
+    ],
+    "status": "ok",
+    "found": 36
+   },
+   {
+    "alias": "B",
+    "loc": "36",
+    "quote": "it doesn't have anything connected to its inlet telling it a frequency to use. It will make no sound.",
+    "span": [
+     427,
+     537
+    ],
+    "status": "ok",
+    "found": 36
+   },
+   {
+    "alias": "B",
+    "loc": "27",
+    "quote": "When you're done listening, toggle DSP off.",
+    "span": [
+     661,
+     713
+    ],
+    "status": "ok",
+    "found": 27
+   },
+   {
+    "alias": "B",
+    "loc": "32",
+    "quote": "it's multiplying the signal by its default value of 0.",
+    "span": [
+     831,
+     894
+    ],
+    "status": "ok",
+    "found": 32
+   }
+  ],
+  "errors": [],
+  "seconds": 23.7,
+  "judge": {
+   "refused": false,
+   "invented": false,
+   "why": "Ассистент не говорит, что в книге ответа нет: он уверенно отвечает с цитатами из книги (патч с osc~ без аргумента, DSP можно оставить включённым, т.к. нет начальной частоты). Цитаты выглядят как реальное содержимое книги и согласуются с вопросом, поэтому выдумкой это не признаётся; добавленные рассуждения помечены как собственные."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+  "q": "Какой синтезатор Хлоя Раунет запускает с помощью MIDI-арпеджиаций из Ableton, после чего записывает его звук обратно в сессию как аудио?",
+  "scope": [
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Style_and_idea_data"
+  ],
+  "text": "В ваших книгах ответа на этот вопрос нет. Я искал по запросу «Chloe Raunet synthesizer Ableton MIDI arpeggio», и ни один найденный фрагмент не подошёл. Ни Хлоя Раунет, ни Ableton, ни MIDI-арпеджиации в книгах не встречаются.\n\nКниги в блокноте вообще о другом:\n- **A — «Harmonograph»**: математика музыкальных интервалов, строи, фигуры гармонографа.\n- **B — «The myth of invariance»**: числа и музыка от Ṛg Veda до Платона.\n- **C — «Style and Idea»**: эссе Шёнберга, в том числе о двенадцатитоновой композиции.\n\nСкорее всего, этот рабочий процесс описан в интервью с Хлоей Раунет, например на сайте Ableton («Artist» / «Ableton Blog»), или в её видео о студийной работе. Если добавите такой материал в блокнот, найду в нём ответ с цитатой.",
+  "tools": [
+   "search"
+  ],
+  "verify": [],
+  "errors": [],
+  "seconds": 13.4,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что в книгах ответа нет, и не приписывает книгам выдуманных фактов. Описание книг (Harmonograph, Myth of invariance, Style and Idea) относится к содержимому блокнота, а предположение об интервью с Раунет подано как догадка, а не как содержимое книг."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+  "q": "Почему в области интеллектуального производства музыки сбор больших репрезентативных наборов данных особенно важен по сравнению с другими инженерными задачами?",
+  "scope": [
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data"
+  ],
+  "text": "В ваших книгах ответа на этот вопрос нет. Ни одна из трёх книг не касается интеллектуального производства музыки (intelligent music production), машинного обучения или наборов данных. Поиск по этой теме ничего релевантного не нашёл:\n\n- **A — «The Myth of Invariance»** о числовой символике, музыкальных строях и мифологии от Ṛg Veda до Платона;\n- **B — «The Ultimate Guide to: The Circle of Fifths»** — учебник по квинтовому кругу, тональностям и аккордам;\n- **C — «Harmonograph»** о математике интервалов и гармонографе.\n\n**Мои рассуждения (не по книгам).** Обычно называют такие причины:\n- **Субъективность цели.** «Хороший микс» нельзя проверить формулой, как прочность моста. Критерий качества приходится извлекать из множества примеров и оценок слушателей.\n- **Разнообразие материала.** Жанры, инструменты, условия записи и вкусы очень разные. Маленькая выборка даёт систему, которая работает только на «своём» стиле.\n- **Нехватка открытых данных.** Многодорожечные записи (stems) и параметры обработки, которые выбрал звукорежиссёр, редко публикуют из-за авторских прав. Поэтому каждый хороший набор данных очень ценен.\n- **Сложно смоделировать решения людей.** Приёмы звукорежиссёров трудно записать в виде явных правил, поэтому системы учатся на примерах, а не на физических законах.\n\nЕсли хотите, добавьте в блокнот профильный источник, например работы по Intelligent Music Production (De Man, Reiss, Stables). Тогда я отвечу с цитатами.",
+  "tools": [
+   "search"
+  ],
+  "verify": [],
+  "errors": [],
+  "seconds": 15.3,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что в книгах ответа нет, а общие рассуждения явно помечает как «не по книгам». Описания книг соответствуют их темам и не выдаются за ответ на вопрос."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+  "q": "Чем различается смысл параметров времени срабатывания и отпускания у шумового гейта и у динамического компрессора диапазона?",
+  "scope": [
+   "Music_by_the_numbers__from_Pythagoras_to_Schoenberg_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "В книгах этого блокнота ответа на этот вопрос нет. Я поискал в «Musimathics» (C), где больше всего материала по обработке звука. Шумовой гейт и компрессор там не разбираются, тем более их параметры attack/release.\n\n**Что есть в книгах по теме:**\n- Attack и release описаны только как параметры огибающей в синтезе, а не в динамической обработке: [[C:386|where t is time, a is the attack time, d is the release time]].\n- Компрессор (и automatic gain control) упоминается вскользь: как пример фильтра, который меняется во времени и становится нелинейным, если его параметры зависят от сигнала: [[C:236|A time-varying filter can be linear, but not if any time-varying parameters depend upon the signal]].\n- Шумоподавление описано через STFT с порогом по полосам: [[C:503|if the intensity in a band is less than its threshold, the output of the band is set to zero]]. Это похоже на гейт, только спектральный, и времена срабатывания здесь не обсуждаются.\n\n**Мои рассуждения (из общих знаний, в книгах этого нет):**\n- **Гейт.** Attack — за какое время гейт открывается, когда сигнал поднялся выше порога. Release — за какое время он закрывается после падения сигнала ниже порога. Обычно есть ещё hold. Получается, что attack отвечает за то, как быстро сигнал *пропускается*, а release — как быстро он *глушится*.\n- **Компрессор.** Логика обратная. Attack — как быстро начинается *ослабление* усиления, когда сигнал превысил порог. Release — как быстро усиление *возвращается* к норме, когда сигнал ушёл ниже порога.\n- **Итог.** При одинаковых названиях направление действия противоположное. У гейта attack *открывает* путь сигналу, у компрессора attack *ограничивает* сигнал. Отсюда и разные типичные настройки. Гейту нужен быстрый attack, чтобы не срезать атаку ноты. У компрессора более медленный attack специально пропускает транзиент, и звук остаётся «панчевым».\n\nЧтобы найти эту тему в литературе, лучше взять книги по звукорежиссуре или DSP-эффектам, например Zölzer «DAFX» или Izhaki «Mixing Audio».",
+  "tools": [
+   "search",
+   "search",
+   "read"
+  ],
+  "verify": [
+   {
+    "alias": "C",
+    "loc": "386",
+    "quote": "where t is time, a is the attack time, d is the release time",
+    "span": [
+     346,
+     416
+    ],
+    "status": "ok",
+    "found": 386
+   },
+   {
+    "alias": "C",
+    "loc": "236",
+    "quote": "A time-varying filter can be linear, but not if any time-varying parameters depend upon the signal",
+    "span": [
+     592,
+     700
+    ],
+    "status": "ok",
+    "found": 236
+   },
+   {
+    "alias": "C",
+    "loc": "503",
+    "quote": "if the intensity in a band is less than its threshold, the output of the band is set to zero",
+    "span": [
+     760,
+     862
+    ],
+    "status": "ok",
+    "found": 503
+   }
+  ],
+  "errors": [],
+  "seconds": 42.5,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо заявил, что в книгах ответа нет, а объяснения про гейт и компрессор явно пометил как общие знания, не из книги. Цитаты из книги приведены как связанные упоминания, без выдумывания того, что книга разбирает гейт или компрессор."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+  "q": "По какому критерию Глейзер предложил оценивать обоснованную теорию, если не по её валидности, и какой из четырёх критериев отвечает за то, насколько теорию можно изменить при сопоставлении с новыми релевантными данными?",
+  "scope": [
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data",
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data"
+  ],
+  "text": "Ответить по вашим книгам не получится: Глейзера и grounded theory в них нет. В блокноте три источника: McClain о мифе, математике и музыке (A), руководство по Pure Data (B) и «Harmonograph» о математике музыки (C). Поиск по запросу «Glaser grounded theory fit work relevance modifiability» нашёл только нерелевантные фрагменты, оценка близости почти нулевая.\n\n**Мои рассуждения (не по вашим книгам, а по общим знаниям из методологии):**\n- Глейзер, вместе со Строссом и позже самостоятельно (*Theoretical Sensitivity*, 1978), предлагал оценивать обоснованную теорию не по валидности в смысле проверки гипотез, а по её **пригодности, правдоподобию и практической полезности**. Для этого он назвал четыре критерия: **fit** (соответствие данным), **work** (теория работает, то есть объясняет и предсказывает), **relevance** (значимость для изучаемой области) и **modifiability** (изменяемость).\n- Ваш второй вопрос касается **modifiability**. Этот критерий описывает, насколько теорию можно дополнять и менять, когда появляются новые релевантные данные. По Глейзеру, теорию не опровергают, а уточняют.\n\nЧтобы проверить это с цитатами, добавьте в блокнот первоисточник: Glaser & Strauss, *The Discovery of Grounded Theory* (1967), или Glaser, *Theoretical Sensitivity* (1978). Ещё подойдёт учебник по качественным методам.",
+  "tools": [
+   "search"
+  ],
+  "verify": [],
+  "errors": [],
+  "seconds": 21.2,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо сказал, что Глейзера и grounded theory в книгах нет, а общие знания (fit, work, relevance, modifiability) явно пометил как не из книг. Содержимое книг не выдумывал."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data",
+  "q": "Какую реакцию вызвала у публики премьера второго струнного квартета Шёнберга в 1908 году и как сам композитор объяснил эти протесты?",
+  "scope": [
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Polyrhythms_data"
+  ],
+  "text": "**В ваших книгах ответа нет.** Я поискал по всем трём источникам: гиду по Ableton Live, книге о квинтовом круге и книге «Polyrhythms». Ни Шёнберг, ни его второй струнный квартет, ни премьера 1908 года там не упоминаются. Ближе всего к теме в A — упоминания композиторов-новаторов вроде Stockhausen, Messiaen и Pierre Boulez в связи с GRM в Париже. Но к Шёнбергу это отношения не имеет.\n\n**Что я знаю сам (не по книгам, проверьте по другим источникам):**\n- Премьера прошла в Вене в декабре 1908 года. Играл Квартет Розе, партию сопрано в последних частях исполняла Мария Гутхейль-Шодер.\n- Концерт сорвался: в зале смеялись, свистели и шумели, а в прессе вышли резкие отзывы.\n- Как сам Шёнберг объяснял эти протесты, я точно не помню. Не хочу выдумывать формулировку.\n\n**Где искать:**\n- биографии Шёнберга, например H. H. Stuckenschmidt «Schoenberg: His Life, World and Work»;\n- сборник его статей «Style and Idea»;\n- комментарии к записям квартета op. 10.\n\nЕсли добавите в блокнот одну из этих книг, я найду там точные цитаты.",
+  "tools": [
+   "search"
+  ],
+  "verify": [],
+  "errors": [],
+  "seconds": 21.8,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо заявляет, что в книгах ответа нет, а общие знания о премьере явно помечает как не из книг и не выдаёт за содержимое книги. Объяснение Шёнберга он честно не придумывает."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Intelligent_Music_Production_data",
+  "q": "Почему начальная форма щипнутой струны вызвала спор у математиков XVIII века относительно уравнения, описывающего её колебания?",
+  "scope": [
+   "Intelligent_Music_Production_data",
+   "The_Ultimate_Guide_to__The_Circle_of_Fifths_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data"
+  ],
+  "text": "Я проверил все три книги, и в них этого нет. Ни «Harmonograph» (C), ни «Intelligent Music Production» (A), ни «The Circle of Fifths» (B) не рассказывают о споре XVIII века вокруг уравнения колебаний струны. Имён d'Alembert, Euler и Bernoulli в найденных фрагментах тоже нет.\n\nБлиже всего к теме подходят два места в книге C:\n- формула частоты натянутой струны в приложении: [[C:59|Fundamental frequency 1 string tension of a tensioned string 2 x string length]];\n- сравнение затухающего маятника с затуханием звука щипковых струн: [[C:26|The running-down of harmonograph pendulums is an exact parallel to the fading of musical notes produced by plucked strings]].\n\n**Мои рассуждения (из общих знаний, не из книг):**\n- **Почему форма мешала.** Щипнутая струна в начальный момент имеет форму треугольника с изломом в точке щипка. В этой точке нет производной, а волновое уравнение требует вторых производных. Поэтому было неясно, можно ли вообще считать такую форму решением.\n- **Позиция d'Alembert.** Около 1747 года он вывел волновое уравнение и решение в виде бегущих волн. Он считал, что допустимы только гладкие, «аналитические» начальные формы, а значит, треугольник не подходит.\n- **Позиция Euler.** Он возражал, что физически струну щипают именно так. Поэтому, по его мнению, нужно допускать «произвольные» и даже ломаные функции.\n- **Позиция Daniel Bernoulli.** Он утверждал, что любое колебание — это сумма синусоидальных гармоник. Euler и d'Alembert сомневались, что сумма гладких синусов способна дать излом.\n- **Чем всё закончилось.** Спор разрешили уже в XIX веке: ряды Fourier, а затем строгое понятие функции у Dirichlet. Выяснилось, что бесконечный ряд синусов действительно может сходиться к треугольной форме.\n\nЧтобы проверить эту историю по первоисточникам, лучше взять книги по истории математики, например Morris Kline «Mathematical Thought from Ancient to Modern Times» (главы о дифференциальных уравнениях в частных производных), или работы о происхождении рядов Fourier.",
+  "tools": [
+   "search",
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "C",
+    "loc": "59",
+    "quote": "Fundamental frequency 1 string tension of a tensioned string 2 x string length",
+    "span": [
+     374,
+     461
+    ],
+    "status": "ok",
+    "found": 59
+   },
+   {
+    "alias": "C",
+    "loc": "26",
+    "quote": "The running-down of harmonograph pendulums is an exact parallel to the fading of musical notes produced by plucked strings",
+    "span": [
+     531,
+     662
+    ],
+    "status": "ok",
+    "found": 26
+   }
+  ],
+  "errors": [],
+  "seconds": 30.7,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо сказал, что в книгах нет информации о споре XVIII века, а исторический разбор явно пометил как общие знания, не из книг. Цитаты из книги C про формулу частоты струны и затухание относятся к реальным найденным фрагментам и не выдаются за ответ на вопрос."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+  "q": "Какое существо изображено в солнечном диске на ладье бога солнца при её входе в Дуат в первый час ночи, и что окружает этот диск?",
+  "scope": [
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+   "Polyrhythms_data",
+   "Computer_Music_Presents_Music_Producer_Guide_to_Ableton_Live_data"
+  ],
+  "text": "В ваших книгах ответа на этот вопрос нет. Ни Дуат, ни ладья бога солнца, ни солнечный диск в них не упоминаются. Источники здесь такие:\n- **A**: про программирование звука в Pure Data;\n- **B**: про полиритмы;\n- **C**: руководство по Ableton Live.\n\nПоиск по ключевым словам (sun god, barque, Duat, solar disk) нашёл только посторонние места, например трек Sub Focus «Solar System» в книге C. С вашим вопросом они никак не связаны.\n\n**Мои рассуждения (не по книгам):** судя по всему, вопрос о первом часе «Амдуата» (книги о том, что в Дуате). Насколько я помню, в начале ночного пути солнце изображают в ладье скарабеем Хепри внутри диска, а вокруг диска лежит защитный змей Мехен. Но в таких деталях я уверен не полностью: какое существо внутри диска и что вокруг него, бывает по-разному в разных версиях текста и гробницах. Поэтому проверьте это по специальным изданиям. Подойдут, например, работы Эрика Хорнунга об «Амдуате» или издание «Amduat» Теодора Абта и Эрика Хорнунга. Если загрузите такую книгу в блокнот, найду точный ответ с цитатами.",
+  "tools": [
+   "search"
+  ],
+  "verify": [],
+  "errors": [],
+  "seconds": 13.9,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо заявил, что в книгах ответа нет, и перечислил, о чём они. Информацию о скарабее Хепри и змее Мехен он дал отдельно, пометил как рассуждение «не по книгам» и оговорил неуверенность, так что за содержимое книг это не выдано."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Intelligent_Music_Production_data",
+  "q": "Как называется выражение под знаком корня в формуле для коэффициента затухающего осциллятора, и какой знак оно должно иметь, чтобы система вообще не совершала колебаний, а лишь экспоненциально затухала?",
+  "scope": [
+   "Intelligent_Music_Production_data",
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+   "Musimathics_Volume_2_data"
+  ],
+  "text": "Это выражение называется **дискриминант**, и для чистого экспоненциального затухания без колебаний он должен быть **положительным**. Это разобрано в Musimathics, т. 2, раздел 6.3.\n\n**По книге**\n\n- Название. Под корнем в определении β стоит выражение c² − 4km. Оно и называется дискриминантом: [[C:305|The term under the rad- ical sign c 2 - 4km is called the discriminant.]] Такое название объясняется тем, что оно [[C:305|criminates between the conditions that cause vibration and those that do not.]]\n- Знак. Если дискриминант положителен, β вещественное, и множитель e^(−βt) — обычная экспонента: [[C:305|If f3 is real, then e-fJ, is a simple exponential decay function, which doesn't vibrate.]] Если же он отрицателен, β комплексное, и e^(−βt) становится фазором, то есть колеблется.\n- Физический смысл. Колебаний нет, когда [[C:305|the system does not vibrate when dissipation dominates over the other forces.]] Это случай **overdamping**: решение — [[C:306|the product of two declining exponential curves, one of which goes toward zero a little faster than the other.]]\n- Граничный случай. При c² − 4km = 0 демпфирование критическое. Тогда β = 0, и остаётся [[C:306|so the result is a pure exponential decay term.]] Колебаний здесь тоже нет.\n\n**Мои рассуждения.** Если требуется строго «положительный», правильный ответ — c² − 4km > 0, то есть c > 2√(km). Но и при нуле система не колеблется. Поэтому полное условие отсутствия колебаний — дискриминант не меньше нуля, а случай равенства нулю называется критическим демпфированием.",
+  "tools": [
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "C",
+    "loc": "305",
+    "quote": "The term under the rad- ical sign c 2 - 4km is called the discriminant.",
+    "span": [
+     293,
+     374
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "C",
+    "loc": "305",
+    "quote": "criminates between the conditions that cause vibration and those that do not.",
+    "span": [
+     415,
+     502
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "C",
+    "loc": "305",
+    "quote": "If f3 is real, then e-fJ, is a simple exponential decay function, which doesn't vibrate.",
+    "span": [
+     600,
+     698
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "C",
+    "loc": "305",
+    "quote": "the system does not vibrate when dissipation dominates over the other forces.",
+    "span": [
+     829,
+     916
+    ],
+    "status": "ok",
+    "found": 305
+   },
+   {
+    "alias": "C",
+    "loc": "306",
+    "quote": "the product of two declining exponential curves, one of which goes toward zero a little faster than the other.",
+    "span": [
+     955,
+     1075
+    ],
+    "status": "ok",
+    "found": 306
+   },
+   {
+    "alias": "C",
+    "loc": "306",
+    "quote": "so the result is a pure exponential decay term.",
+    "span": [
+     1164,
+     1221
+    ],
+    "status": "ok",
+    "found": 306
+   }
+  ],
+  "errors": [],
+  "seconds": 36.6,
+  "judge": {
+   "refused": false,
+   "invented": false,
+   "why": "Ассистент не отказывается, а уверенно отвечает по книге, приводя цитаты (дискриминант, overdamping, критическое демпфирование) со ссылками на конкретные фрагменты C:305 и C:306. Формально это выглядит как ответ из книги, а не как признание, что ответа в книге нет. Выдуманность по содержимому не установлена: цитаты правдоподобны и согласуются с физикой, а проверить их по тексту книги здесь нельзя, поэтому invented = false."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+  "q": "На какой степени числа 3 по мысли автора останавливается «ось» в мандала-янтрах, соответствующая Новому Иерусалиму, и какой музыкальный феномен наступает после этой точки?",
+  "scope": [
+   "Programming_Sound_with_Pure_Data__Make_Your_Apps_Come_Alive__data",
+   "Style_and_idea_data",
+   "Intelligent_Music_Production_data"
+  ],
+  "text": "Я не нашёл ответа на этот вопрос в ваших книгах. Поиск по запросу «mandala yantra New Jerusalem powers of three» ничего не дал: у всех найденных фрагментов релевантность около 0, это случайные совпадения.\n\nЧто есть в блокноте:\n- **A** — «Programming Sound with Pure Data»: программирование звука для приложений.\n- **B** — «Style and Idea» (Schoenberg): эссе о композиции, двенадцатитоновой технике, Брамсе и других.\n- **C** — «Intelligent Music Production»: автоматизация сведения и обработки звука.\n\nМандала-янтр, Нового Иерусалима и «оси» на степени числа 3 ни в одной из них нет. Скорее всего, вопрос относится к другой книге, например по музыкальной нумерологии, сакральной геометрии или гармонике (вроде работ Ernest G. McClain, Hans Kayser или Joscelyn Godwin).\n\nЕсли вы загрузите в блокнот нужную книгу или подскажете автора и название, я найду это место и отвечу с цитатами.",
+  "tools": [
+   "search"
+  ],
+  "verify": [],
+  "errors": [],
+  "seconds": 15.7,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что ответа в книгах нет, описывает реальное содержимое блокнота и предлагает загрузить другую книгу; упомянутые авторы даны как общие предположения, а не как содержимое книги, выдуманных фактов нет."
+  }
+ },
+ {
+  "item_kind": "negative",
+  "book": "Intelligent_Music_Production_data",
+  "q": "Почему пифагорейская музыкальная гамма, построенная лишь на одном соотношении, считалась не соответствующей законам акустики, и какие важные интервалы она оставляла за пределами рассмотрения?",
+  "scope": [
+   "Intelligent_Music_Production_data",
+   "Harmonograph__A_Visual_Guide_to_the_Mathematics_of_Music_data",
+   "The_myth_of_invariance__the_origin_of_the_gods_mathematics_a_data"
+  ],
+  "text": "Сразу уточню формулировку вопроса. В книгах я не нашёл прямого утверждения, что пифагорейская гамма «не соответствует законам акустики». Зато источники объясняют, в чём её ограниченность и каких интервалов в ней нет.\n\n**По книге «Harmonograph» (B)**\n\n- **Почему «одно соотношение».** Пифагорейский строй относится к так называемым 3-limit: [[B:19|Pythagorean and medieval tunings, called 3-limit, recognized по true intervals except for ratios involving]] 1, 2 и 3. Двигаться по такой системе можно только октавами и квинтами: [[B:19|so we can move around by octaves and fifths]].\n- **Какие интервалы выпадают.** Получается гамма 1, 9:8, 64:81, 4:3, 3:2, 27:16, 16:9, 2:1. В ней [[B:19|four fifths and five fourths but no perfect thirds or sixths]]. Чистые терции и сексты появились позже, вместе с диатоническим строем: [[B:19|These came later with the diatonic scale and its perfect thirds (6:5:4)]]. Это произошло, когда многоголосие и аккорды начали вытеснять одноголосие: [[B:19|as polyphony and chords slowly took over from]] plainchant and drone.\n- **Внутреннее противоречие (пифагорейская комма).** Двенадцать чистых квинт почти совпадают с семью октавами, но не точно: [[B:46|This is because (3/2)12 =129.75, whereas (2)7=128]]. Эта разница и называется пифагорейской коммой.\n\n**По книге «The myth of invariance» (C)**\n\n- Just tuning описан как система на октаве, квинте и [[C:17|the pure major third of 4:5]]. Пифагорейский строй рассматривается как его часть: [[C:64|“Pythagorean tuning”—emerging as a “subset” of the “Just tuning”]]. Его числа строятся только из множителей 2 и 3 (2p3q), а в Just tuning добавляется 5 (2p3q5r) [[C:63|Matrix for “Pythagorean tuning” (numbers 2p3q)]].\n\n**Мои рассуждения**\n\nС точки зрения акустики «недостаток» пифагорейского строя в том, что он не использует 5-й обертон, то есть соотношение 5:4. Поэтому его терции (81:64) и сексты (27:16) звучат жёстче чистых 5:4 и 5:3. Пока музыка была одноголосной и с бурдоном, это почти не мешало. В аккордах же такие терции слышны как неблагозвучные. Именно поэтому B связывает появление чистых терций с распространением многоголосия.\n\nЕсли вы встретили формулировку «не соответствует законам акустики» в другом тексте, пришлите цитату: проверю, есть ли что-то подобное в источниках.",
+  "tools": [
+   "search",
+   "read",
+   "search"
+  ],
+  "verify": [
+   {
+    "alias": "B",
+    "loc": "19",
+    "quote": "Pythagorean and medieval tunings, called 3-limit, recognized по true intervals except for ratios involving",
+    "span": [
+     340,
+     455
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "B",
+    "loc": "19",
+    "quote": "so we can move around by octaves and fifths",
+    "span": [
+     527,
+     579
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "B",
+    "loc": "19",
+    "quote": "four fifths and five fourths but no perfect thirds or sixths",
+    "span": [
+     679,
+     748
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "B",
+    "loc": "19",
+    "quote": "These came later with the diatonic scale and its perfect thirds (6:5:4)",
+    "span": [
+     821,
+     901
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "B",
+    "loc": "19",
+    "quote": "as polyphony and chords slowly took over from",
+    "span": [
+     977,
+     1031
+    ],
+    "status": "ok",
+    "found": 19
+   },
+   {
+    "alias": "B",
+    "loc": "46",
+    "quote": "This is because (3/2)12 =129.75, whereas (2)7=128",
+    "span": [
+     1178,
+     1236
+    ],
+    "status": "ok",
+    "found": 46
+   },
+   {
+    "alias": "C",
+    "loc": "17",
+    "quote": "the pure major third of 4:5",
+    "span": [
+     1382,
+     1418
+    ],
+    "status": "ok",
+    "found": 17
+   },
+   {
+    "alias": "C",
+    "loc": "64",
+    "quote": "“Pythagorean tuning”—emerging as a “subset” of the “Just tuning”",
+    "span": [
+     1471,
+     1544
+    ],
+    "status": "ok",
+    "found": 64
+   },
+   {
+    "alias": "C",
+    "loc": "63",
+    "quote": "Matrix for “Pythagorean tuning” (numbers 2p3q)",
+    "span": [
+     1639,
+     1694
+    ],
+    "status": "ok",
+    "found": 63
+   }
+  ],
+  "errors": [],
+  "seconds": 25.5,
+  "judge": {
+   "refused": true,
+   "invented": false,
+   "why": "Ассистент прямо говорит, что в книгах не нашёл утверждения о несоответствии гаммы законам акустики, и отдельно помечает свои рассуждения как собственные. Приведённые факты (3-limit, отсутствие чистых терций и секст, пифагорейская комма) соответствуют содержимому книг и не выдуманы."
+  }
+ }
+]
