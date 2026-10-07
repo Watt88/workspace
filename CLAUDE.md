@@ -15,33 +15,38 @@
 - Основная среда: **TouchDesigner** (Laser CHOP, Helios DAC CHOP).
 - Автор — опытный пользователь TD (Script SOP, процедурная геометрия, лазерные пайплайны, NDI/VJ).
 
-## Выбранный подход (этап 1)
+## Выбранный подход (этап 1), v2
 
-Захват экрана → трассировка → векторный вывод:
+Захват экрана → трассировка → векторный вывод. Канон взят из проекта LASER_RIG
+(`C:\WORK\PROJECTS\TD\Laser\Helios\`, вики `~/.claude/LLM-Wiki/laser-show/` стр. 03, 37, 38):
 
 ```
-Screen Grab TOP → Resolution 320×180
-  → Threshold TOP (игрок, светлый)   → Trace SOP ┐
-  → Threshold TOP (препятствия, тёмные) → Trace SOP ┘
-→ Script SOP (бюджет точек, приоритет игрока, цвета слоёв)
-→ Transform SOP (подгонка в поле)
-→ Laser CHOP → Helios DAC CHOP
+grab (Screen Grab TOP) → res 320×180
+  → key_player / key_obst (Threshold TOP)
+  → trace_* (Trace POP, top=, rerange ±0.5 / ±0.28) → pts_* (POP to CHOP, downloadtype=nextframe)
+→ shapes (Script CHOP: игрок всегда, препятствия по бюджету Pps/Minhz, жадный обход, LasCorner по углу, инверсия X/Y)
+→ laser (Laser CHOP, source=chop) → guard (Script CHOP) → device (Laser Device CHOP, type=helios)
++ device_info (Info CHOP), safety (Execute DAT: старт в Blackout, watchdog)
 ```
 
-Логика Script SOP: игрок всегда в приоритете; препятствия добавляются от крупных контуров к мелким, пока не исчерпан бюджет точек на кадр (по умолчанию 800, плюс ~8 точек запаса на гашение между фигурами). Есть прореживание точек и отсев мелких контуров.
+Вкладки компонента: Output (Arm, Blackout, Ceiling, Gain, Pps, Size, инверсия/сдвиг), Shapes, Guard.
 
-Тумблер «Только игрок» = гибридный режим: игра на обычном экране/проекторе, лазер рисует только игрока (+ позже импульсы под бит).
+## Проверено в LASER_RIG (TD 2025.33230)
+
+- `heliosdacCHOP` устарел → `laserdeviceCHOP`: `type='helios'`, `device='helios0'`, `active`, `queuetime=0.25`, `redscale/greenscale/bluescale`. Отрицательный xscale/yscale устройства гасит вывод — инверсию делать до Laser CHOP.
+- Laser CHOP: `source`/`sop`/`chop`, `outputrate` 28000 (30k теряет точки), `stepsize` 0.00125, `bstepsize` 0.005, blank 0.07/0.15/0.4/0.03 мс, `colordelay` 0.1, `updatemethod='alldrawn'`, `startpulse` off. CHOP-вход: `x y r g b id lascorner`.
+- Laser CHOP из POP напрямую — сотни мс на кук; через POP to CHOP nextframe — 0.5 мс.
+- ABB06RGB: инвертированы обе оси; мелкие фигуры (<~0.1) роняют защиту лазера до выключения питания ключом; диоды видны с ~37–40 % (R/G), ~27–30 % (B) при Ceiling 0.135; RGB разведены (~4 мм), трапеция 1.097.
+- Blackout — через гейны устройства (выражение — единственный писатель), не через `active`. Arm — только человек.
+- Не ставить таймлайн на паузу при Arm: Helios повторяет последний кадр, сторожа не работают.
+- Два Laser Device CHOP на одном Helios конфликтуют — активен ровно один.
 
 ## Текущее состояние
 
-- Есть `build_140_laser.py` — скрипт, который собирает компонент `/project1/laser140` целиком (запуск: Text DAT → Run Script).
-- **Скрипт не тестировался в TD.** Имена типов операторов и параметров написаны по памяти; при расхождении скрипт печатает `[!] ...` в Textport. Под вопросом в первую очередь:
-  - параметр источника SOP у Laser CHOP (`sop`);
-  - имя типа `heliosdacCHOP` и его параметр `active`;
-  - `comparator`/`threshold` у Threshold TOP, `top` у Trace SOP;
-  - запись цвета `p.Cd = (...)` в Script SOP.
-- Helios создаётся выключенным — включать вручную после проверки превью.
-- Пороги ключей (0.85 / 0.15) — заглушки, палитра 140 меняется от мира к миру.
+- `build_140_laser.py` v2 собирает `/project1/laser140` (Text DAT → Run Script). Логика shapes/guard проверена на заглушках вне TD; в самом TD v2 не запускалась.
+- Не проверено [U]: `comparator` у Threshold TOP, toggles Execute DAT (`start/create/framestart`), имена каналов POP to CHOP от Trace POP (скрипт ищет `p0/P0/tx`, `lsidx/id`; без id режет по разрывам и пишет предупреждение), оценка стоимости Blankcost/Cornercost.
+- Пороги ключей (0.85 / 0.15) — заглушки.
+- Нет цветовой LUT и гомографии — можно подключить `colorlut`/`geocorr` из LASER_RIG между guard и device.
 
 ## Известные ограничения
 
@@ -52,8 +57,8 @@ Screen Grab TOP → Resolution 320×180
 
 ## Бэклог (по порядку)
 
-1. Запустить скрипт в TD, исправить имена параметров по выводу `[!]`, добиться стабильного превью Laser CHOP.
-2. Измерить реальную скорость ABB06RGB, подобрать Budget, Step и sample rate.
+1. Запустить v2 в TD, исправить имена по выводу `[!]`, проверить каналы pts_* и превью laser/guard при Arm=0.
+2. Подобрать Minhz/Step/Blankcost по мерцанию (Pps 28000 уже подобран в LASER_RIG).
 3. Подобрать ключи под разные миры игры. Возможно, заменить пороги яркости на ключ по цвету (Chroma Key / HSV) и сделать пресеты по мирам.
 4. Сгладить дрожание: временное сглаживание точек или стабилизация порядка/стартовой точки контуров между кадрами.
 5. Оптимизировать порядок обхода фигур (минимизировать пустые перелёты луча).
